@@ -1234,7 +1234,7 @@ public class HatsuneSpecialBattleExFinishResponse : ResponseBase
 public class HatsuneSpecialBattleExHistoryResponse : ResponseBase
 {
     public int total_attack_count;
-    public DateTime clear_time;
+    public long clear_time;
     public EventSpecialBattleExHistory[] history;
 }
 

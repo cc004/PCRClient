@@ -205,6 +205,7 @@ namespace MsgPack
 			case TypePrefixes.Array32:
 			{
 				var array = new object[reader.Length];
+                if (reader.Length == 0) return null;
 				for (var j = 0; j < array.Length; j++)
 				{
 					array[j] = Unpack(reader);

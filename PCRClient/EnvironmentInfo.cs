@@ -5,6 +5,7 @@ namespace PCRClient;
 
 public class EnvironmentInfo
 {
+    public static EnvironmentInfo Default = new ();
     public long viewer_id = 0;
     [NoUpper]
     public string Accept_Encoding = "gzip";

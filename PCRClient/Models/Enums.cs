@@ -2,167 +2,6 @@ namespace PCRClient.Models;
 // ReSharper disable InconsistentNaming
 #pragma warning disable CS8618
 
-public enum eSrtCatalogStatus
-{
-    EnemyUnlock = 1,
-    EnemyReaded = 2,
-    PlayerUnlock = 3,
-    PlayerReaded = 4,
-    INVALID_VALUE = -1,
-}
-
-public enum eStoryStatus
-{
-    LOCKED = 1,
-    UNVIEWED = 2,
-    VIEWING = 3,
-    INVALID_VALUE = -1,
-}
-
-public enum eClanChatMessageType
-{
-    MESSAGE = 0,
-    STAMP = 1,
-    DONATION = 2,
-    JOIN = 3,
-    LEAVE = 4,
-    LEADER = 6,
-    SUB_LEADER = 7,
-    ORGANIZATION = 8,
-    REMOVE = 9,
-    BATTLE_LOG = 10,
-    FRIEND_BATTLE = 11,
-    BATTLE_LOG_COMMENT = 12,
-    FRIEND_BATTLE_COMMENT = 13,
-    UNREAD = 14,
-    INVALID_VALUE = -1,
-}
-
-public enum eGachaType
-{
-    Gold = 1,
-    Payment = 2,
-    FreeOnly = 3,
-    INVALID_VALUE = -1,
-}
-
-public enum eExchangeStaminaState
-{
-    NONE = 0,
-    ALL_EXCHANGE = 1,
-    PART_EXCHANGE = 2,
-    NOT_EXCHANGE = 3,
-    INVALID_VALUE = -1,
-}
-
-public enum eUserClanJoinStatus
-{
-    NONE = 0,
-    REQUEST = 1,
-    JOINING = 2,
-    SECESSION = 3,
-    REJECTION = 4,
-    DELETE = 5,
-    CANCEL = 6,
-    EXPULSION = 7,
-    INVALID_VALUE = -1,
-}
-
-public enum eMissionStatusType
-{
-    NoClear = 0,
-    EnableReceive = 1,
-    AlreadyReceive = 2,
-    ChallengePeriodEnd = 101,
-    INVALID_VALUE = -1,
-}
-
-public enum eEventSubStoryStatus
-{
-    UNREAD = 1,
-    READED = 2,
-    ADDED = 3,
-    INVALID_VALUE = -1,
-}
-
-public enum eItemType
-{
-    Experience = 1,
-    Cashing = 2,
-    Enhancement = 3,
-    Stamina = 4,
-    Ticket = 5,
-    TreasureBox = 6,
-    Gift = 7,
-    GachaTicket = 8,
-    UnlockClass = 9,
-    SpecialCurrency = 10,
-    Material = 11,
-    Currency = 12,
-    Event = 13,
-    UniqueEnhancement = 14,
-    SpecialTicket = 17,
-    SuperMaterial = 18,
-    EventDispItemList = 19,
-    HighRarityEquipMaterial = 20,
-    GrowthItem = 21,
-    Tutorial = 99,
-    INVALID_VALUE = -1,
-}
-
-public enum eInventoryType
-{
-    TreasureBox = 0,
-    Unit = 1,
-    Item = 2,
-    EquipEnchant = 3,
-    Equip = 4,
-    TeamExp = 5,
-    Stamina = 6,
-    RoomItem = 7,
-    Jewel = 8,
-    Design = 10,
-    Piece = 11,
-    Gold = 12,
-    ArenaBattleNumber = 13,
-    GrandArenaBattleNumber = 14,
-    EquipmentBox = 50,
-    SeasonPassStamina = 51,
-    RoomItemLevelUp = 901,
-    SeasonPassPoint = 1001,
-    SeasonPassLevel = 1002,
-    Other = 9999,
-    INVALID_VALUE = -1,
-}
-
-public enum eRewardLimitType
-{
-    NO_LIMIT = 0,
-    HAS_LIMIT = 1,
-    INVALID_VALUE = -1,
-}
-
-public enum eClanActivityGuideline
-{
-    GUIDELINE_NONE = 0,
-    GUIDELINE_1 = 1,
-    GUIDELINE_2 = 2,
-    GUIDELINE_3 = 3,
-    GUIDELINE_4 = 4,
-    GUIDELINE_5 = 5,
-    GUIDELINE_6 = 6,
-    GUIDELINE_7 = 7,
-    GUIDELINE_8 = 8,
-    GUIDELINE_9 = 9,
-    GUIDELINE_10 = 10,
-    GUIDELINE_11 = 11,
-    GUIDELINE_12 = 12,
-    GUIDELINE_13 = 13,
-    GUIDELINE_14 = 14,
-    GUIDELINE_17 = 17,
-    INVALID_VALUE = -1,
-}
-
 public enum ePromotionLevel
 {
     Bronze = 1,
@@ -190,12 +29,149 @@ public enum ePromotionLevel
     INVALID_VALUE = -1,
 }
 
+public enum ePkbHappenMode
+{
+    DRAMATIC = 1,
+    SIMPLE = 2,
+    INVALID_VALUE = -1,
+}
+
+public enum eClanChatPlayButtonCondition
+{
+    NONE = 0,
+    UNOPENED_MINI_GAME_IN_EVENT = 1,
+    OPENED_MINI_GAME_IN_EVENT = 2,
+    BEFORE_GAME_TABLE_ADD = 3,
+    GAME_TABLE_PURCHASED_AFTER_GAME_TABLE_ADD = 4,
+    GAME_TABLE_UNPURCHASED_AFTER_GAME_TABLE_ADD = 5,
+    INVALID_VALUE = -1,
+}
+
+public enum eMissionStatusType
+{
+    NoClear = 0,
+    EnableReceive = 1,
+    AlreadyReceive = 2,
+    ChallengePeriodEnd = 101,
+    INVALID_VALUE = -1,
+}
+
 public enum eBGMKey
 {
     HOME = 200,
     ROOM_1F = 210,
     ROOM_2F = 211,
     ROOM_3F = 212,
+    INVALID_VALUE = -1,
+}
+
+public enum eClanRole
+{
+    MEMBER = 0,
+    SUB_LEADER = 30,
+    LEADER = 40,
+    INVALID_VALUE = -1,
+}
+
+public enum eStoryStatus
+{
+    LOCKED = 1,
+    UNVIEWED = 2,
+    VIEWING = 3,
+    INVALID_VALUE = -1,
+}
+
+public enum eRewardLimitType
+{
+    NO_LIMIT = 0,
+    HAS_LIMIT = 1,
+    INVALID_VALUE = -1,
+}
+
+public enum eUserClanJoinStatus
+{
+    NONE = 0,
+    REQUEST = 1,
+    JOINING = 2,
+    SECESSION = 3,
+    REJECTION = 4,
+    DELETE = 5,
+    CANCEL = 6,
+    EXPULSION = 7,
+    INVALID_VALUE = -1,
+}
+
+public enum eClanJoinCondition
+{
+    CONDITION_NONE = 0,
+    EVERYONE = 1,
+    ONLY_INVITATION = 2,
+    DISABLE = 3,
+    INVALID_VALUE = -1,
+}
+
+public enum eShopItemBannerType
+{
+    NONE = 0,
+    RED_RIBBON = 1,
+    BLUE_RIBBON = 2,
+    INVALID_VALUE = -1,
+}
+
+public enum eClanChatMessageType
+{
+    MESSAGE = 0,
+    STAMP = 1,
+    DONATION = 2,
+    JOIN = 3,
+    LEAVE = 4,
+    LEADER = 6,
+    SUB_LEADER = 7,
+    ORGANIZATION = 8,
+    REMOVE = 9,
+    BATTLE_LOG = 10,
+    FRIEND_BATTLE = 11,
+    BATTLE_LOG_COMMENT = 12,
+    FRIEND_BATTLE_COMMENT = 13,
+    UNREAD = 14,
+    INVALID_VALUE = -1,
+}
+
+public enum eExchangeStaminaState
+{
+    NONE = 0,
+    ALL_EXCHANGE = 1,
+    PART_EXCHANGE = 2,
+    NOT_EXCHANGE = 3,
+    INVALID_VALUE = -1,
+}
+
+public enum eEventSubStoryStatus
+{
+    UNREAD = 1,
+    READED = 2,
+    ADDED = 3,
+    INVALID_VALUE = -1,
+}
+
+public enum eClanActivityGuideline
+{
+    GUIDELINE_NONE = 0,
+    GUIDELINE_1 = 1,
+    GUIDELINE_2 = 2,
+    GUIDELINE_3 = 3,
+    GUIDELINE_4 = 4,
+    GUIDELINE_5 = 5,
+    GUIDELINE_6 = 6,
+    GUIDELINE_7 = 7,
+    GUIDELINE_8 = 8,
+    GUIDELINE_9 = 9,
+    GUIDELINE_10 = 10,
+    GUIDELINE_11 = 11,
+    GUIDELINE_12 = 12,
+    GUIDELINE_13 = 13,
+    GUIDELINE_14 = 14,
+    GUIDELINE_17 = 17,
     INVALID_VALUE = -1,
 }
 
@@ -303,39 +279,70 @@ public enum eSystemId
     INVALID_VALUE = -1,
 }
 
-public enum eClanJoinCondition
+public enum eSrtCatalogStatus
 {
-    CONDITION_NONE = 0,
-    EVERYONE = 1,
-    ONLY_INVITATION = 2,
-    DISABLE = 3,
+    EnemyUnlock = 1,
+    EnemyReaded = 2,
+    PlayerUnlock = 3,
+    PlayerReaded = 4,
     INVALID_VALUE = -1,
 }
 
-public enum eShopItemBannerType
+public enum eItemType
 {
-    NONE = 0,
-    RED_RIBBON = 1,
-    BLUE_RIBBON = 2,
+    Experience = 1,
+    Cashing = 2,
+    Enhancement = 3,
+    Stamina = 4,
+    Ticket = 5,
+    TreasureBox = 6,
+    Gift = 7,
+    GachaTicket = 8,
+    UnlockClass = 9,
+    SpecialCurrency = 10,
+    Material = 11,
+    Currency = 12,
+    Event = 13,
+    UniqueEnhancement = 14,
+    SpecialTicket = 17,
+    SuperMaterial = 18,
+    EventDispItemList = 19,
+    HighRarityEquipMaterial = 20,
+    GrowthItem = 21,
+    Tutorial = 99,
     INVALID_VALUE = -1,
 }
 
-public enum eClanChatPlayButtonCondition
+public enum eGachaType
 {
-    NONE = 0,
-    UNOPENED_MINI_GAME_IN_EVENT = 1,
-    OPENED_MINI_GAME_IN_EVENT = 2,
-    BEFORE_GAME_TABLE_ADD = 3,
-    GAME_TABLE_PURCHASED_AFTER_GAME_TABLE_ADD = 4,
-    GAME_TABLE_UNPURCHASED_AFTER_GAME_TABLE_ADD = 5,
+    Gold = 1,
+    Payment = 2,
+    FreeOnly = 3,
     INVALID_VALUE = -1,
 }
 
-public enum eClanRole
+public enum eInventoryType
 {
-    MEMBER = 0,
-    SUB_LEADER = 30,
-    LEADER = 40,
+    TreasureBox = 0,
+    Unit = 1,
+    Item = 2,
+    EquipEnchant = 3,
+    Equip = 4,
+    TeamExp = 5,
+    Stamina = 6,
+    RoomItem = 7,
+    Jewel = 8,
+    Design = 10,
+    Piece = 11,
+    Gold = 12,
+    ArenaBattleNumber = 13,
+    GrandArenaBattleNumber = 14,
+    EquipmentBox = 50,
+    SeasonPassStamina = 51,
+    RoomItemLevelUp = 901,
+    SeasonPassPoint = 1001,
+    SeasonPassLevel = 1002,
+    Other = 9999,
     INVALID_VALUE = -1,
 }
 
@@ -376,13 +383,6 @@ public enum ePartyType
     KAISER_BATTLE_SUB_2 = 1002,
     KAISER_BATTLE_SUB_3 = 1003,
     KAISER_BATTLE_SUB_4 = 1004,
-    INVALID_VALUE = -1,
-}
-
-public enum ePkbHappenMode
-{
-    DRAMATIC = 1,
-    SIMPLE = 2,
     INVALID_VALUE = -1,
 }
 

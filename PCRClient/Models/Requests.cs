@@ -12,6 +12,7 @@ public class AcceptAgreementRequest : Request<AcceptAgreementResponse>
 
 public class AddUserTipsRequest : Request<AddUserTipsResponse>
 {
+    public int[] tips_id_list;
     internal override string Url => "tips/add_user_tips";
 }
 
@@ -37,12 +38,13 @@ public class ArcadeStoryListRequest : Request<ArcadeStoryListResponse>
 public class ArcadeSyncStoryListRequest : Request<ArcadeSyncStoryListResponse>
 {
     public int arcade_id;
+    public int[] story_id_list;
     internal override string Url => "arcade/sync_story_list";
 }
 
 public class ArcadeTopRequest : Request<ArcadeTopResponse>
 {
-    internal override string Url => "arcade/toppostparam";
+    internal override string Url => "arcade/top";
 }
 
 public class ArenaApplyRequest : Request<ArenaApplyResponse>
@@ -61,6 +63,7 @@ public class ArenaCancelRequest : Request<ArenaCancelResponse>
 public class ArenaFinishRequest : Request<ArenaFinishResponse>
 {
     public int battle_id;
+    public ArenaWaveResult[] arena_wave_result_list;
     public int is_skipped;
     internal override string Url => "arena/finish";
 }
@@ -79,17 +82,17 @@ public class ArenaHistoryDetailRequest : Request<ArenaHistoryDetailResponse>
 
 public class ArenaHistoryRequest : Request<ArenaHistoryResponse>
 {
-    internal override string Url => "arena/historypostparam";
+    internal override string Url => "arena/history";
 }
 
 public class ArenaInfoRequest : Request<ArenaInfoResponse>
 {
-    internal override string Url => "arena/infopostparam";
+    internal override string Url => "arena/info";
 }
 
 public class ArenaIntervalCancelRequest : Request<ArenaIntervalCancelResponse>
 {
-    internal override string Url => "arena/intervalcancelpostparam";
+    internal override string Url => "arena/interval_cancel";
 }
 
 public class ArenaMoveGroupRequest : Request<ArenaMoveGroupResponse>
@@ -113,12 +116,12 @@ public class ArenaReplayRequest : Request<ArenaReplayResponse>
 
 public class ArenaResetBattleNumberRequest : Request<ArenaResetBattleNumberResponse>
 {
-    internal override string Url => "arena/resetbattlenumberpostparam";
+    internal override string Url => "arena/reset_battle_number";
 }
 
 public class ArenaSearchRequest : Request<ArenaSearchResponse>
 {
-    internal override string Url => "arena/searchpostparam";
+    internal override string Url => "arena/search";
 }
 
 public class ArenaStartRequest : Request<ArenaStartResponse>
@@ -132,12 +135,16 @@ public class ArenaStartRequest : Request<ArenaStartResponse>
 
 public class ArenaTimeRewardAcceptRequest : Request<ArenaTimeRewardAcceptResponse>
 {
-    internal override string Url => "arena/timerewardacceptpostparam";
+    internal override string Url => "arena/time_reward_accept";
 }
 
 public class AutomaticEnhanceRequest : Request<AutomaticEnhanceResponse>
 {
     public int unit_id;
+    public ItemInfo[] item_list;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public int[] equip_slot_num_list;
+    public SkillLevelUpDetail[] skill_levelup_list;
     public int excludes_equip;
     internal override string Url => "unit/automatic_enhance";
 }
@@ -147,6 +154,8 @@ public class AutomaticEquipEnhanceRequest : Request<AutomaticEquipEnhanceRespons
     public int unit_id;
     public int equip_slot_num;
     public int current_enhancement_pt;
+    public InventoryInfoPost[] item_list;
+    public ShopBuyInfo[] buy_item_list;
     internal override string Url => "equipment/automatic_enhance";
 }
 
@@ -155,16 +164,20 @@ public class AutomaticEquipEnhanceUniqueRequest : Request<AutomaticEquipEnhanceU
     public int unit_id;
     public int equip_slot_num;
     public int current_enhancement_pt;
+    public InventoryInfoPost[] item_list;
+    public ShopBuyInfo[] buy_item_list;
     internal override string Url => "equipment/automatic_enhance_unique";
 }
 
 public class ChangeRarityRequest : Request<ChangeRarityResponse>
 {
+    public ChangeRarityUnit[] change_rarity_unit_list;
     internal override string Url => "unit/change_rarity";
 }
 
 public class ChangeRoleRequest : Request<ChangeRoleResponse>
 {
+    public RoleInfo[] role_info;
     internal override string Url => "clan/change_role";
 }
 
@@ -190,12 +203,12 @@ public class CharaETicketRewardsRequest : Request<CharaETicketRewardsResponse>
 
 public class CheckAgreementRequest : Request<CheckAgreementResponse>
 {
-    internal override string Url => "check/agreementpostparam";
+    internal override string Url => "check/check_agreement";
 }
 
 public class CheckExistClanRequest : Request<CheckExistClanResponse>
 {
-    internal override string Url => "check/existclanpostparam";
+    internal override string Url => "check/exist_clan";
 }
 
 public class ClanBattleBossHistoryRequest : Request<ClanBattleBossHistoryResponse>
@@ -232,7 +245,7 @@ public class ClanBattleConfirmRehearsalMyLogRequest : Request<ClanBattleConfirmR
 
 public class ClanBattleConfirmTrainingMyLogRequest : Request<ClanBattleConfirmTrainingMyLogResponse>
 {
-    internal override string Url => "clan_battle/onfirmtrainingmylogpostparam";
+    internal override string Url => "clan_battle/confirm_training_my_log";
 }
 
 public class ClanBattleDamageReportRequest : Request<ClanBattleDamageReportResponse>
@@ -283,7 +296,7 @@ public class ClanBattleHistoryReportRequest : Request<ClanBattleHistoryReportRes
 
 public class ClanBattleMissionIndexRequest : Request<ClanBattleMissionIndexResponse>
 {
-    internal override string Url => "clan_battle/issionindexpostparam";
+    internal override string Url => "clan_battle/mission_index";
 }
 
 public class ClanBattleMyLogDetailRequest : Request<ClanBattleMyLogDetailResponse>
@@ -363,6 +376,7 @@ public class ClanBattleSaveRehearsalMyLogRequest : Request<ClanBattleSaveRehears
     public int mylog_id;
     public int lap_num;
     public int order_num;
+    public UnitDamageInfo[] user_unit;
     public int total_damage;
     public int boss_damage;
     public int battle_log_id;
@@ -378,6 +392,7 @@ public class ClanBattleSaveTrainingMyLogRequest : Request<ClanBattleSaveTraining
     public int clan_battle_mode;
     public int phase;
     public int order_num;
+    public UnitDamageInfo[] user_unit;
     public int total_damage;
     public int boss_damage;
     public int battle_log_id;
@@ -492,6 +507,7 @@ public class ClanChatInfoListRequest : Request<ClanChatInfoListResponse>
     public int direction;
     public int count;
     public int wait_interval;
+    public int[] update_message_ids;
     internal override string Url => "clan/chat_info_list";
 }
 
@@ -632,12 +648,14 @@ public class ClanLikeRequest : Request<ClanLikeResponse>
 public class ClanMemberBattleFinishRequest : Request<ClanMemberBattleFinishResponse>
 {
     public int battle_id;
+    public FriendBattleResult[] wave_result_list;
     internal override string Url => "clan/clan_member_battle_finish";
 }
 
 public class ClanMemberBattleStartRequest : Request<ClanMemberBattleStartResponse>
 {
     public long battle_viewer_id;
+    public int[] unit_id_list;
     public int disable_skin;
     public long create_time;
     internal override string Url => "clan/clan_member_battle_start";
@@ -696,6 +714,7 @@ public class CloisterBattleSkipRequest : Request<CloisterBattleSkipResponse>
 
 public class DeckUpdateListRequest : Request<DeckUpdateListResponse>
 {
+    public DeckListData[] deck_list;
     internal override string Url => "deck/update_list";
 }
 
@@ -713,6 +732,8 @@ public class DeckUpdateRequest : Request<DeckUpdateResponse>
 public class DungeonBattleFinishRequest : Request<DungeonBattleFinishResponse>
 {
     public int quest_id;
+    public DungeonQueryUnit[] user_unit;
+    public DungeonQueryUnit[] versus_user_unit;
     public int remain_time;
     public int total_damage;
     internal override string Url => "dungeon/battle_finish";
@@ -727,6 +748,7 @@ public class DungeonBattleRetireRequest : Request<DungeonBattleRetireResponse>
 public class DungeonBattleStartRequest : Request<DungeonBattleStartResponse>
 {
     public int quest_id;
+    public DungeonBattleStartUnit[] unit_list;
     public int disable_skin;
     public int support_battle_rarity;
     internal override string Url => "dungeon/battle_start";
@@ -735,7 +757,7 @@ public class DungeonBattleStartRequest : Request<DungeonBattleStartResponse>
 public class DungeonClanDispatchUnitListRequest : Request<DungeonClanDispatchUnitListResponse>
 {
     public int dungeon_area_id;
-    internal override string Url => "dungeon/clandispatchunitlistpostparam";
+    internal override string Url => "dungeon/clan_dispatch_unit_list";
 }
 
 public class DungeonDispatchUnitList2Request : Request<DungeonDispatchUnitList2Response>
@@ -752,7 +774,7 @@ public class DungeonEnterAreaRequest : Request<DungeonEnterAreaResponse>
 
 public class DungeonInfoRequest : Request<DungeonInfoResponse>
 {
-    internal override string Url => "dungeon/infopostparam";
+    internal override string Url => "dungeon/info";
 }
 
 public class DungeonResetRequest : Request<DungeonResetResponse>
@@ -775,12 +797,13 @@ public class EmblemChangeRequest : Request<EmblemChangeResponse>
 
 public class EmblemTopRequest : Request<EmblemTopResponse>
 {
-    internal override string Url => "emblem/toppostparam";
+    internal override string Url => "emblem/top";
 }
 
 public class EquipCraftRequest : Request<EquipCraftResponse>
 {
     public int equip_id;
+    public UserEquipParameterIdCount[] equip_recipe_list;
     public int current_equip_num;
     internal override string Url => "equipment/craft";
 }
@@ -805,6 +828,7 @@ public class EquipEnhanceRequest : Request<EquipEnhanceResponse>
 {
     public int unit_id;
     public int equip_slot_num;
+    public InventoryInfoPost[] item_list;
     public int current_enhancement_pt;
     internal override string Url => "equipment/enhance";
 }
@@ -866,22 +890,24 @@ public class FkeFinishRequest : Request<FkeFinishResponse>
 {
     public int fke_play_id;
     public int base_fke_point;
+    public int[] happening_id_list;
     internal override string Url => "fke/finish";
 }
 
 public class FkeStartRequest : Request<FkeStartResponse>
 {
-    internal override string Url => "fke/startpostparam";
+    internal override string Url => "fke/start";
 }
 
 public class FkeSyncTopRequest : Request<FkeSyncTopResponse>
 {
+    public int[] happening_id_list;
     internal override string Url => "fke/sync_top";
 }
 
 public class FkeTopRequest : Request<FkeTopResponse>
 {
-    internal override string Url => "fke/toppostparam";
+    internal override string Url => "fke/top";
 }
 
 public class FriendAcceptRequest : Request<FriendAcceptResponse>
@@ -893,6 +919,7 @@ public class FriendAcceptRequest : Request<FriendAcceptResponse>
 public class FriendBattleFinishRequest : Request<FriendBattleFinishResponse>
 {
     public int battle_id;
+    public FriendBattleResult[] wave_result_list;
     internal override string Url => "practice/friend_battle_finish";
 }
 
@@ -932,7 +959,7 @@ public class FriendCancelRequest : Request<FriendCancelResponse>
 
 public class FriendFriendListRequest : Request<FriendFriendListResponse>
 {
-    internal override string Url => "friend/friendlistpostparam";
+    internal override string Url => "friend/friend_list";
 }
 
 public class FriendGetMissionTargetFriendCountRequest : Request<FriendGetMissionTargetFriendCountResponse>
@@ -958,7 +985,7 @@ public class FriendMissionIndexRequest : Request<FriendMissionIndexResponse>
 
 public class FriendPendingListRequest : Request<FriendPendingListResponse>
 {
-    internal override string Url => "friend/pendinglistpostparam";
+    internal override string Url => "friend/pending_list";
 }
 
 public class FriendRejectRequest : Request<FriendRejectResponse>
@@ -975,7 +1002,7 @@ public class FriendRemoveRequest : Request<FriendRemoveResponse>
 
 public class FriendRequestListRequest : Request<FriendRequestListResponse>
 {
-    internal override string Url => "friend/requestlistpostparam";
+    internal override string Url => "friend/request_list";
 }
 
 public class FriendRequestRequest : Request<FriendRequestResponse>
@@ -1011,7 +1038,7 @@ public class GachaExecRequest : Request<GachaExecResponse>
 
 public class GachaIndexRequest : Request<GachaIndexResponse>
 {
-    internal override string Url => "gacha/indexpostparam";
+    internal override string Url => "gacha/index";
 }
 
 public class GachaPrizeHistoryRequest : Request<GachaPrizeHistoryResponse>
@@ -1037,7 +1064,7 @@ public class GachaSelectPrizeRequest : Request<GachaSelectPrizeResponse>
 
 public class GachaSpecialFesIndexRequest : Request<GachaSpecialFesIndexResponse>
 {
-    internal override string Url => "gacha/specialfesindexpostparam";
+    internal override string Url => "gacha/special_fes_index";
 }
 
 public class GetFriendSupportUnitListRequest : Request<GetFriendSupportUnitListResponse>
@@ -1057,7 +1084,7 @@ public class GrandArenaApplyRequest : Request<GrandArenaApplyResponse>
 
 public class GrandArenaCancelIntervalRequest : Request<GrandArenaCancelIntervalResponse>
 {
-    internal override string Url => "grand_arena/ancelintervalpostparam";
+    internal override string Url => "grand_arena/cancel_interval";
 }
 
 public class GrandArenaCancelRequest : Request<GrandArenaCancelResponse>
@@ -1069,13 +1096,14 @@ public class GrandArenaCancelRequest : Request<GrandArenaCancelResponse>
 public class GrandArenaFinishRequest : Request<GrandArenaFinishResponse>
 {
     public int battle_id;
+    public ArenaWaveResult[] arena_wave_result_list;
     public int is_skipped;
     internal override string Url => "grand_arena/finish";
 }
 
 public class GrandArenaGetDestinationGroupRequest : Request<GrandArenaGetDestinationGroupResponse>
 {
-    internal override string Url => "grand_arena/etdestinationgrouppostparam";
+    internal override string Url => "grand_arena/get_destination_group";
 }
 
 public class GrandArenaHistoryDetailRequest : Request<GrandArenaHistoryDetailResponse>
@@ -1086,12 +1114,12 @@ public class GrandArenaHistoryDetailRequest : Request<GrandArenaHistoryDetailRes
 
 public class GrandArenaHistoryRequest : Request<GrandArenaHistoryResponse>
 {
-    internal override string Url => "grand_arena/istorypostparam";
+    internal override string Url => "grand_arena/history";
 }
 
 public class GrandArenaInfoRequest : Request<GrandArenaInfoResponse>
 {
-    internal override string Url => "grand_arena/nfopostparam";
+    internal override string Url => "grand_arena/info";
 }
 
 public class GrandArenaMoveGroupRequest : Request<GrandArenaMoveGroupResponse>
@@ -1116,12 +1144,12 @@ public class GrandArenaReplayRequest : Request<GrandArenaReplayResponse>
 
 public class GrandArenaResetBattleNumberRequest : Request<GrandArenaResetBattleNumberResponse>
 {
-    internal override string Url => "grand_arena/esetbattlenumberpostparam";
+    internal override string Url => "grand_arena/reset_battle_number";
 }
 
 public class GrandArenaSearchRequest : Request<GrandArenaSearchResponse>
 {
-    internal override string Url => "grand_arena/earchpostparam";
+    internal override string Url => "grand_arena/search";
 }
 
 public class GrandArenaStartRequest : Request<GrandArenaStartResponse>
@@ -1135,7 +1163,7 @@ public class GrandArenaStartRequest : Request<GrandArenaStartResponse>
 
 public class GrandArenaTimeRewardAcceptRequest : Request<GrandArenaTimeRewardAcceptResponse>
 {
-    internal override string Url => "grand_arena/imerewardacceptpostparam";
+    internal override string Url => "grand_arena/time_reward_accept";
 }
 
 public class HatsuneBossBattleFinishRequest : Request<HatsuneBossBattleFinishResponse>
@@ -1145,6 +1173,7 @@ public class HatsuneBossBattleFinishRequest : Request<HatsuneBossBattleFinishRes
     public HatsuneBossBattleFinishUnit user_unit;
     public int remain_time;
     public int total_damage;
+    public EventEnemyDamageInfo[] enemy_damage_list;
     internal override string Url => "event/hatsune/boss_battle_finish";
 }
 
@@ -1206,6 +1235,7 @@ public class HatsuneQuestFinishRequest : Request<HatsuneQuestFinishResponse>
     public int event_id;
     public int quest_id;
     public int remain_time;
+    public UnitHpInfo[] unit_hp_list;
     public long owner_viewer_id;
     public int support_position;
     public int is_friend;
@@ -1292,8 +1322,10 @@ public class HatsuneSpecialBattleExFinishRequest : Request<HatsuneSpecialBattleE
     public int boss_id;
     public HatsuneBossBattleFinishUnit user_unit;
     public int total_damage;
+    public EventEnemyDamageInfo[] enemy_damage_list;
     public int remain_time;
     public int mode;
+    public EventEnemyInfo[] enemy_info;
     public int manual_flags;
     internal override string Url => "event/hatsune/special_battle_ex_finish";
 }
@@ -1336,8 +1368,10 @@ public class HatsuneSpecialBattleFinishRequest : Request<HatsuneSpecialBattleFin
     public int boss_id;
     public HatsuneBossBattleFinishUnit user_unit;
     public int total_damage;
+    public EventEnemyDamageInfo[] enemy_damage_list;
     public int remain_time;
     public int mode;
+    public EventEnemyInfo[] enemy_info;
     internal override string Url => "event/hatsune/special_battle_finish";
 }
 
@@ -1366,6 +1400,7 @@ public class HatsuneTopRequest : Request<HatsuneTopResponse>
 public class HomeIndexRequest : Request<HomeIndexResponse>
 {
     public int message_id;
+    public int[] tips_id_list;
     public int is_first;
     public int gold_history;
     internal override string Url => "home/index";
@@ -1381,7 +1416,7 @@ public class ItemETicketExchangeRequest : Request<ItemETicketExchangeResponse>
 
 public class KaiserBattleGetMainBossInfoRequest : Request<KaiserBattleGetMainBossInfoResponse>
 {
-    internal override string Url => "kaiser_battle/etmainbossinfopostparam";
+    internal override string Url => "kaiser_battle/get_main_boss_info";
 }
 
 public class KaiserBattleMainFinishRequest : Request<KaiserBattleMainFinishResponse>
@@ -1392,6 +1427,7 @@ public class KaiserBattleMainFinishRequest : Request<KaiserBattleMainFinishRespo
     public int total_damage;
     public int mode;
     public BossBattleFinishUnit battle_finish_unit;
+    public EventEnemyInfo[] enemy_info;
     internal override string Url => "kaiser_battle/main_finish";
 }
 
@@ -1408,12 +1444,13 @@ public class KaiserBattleMainStartRequest : Request<KaiserBattleMainStartRespons
     public string token;
     public int mode;
     public int from_event_flag;
+    public KaiserBattleSupportRental[] support_list;
     internal override string Url => "kaiser_battle/main_start";
 }
 
 public class KaiserBattleMySupportListRequest : Request<KaiserBattleMySupportListResponse>
 {
-    internal override string Url => "kaiser_battle/ysupportlistpostparam";
+    internal override string Url => "kaiser_battle/my_support_list";
 }
 
 public class KaiserBattleSetSupportUnitRequest : Request<KaiserBattleSetSupportUnitResponse>
@@ -1438,6 +1475,7 @@ public class KaiserBattleSubStartRequest : Request<KaiserBattleSubStartResponse>
 {
     public int kaiser_boss_id;
     public string token;
+    public KaiserBattleSupportRental[] support_list;
     internal override string Url => "kaiser_battle/sub_start";
 }
 
@@ -1449,7 +1487,7 @@ public class KaiserBattleSupportListRequest : Request<KaiserBattleSupportListRes
 
 public class KaiserBattleTopRequest : Request<KaiserBattleTopResponse>
 {
-    internal override string Url => "kaiser_battle/oppostparam";
+    internal override string Url => "kaiser_battle/top";
 }
 
 public class KaiserBattleUpdateDeckRequest : Request<KaiserBattleUpdateDeckResponse>
@@ -1482,7 +1520,7 @@ public class KmkStartRequest : Request<KmkStartResponse>
 
 public class KmkTopRequest : Request<KmkTopResponse>
 {
-    internal override string Url => "kmk_top/ostparam";
+    internal override string Url => "kmk/top";
 }
 
 public class LoadIndexRequest : Request<LoadIndexResponse>
@@ -1516,6 +1554,7 @@ public class MultiUnlockRaritySixSlotRequest : Request<MultiUnlockRaritySixSlotR
     public int unit_id;
     public int slot_id;
     public int current_gold_num;
+    public PostMultiUnlockRarity6Slot[] slot_list;
     internal override string Url => "unit/multi_unlock_rarity_6_slot";
 }
 
@@ -1528,16 +1567,18 @@ public class MusicBuyRequest : Request<MusicBuyResponse>
 
 public class MusicSetRequest : Request<MusicSetResponse>
 {
+    public MusicIdData[] bgm;
     internal override string Url => "music/set";
 }
 
 public class MusicTopRequest : Request<MusicTopResponse>
 {
-    internal override string Url => "music/toppostparam";
+    internal override string Url => "music/top";
 }
 
 public class MyPageSetMyPageRequest : Request<MyPageSetMyPageResponse>
 {
+    public MyPage[] my_page_info;
     internal override string Url => "my_page/set_my_page";
 }
 
@@ -1552,6 +1593,7 @@ public class PctFinishRequest : Request<PctFinishResponse>
     public int pct_play_id;
     public int base_pct_point;
     public int max_combo_count;
+    public PctGradeInfo[] grade_list;
     public int barrage_count;
     public int fruits_count;
     public int special_item_count;
@@ -1569,7 +1611,7 @@ public class PctStartRequest : Request<PctStartResponse>
 
 public class PctTopRequest : Request<PctTopResponse>
 {
-    internal override string Url => "pct/toppostparam";
+    internal override string Url => "pct/top";
 }
 
 public class PictureBookRequest : Request<PictureBookResponse>
@@ -1586,6 +1628,8 @@ public class PkbFinishSoloRequest : Request<PkbFinishSoloResponse>
     public int single_max_batting_distance;
     public int home_run_num;
     public int hit_num;
+    public PkbBattingResultInfo[] batting_result_list;
+    public int[] ball_type_list;
     public int elapsed_frame;
     public int from_system_id;
     public ePkbHappenMode happen_mode;
@@ -1602,6 +1646,8 @@ public class PkbFinishVsRequest : Request<PkbFinishVsResponse>
     public int single_max_batting_distance;
     public int home_run_num;
     public int hit_num;
+    public PkbBattingResultInfo[] batting_result_list;
+    public int[] ball_type_list;
     public int elapsed_frame;
     public int from_system_id;
     public ePkbHappenMode happen_mode;
@@ -1610,12 +1656,16 @@ public class PkbFinishVsRequest : Request<PkbFinishVsResponse>
 
 public class PkbReadCatalogRequest : Request<PkbReadCatalogResponse>
 {
+    public int[] pitcher_id_list;
+    public int[] batter_id_list;
     public int from_system_id;
     internal override string Url => "pkb/read_catalog";
 }
 
 public class PkbReadRankingRequest : Request<PkbReadRankingResponse>
 {
+    public PkbReadRankingInfo[] read_ranking_info;
+    public PkbReadRankingInfo[] read_simple_ranking_info;
     public int from_system_id;
     internal override string Url => "pkb/read_ranking";
 }
@@ -1688,12 +1738,12 @@ public class ProfileGetRequest : Request<ProfileGetResponse>
 
 public class ProfileMakerGetClanProfileRequest : Request<ProfileMakerGetClanProfileResponse>
 {
-    internal override string Url => "profile_maker/etclanprofilepostparam";
+    internal override string Url => "profile_maker/get_clan_profile";
 }
 
 public class ProfileMakerGetMyProfileRequest : Request<ProfileMakerGetMyProfileResponse>
 {
-    internal override string Url => "profile_maker/etmyprofilepostparam";
+    internal override string Url => "profile_maker/get_my_profile";
 }
 
 public class ProfileMakerSetClanProfileRequest : Request<ProfileMakerSetClanProfileResponse>
@@ -1730,6 +1780,7 @@ public class QuestFinishRequest : Request<QuestFinishResponse>
 {
     public int quest_id;
     public int remain_time;
+    public UnitHpInfo[] unit_hp_list;
     public int auto_clear;
     public int fps;
     public long owner_viewer_id;
@@ -1740,6 +1791,8 @@ public class QuestFinishRequest : Request<QuestFinishResponse>
 
 public class QuestRecoverChallengeMultipleRequest : Request<QuestRecoverChallengeMultipleResponse>
 {
+    public int[] hard_quest_list;
+    public int[] very_hard_quest_list;
     public int current_currency_num;
     internal override string Url => "quest/recover_challenge_multiple";
 }
@@ -1781,6 +1834,10 @@ public class QuestRetireRequest : Request<QuestRetireResponse>
 
 public class QuestSkipMultipleRequest : Request<QuestSkipMultipleResponse>
 {
+    public QuestSkipInfo[] normal_skip_list;
+    public QuestSkipInfo[] hard_skip_list;
+    public QuestSkipInfo[] very_hard_skip_list;
+    public QuestSkipInfo[] shiori_hard_skip_list;
     public int current_ticket_num;
     internal override string Url => "quest/quest_skip_multiple";
 }
@@ -1815,6 +1872,7 @@ public class RaritySixQuestFinishRequest : Request<RaritySixQuestFinishResponse>
 {
     public int quest_id;
     public int remain_time;
+    public UnitHpInfo[] unit_hp_list;
     internal override string Url => "rarity_6_quest/finish";
 }
 
@@ -1827,7 +1885,7 @@ public class RaritySixQuestStartRequest : Request<RaritySixQuestStartResponse>
 
 public class RoomClanMemberRequest : Request<RoomClanMemberResponse>
 {
-    internal override string Url => "room/clanmemberpostparam";
+    internal override string Url => "room/clan_member";
 }
 
 public class RoomExtendStorageRequest : Request<RoomExtendStorageResponse>
@@ -1867,6 +1925,7 @@ public class RoomItemBuyRequest : Request<RoomItemBuyResponse>
 
 public class RoomItemSellRequest : Request<RoomItemSellResponse>
 {
+    public int[] serial_id_list;
     public int floor_number;
     public int background_theme;
     public RoomFloorLayout layout;
@@ -1900,7 +1959,7 @@ public class RoomLevelUpStopRequest : Request<RoomLevelUpStopResponse>
 
 public class RoomLikeHistoryRequest : Request<RoomLikeHistoryResponse>
 {
-    internal override string Url => "room/likehistorypostparam";
+    internal override string Url => "room/like_history";
 }
 
 public class RoomLikeRequest : Request<RoomLikeResponse>
@@ -1912,11 +1971,13 @@ public class RoomLikeRequest : Request<RoomLikeResponse>
 public class RoomMultiGiveGiftRequest : Request<RoomMultiGiveGiftResponse>
 {
     public int unit_id;
+    public SendGiftData[] item_info;
     internal override string Url => "room/multi_give_gift";
 }
 
 public class RoomMultiLevelUpEndRequest : Request<RoomMultiLevelUpEndResponse>
 {
+    public int[] serial_id_list;
     internal override string Url => "room/multi_level_up_end";
 }
 
@@ -1928,7 +1989,7 @@ public class RoomMysetDeleteRequest : Request<RoomMysetDeleteResponse>
 
 public class RoomMysetListRequest : Request<RoomMysetListResponse>
 {
-    internal override string Url => "room/mysetlistpostparam";
+    internal override string Url => "room/myset_list";
 }
 
 public class RoomMysetRenameRequest : Request<RoomMysetRenameResponse>
@@ -1948,7 +2009,7 @@ public class RoomMysetSaveRequest : Request<RoomMysetSaveResponse>
 
 public class RoomReceiveItemAllRequest : Request<RoomReceiveItemAllResponse>
 {
-    internal override string Url => "room/receiveitemallpostparam";
+    internal override string Url => "room/receive_item_all";
 }
 
 public class RoomReceiveItemRequest : Request<RoomReceiveItemResponse>
@@ -1983,20 +2044,20 @@ public class SeasonPassBuyLevelRequest : Request<SeasonPassBuyLevelResponse>
     public int cost_jewel_num;
     public int current_level;
     public int add_level;
-    internal override string Url => "season_pass/uylevelpostparam";
+    internal override string Url => "season_pass/buy_level";
 }
 
 public class SeasonPassIndexRequest : Request<SeasonPassIndexResponse>
 {
     public int season_id;
-    internal override string Url => "season_pass/ndexpostparam";
+    internal override string Url => "season_pass/index";
 }
 
 public class SeasonPassMissionAcceptRequest : Request<SeasonPassMissionAcceptResponse>
 {
     public int season_id;
     public int mission_id;
-    internal override string Url => "season_pass/issionacceptpostparam";
+    internal override string Url => "season_pass/mission_accept";
 }
 
 public class SeasonPassRewardAcceptRequest : Request<SeasonPassRewardAcceptResponse>
@@ -2004,13 +2065,13 @@ public class SeasonPassRewardAcceptRequest : Request<SeasonPassRewardAcceptRespo
     public int season_id;
     public int level;
     public int index;
-    internal override string Url => "season_pass/ewardacceptpostparam";
+    internal override string Url => "season_pass/reward_accept";
 }
 
 public class SekaiBossInfoRequest : Request<SekaiBossInfoResponse>
 {
     public int sekai_id;
-    internal override string Url => "sekai/bossinfopostparam";
+    internal override string Url => "sekai/boss_info";
 }
 
 public class SekaiFinishRequest : Request<SekaiFinishResponse>
@@ -2073,7 +2134,7 @@ public class SekaiSupportUnitList2Request : Request<SekaiSupportUnitList2Respons
 
 public class SekaiTopRequest : Request<SekaiTopResponse>
 {
-    internal override string Url => "sekai/toppostparam";
+    internal override string Url => "sekai/top";
 }
 
 public class SellItemRequest : Request<SellItemResponse>
@@ -2111,6 +2172,7 @@ public class SetMyPartyRequest : Request<SetMyPartyResponse>
     public int unit_id_3;
     public int unit_id_4;
     public int unit_id_5;
+    public ChangeRarityUnit[] change_rarity_unit_list;
     internal override string Url => "my_party/set_party";
 }
 
@@ -2195,6 +2257,7 @@ public class ShioriQuestFinishRequest : Request<ShioriQuestFinishResponse>
     public int event_id;
     public int quest_id;
     public int remain_time;
+    public UnitHpInfo[] unit_hp_list;
     public long owner_viewer_id;
     public int support_position;
     public int is_friend;
@@ -2241,7 +2304,7 @@ public class ShioriQuizAnswerRequest : Request<ShioriQuizAnswerResponse>
 
 public class ShioriTopRequest : Request<ShioriTopResponse>
 {
-    internal override string Url => "shiori/toppostparam";
+    internal override string Url => "shiori/top";
 }
 
 public class ShopAlchemyRequest : Request<ShopAlchemyResponse>
@@ -2255,6 +2318,7 @@ public class ShopAlchemyRequest : Request<ShopAlchemyResponse>
 public class ShopBuyMultipleRequest : Request<ShopBuyMultipleResponse>
 {
     public int system_id;
+    public int[] slot_ids;
     public int current_currency_num;
     internal override string Url => "shop/buy_multiple";
 }
@@ -2285,12 +2349,12 @@ public class ShopCloseLimitedShopRequest : Request<ShopCloseLimitedShopResponse>
 
 public class ShopComebackTutorialDailyShopRequest : Request<ShopComebackTutorialDailyShopResponse>
 {
-    internal override string Url => "shop/comebacktutorialdailyshoppostparam";
+    internal override string Url => "shop/comeback_tutorial_daily_shop";
 }
 
 public class ShopItemListRequest : Request<ShopItemListResponse>
 {
-    internal override string Url => "shop/itemlistpostparam";
+    internal override string Url => "shop/item_list";
 }
 
 public class ShopRecoverStaminaRequest : Request<ShopRecoverStaminaResponse>
@@ -2309,6 +2373,7 @@ public class ShopResetRequest : Request<ShopResetResponse>
 public class SkillLevelUpRequest : Request<SkillLevelUpResponse>
 {
     public int unit_id;
+    public SkillLevelUpDetail[] skill_levelup_list;
     internal override string Url => "skill/level_up";
 }
 
@@ -2379,7 +2444,7 @@ public class SpaceSupportUnitList2Request : Request<SpaceSupportUnitList2Respons
 
 public class SpaceTopRequest : Request<SpaceTopResponse>
 {
-    internal override string Url => "space/toppostparam";
+    internal override string Url => "space/top";
 }
 
 public class SrtFinishRequest : Request<SrtFinishResponse>
@@ -2390,12 +2455,13 @@ public class SrtFinishRequest : Request<SrtFinishResponse>
     public int turn_num;
     public int avg_answer_time;
     public int wrong_num;
+    public SrtCatalogInfo[] update_catalog_info;
     internal override string Url => "srt/finish";
 }
 
 public class SrtReadCatalogRequest : Request<SrtReadCatalogResponse>
 {
-    internal override string Url => "srt/readcatalogpostparam";
+    internal override string Url => "srt/read_catalog";
 }
 
 public class SrtStartRequest : Request<SrtStartResponse>
@@ -2407,7 +2473,7 @@ public class SrtStartRequest : Request<SrtStartResponse>
 
 public class SrtTopRequest : Request<SrtTopResponse>
 {
-    internal override string Url => "srt/toppostparam";
+    internal override string Url => "srt/top";
 }
 
 public class StoryForceReleaseRequest : Request<StoryForceReleaseResponse>
@@ -2467,18 +2533,20 @@ public class SupportUnitChangeSettingRequest : Request<SupportUnitChangeSettingR
 
 public class SupportUnitGetSettingRequest : Request<SupportUnitGetSettingResponse>
 {
-    internal override string Url => "support_unit/etsettingpostparam";
+    internal override string Url => "support_unit/get_setting";
 }
 
 public class TestBuyTicketRequest : Request<TestBuyTicketResponse>
 {
     public int season_id;
-    internal override string Url => "test/buyticketpostparam";
+    internal override string Url => "test/buy_ticket";
 }
 
 public class TowerBattleFinishRequest : Request<TowerBattleFinishResponse>
 {
     public int quest_id;
+    public TowerQueryUnit[] user_unit;
+    public TowerQueryUnit[] versus_user_unit;
     public int remain_time;
     public int fps;
     public int auto_clear;
@@ -2493,7 +2561,7 @@ public class TowerBattleRetireRequest : Request<TowerBattleRetireResponse>
 
 public class TowerBattleSkipRequest : Request<TowerBattleSkipResponse>
 {
-    internal override string Url => "tower/battleskippostparam";
+    internal override string Url => "tower/battle_skip";
 }
 
 public class TowerBattleStartRequest : Request<TowerBattleStartResponse>
@@ -2510,6 +2578,8 @@ public class TowerCloisterBattleFinishRequest : Request<TowerCloisterBattleFinis
 {
     public int quest_id;
     public int wave;
+    public TowerQueryUnit[] user_unit;
+    public TowerQueryUnit[] versus_user_unit;
     public int remain_time;
     public int fps;
     public int auto_clear;
@@ -2537,8 +2607,11 @@ public class TowerExBattleFinishRequest : Request<TowerExBattleFinishResponse>
 {
     public int quest_id;
     public int total_damage;
+    public TowerWaveResultInfo[] wave_result_list;
+    public TowerQueryUnit[] versus_user_unit;
     public int fps;
     public int auto_clear;
+    public string[] battle_log_list;
     internal override string Url => "tower/ex_battle_finish";
 }
 
@@ -2560,17 +2633,19 @@ public class TowerExBattleStartRequest : Request<TowerExBattleStartResponse>
 
 public class TowerExSupportUnitList2Request : Request<TowerExSupportUnitList2Response>
 {
-    internal override string Url => "tower/exsupportunitlist2postparam";
+    internal override string Url => "tower/ex_support_unit_list2";
 }
 
 public class TowerExSupportUnitListRequest : Request<TowerExSupportUnitListResponse>
 {
-    internal override string Url => "tower/exsupportunitlistpostparam";
+    internal override string Url => "tower/ex_support_unit_list";
 }
 
 public class TowerRehearsalFinishRequest : Request<TowerRehearsalFinishResponse>
 {
     public int quest_id;
+    public TowerQueryUnit[] user_unit;
+    public TowerQueryUnit[] versus_user_unit;
     public int remain_time;
     public int fps;
     public int auto_clear;
@@ -2580,7 +2655,7 @@ public class TowerRehearsalFinishRequest : Request<TowerRehearsalFinishResponse>
 public class TowerRehearsalRetireRequest : Request<TowerRehearsalRetireResponse>
 {
     public int quest_id;
-    internal override string Url => "tower/rehearsalretirepostparam";
+    internal override string Url => "tower/rehearsal_retire";
 }
 
 public class TowerRehearsalStartRequest : Request<TowerRehearsalStartResponse>
@@ -2619,17 +2694,17 @@ public class TowerReplayReportRequest : Request<TowerReplayReportResponse>
 
 public class TowerResetRequest : Request<TowerResetResponse>
 {
-    internal override string Url => "tower/resetpostparam";
+    internal override string Url => "tower/reset";
 }
 
 public class TowerSupportUnitList2Request : Request<TowerSupportUnitList2Response>
 {
-    internal override string Url => "tower/supportunitlist2postparam";
+    internal override string Url => "tower/support_unit_list2";
 }
 
 public class TowerSupportUnitListRequest : Request<TowerSupportUnitListResponse>
 {
-    internal override string Url => "tower/supportunitlistpostparam";
+    internal override string Url => "tower/support_unit_list";
 }
 
 public class TowerTopRequest : Request<TowerTopResponse>
@@ -2643,6 +2718,7 @@ public class TrainingQuestFinishRequest : Request<TrainingQuestFinishResponse>
 {
     public int quest_id;
     public int remain_time;
+    public UnitHpInfo[] unit_hp_list;
     public long owner_viewer_id;
     public int support_position;
     public int is_friend;
@@ -2685,6 +2761,7 @@ public class TtkFinishRequest : Request<TtkFinishResponse>
     public int play_id;
     public int base_score;
     public int coin_num;
+    public TtkBeatEnemyInfo[] beat_enemy_info;
     public int remain_life;
     public int elapsed_frame;
     internal override string Url => "ttk/finish";
@@ -2692,7 +2769,7 @@ public class TtkFinishRequest : Request<TtkFinishResponse>
 
 public class TtkReadCatalogRequest : Request<TtkReadCatalogResponse>
 {
-    internal override string Url => "ttk/readcatalogpostparam";
+    internal override string Url => "ttk/read_catalog";
 }
 
 public class TtkReadStoryRequest : Request<TtkReadStoryResponse>
@@ -2709,7 +2786,7 @@ public class TtkStartRequest : Request<TtkStartResponse>
 
 public class TtkTopRequest : Request<TtkTopResponse>
 {
-    internal override string Url => "ttk/toppostparam";
+    internal override string Url => "ttk/top";
 }
 
 public class TutorialUpdateRequest : Request<TutorialUpdateResponse>
@@ -2752,6 +2829,8 @@ public class UekTopRequest : Request<UekTopResponse>
 public class UniqueEquipCraftRequest : Request<UniqueEquipCraftResponse>
 {
     public int equip_id;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public UserEquipParameterIdCount[] item_recipe_list;
     public int current_equip_num;
     internal override string Url => "equipment/craft_unique";
 }
@@ -2760,6 +2839,7 @@ public class UniqueEquipEnhanceRequest : Request<UniqueEquipEnhanceResponse>
 {
     public int unit_id;
     public int equip_slot_num;
+    public InventoryInfoPost[] item_list;
     public int current_enhancement_pt;
     internal override string Url => "equipment/enhance_unique";
 }
@@ -2785,6 +2865,8 @@ public class UniqueEquipRankupRequest : Request<UniqueEquipRankupResponse>
 {
     public int unit_id;
     public int equip_slot_num;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public UserEquipParameterIdCount[] item_recipe_list;
     public int current_rank;
     internal override string Url => "equipment/rankup_unique";
 }
@@ -2793,6 +2875,8 @@ public class UnitCraftEquipRequest : Request<UnitCraftEquipResponse>
 {
     public int unit_id;
     public int equip_slot_num;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public ItemInfo[] item_list;
     internal override string Url => "unit/craft_equip";
 }
 
@@ -2800,6 +2884,8 @@ public class UnitCraftEquipUniqueRequest : Request<UnitCraftEquipUniqueResponse>
 {
     public int unit_id;
     public int equip_slot_num;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public UserEquipParameterIdCount[] item_recipe_list;
     internal override string Url => "unit/craft_equip_unique";
 }
 
@@ -2814,7 +2900,7 @@ public class UnitEvolutionRequest : Request<UnitEvolutionResponse>
 {
     public int unit_id;
     public int current_unit_rarity;
-    internal override string Url => "unit/evolutionpostparam";
+    internal override string Url => "unit/evolution";
 }
 
 public class UnitEvolutionRaritySixRequest : Request<UnitEvolutionRaritySixResponse>
@@ -2826,6 +2912,8 @@ public class UnitEvolutionRaritySixRequest : Request<UnitEvolutionRaritySixRespo
 
 public class UnitFavoriteRequest : Request<UnitFavoriteResponse>
 {
+    public int[] unit_id_list;
+    public int[] favorite_flag_list;
     internal override string Url => "unit/favorite";
 }
 
@@ -2833,6 +2921,8 @@ public class UnitFreeAutomaticEnhanceRequest : Request<UnitFreeAutomaticEnhanceR
 {
     public int unit_id;
     public int after_level;
+    public int[] equip_slot_num_list;
+    public SkillLevelUpDetail[] skill_levelup_list;
     public int excludes_equip;
     internal override string Url => "unit/free_automatic_enhance";
 }
@@ -2840,6 +2930,7 @@ public class UnitFreeAutomaticEnhanceRequest : Request<UnitFreeAutomaticEnhanceR
 public class UnitFreeEquipRequest : Request<UnitFreeEquipResponse>
 {
     public int unit_id;
+    public int[] equip_slot_num_list;
     internal override string Url => "unit/free_equip";
 }
 
@@ -2847,7 +2938,7 @@ public class UnitFreeEvolutionRequest : Request<UnitFreeEvolutionResponse>
 {
     public int unit_id;
     public int current_unit_rarity;
-    internal override string Url => "unit/freeevolutionpostparam";
+    internal override string Url => "unit/free_evolution";
 }
 
 public class UnitFreeLevelUpRequest : Request<UnitFreeLevelUpResponse>
@@ -2882,6 +2973,9 @@ public class UnitGrowthEnhanceRequest : Request<UnitGrowthEnhanceResponse>
 public class UnitMultiEquipRequest : Request<UnitMultiEquipResponse>
 {
     public int unit_id;
+    public int[] equip_slot_num_list;
+    public UserEquipParameterIdCount[] equip_recipe_list;
+    public ItemInfo[] item_list;
     internal override string Url => "unit/multi_equip";
 }
 
@@ -2898,6 +2992,8 @@ public class UnitMultiEvolutionRequest : Request<UnitMultiEvolutionResponse>
 public class UnitMultiPromotionRequest : Request<UnitMultiPromotionResponse>
 {
     public int target_promotion_level;
+    public RequiredMaterialList[] equip_recipe_list;
+    public ItemInfo[] item_list;
     public int unit_id;
     internal override string Url => "unit/multi_promotion";
 }
@@ -2939,6 +3035,7 @@ public class UnlockUnitRequest : Request<UnlockUnitResponse>
 
 public class UpdateSkipQuestListRequest : Request<UpdateSkipQuestListResponse>
 {
+    public UserMyQuestForPost[] my_quest_tab_list;
     internal override string Url => "my_quest/update_skip_quest_list";
 }
 
@@ -2951,6 +3048,7 @@ public class UpdateTabRequest : Request<UpdateTabResponse>
 
 public class UseExpItemRequest : Request<UseExpItemResponse>
 {
+    public ItemInfo[] item_list;
     public int unit_id;
     internal override string Url => "item/exp";
 }

@@ -54,6 +54,8 @@ public class ArenaWaveInfo
 
 public class ArenaWaveResult
 {
+    public UnitDamageInfo[] unit_damage_list;
+    public UnitHpInfo[] unit_hp_list;
     public int wave_num;
     public int remain_time;
 }
@@ -106,6 +108,8 @@ public class BlockUserDetail
 
 public class BossBattleFinishUnit
 {
+    public UnitDamageInfo[] unit_damage_list;
+    public UnitHpInfo[] unit_hp_list;
 }
 
 public class BossHistory
@@ -270,6 +274,8 @@ public class ClanBattleExtraBattleChallengeRewardInfo
 
 public class ClanBattleFinishUnit
 {
+    public UnitDamageInfo[] unit_damage_list;
+    public UnitHpInfo[] unit_hp_list;
 }
 
 public class ClanBattleSetting
@@ -544,6 +550,7 @@ public class DeckData
 public class DeckListData
 {
     public int deck_number;
+    public int[] unit_list;
 }
 
 public class DeckListDataForView
@@ -592,6 +599,8 @@ public class DungeonQueryUnit
     public int retired;
     public int hp;
     public int energy;
+    public SkillLimitCounter[] skill_limit_counter;
+    public PartsInfo[] parts_list;
 }
 
 public class DungeonQuest
@@ -733,9 +742,11 @@ public class EventEnemyDamageInfo
 
 public class EventEnemyInfo
 {
+    public EventSpecialEnemyUnit[] enemy_unit;
     public int enemy_point;
     public int seed;
     public int mode;
+    public int[] kill_order;
 }
 
 public class EventGachaInfo
@@ -747,6 +758,7 @@ public class EventGachaInfo
 public class EventHitTreasureInfo
 {
     public int enemy_identify;
+    public int[] hit_treasure_index_list;
 }
 
 public class EventQuizInfo
@@ -825,6 +837,8 @@ public class FriendBattleInfo
 
 public class FriendBattleResult
 {
+    public UnitDamageInfo[] unit_damage_list;
+    public UnitHpInfoForFriendBattle[] unit_hp_list;
     public int wave_num;
     public int remain_time;
 }
@@ -911,17 +925,17 @@ public class GachaParameter
 {
     public int id;
     public eGachaType type;
-    public DateTime start_time;
-    public DateTime end_time;
+    public long start_time;
+    public long end_time;
     public int cost_num_single;
     public int ticket_id;
     public int free_gacha_interval_time;
     public int discount_price;
     public int exchange_id;
     public int free_exec_times;
-    public DateTime last_free_gacha_time;
+    public long last_free_gacha_time;
     public int discount_exec_times;
-    public DateTime last_discount_gacha_time;
+    public long last_discount_gacha_time;
     public RecommendUnit[] recommend_unit;
     public string url_param;
     public int ticket_id10;
@@ -1008,7 +1022,7 @@ public class GrandArenaHistoryDetailInfo
 public class GrandArenaHistoryInfo
 {
     public int log_id;
-    public DateTime versus_time;
+    public long versus_time;
     public int is_challenge;
     public int win_or_lose;
     public EmblemData emblem;
@@ -1084,6 +1098,8 @@ public class GrowthParameterList
 
 public class HatsuneBossBattleFinishUnit
 {
+    public UnitDamageInfo[] unit_damage_list;
+    public UnitOriginalHpInfo[] unit_hp_list;
 }
 
 public class HatsuneEventBossEnemyInfo
@@ -1219,7 +1235,7 @@ public class InventoryInfoShort
 {
     public int id;
     public int stock;
-    public DateTime create_time;
+    public long create_time;
 }
 
 public class InviteClanDetail
@@ -1380,8 +1396,8 @@ public class MaintenanceStatus
 {
     public long from;
     public long to;
-    public DateTime from_date_time;
-    public DateTime to_date_time;
+    public long from_date_time;
+    public long to_date_time;
 }
 
 public class MaterialInfo
@@ -1718,7 +1734,9 @@ public class PkbReplay
     public int batter;
     public int seed;
     public int batting_time;
+    public double[] batting_pos;
     public int gauge;
+    public int[] happen_triggers;
     public int adrenaline_count;
 }
 
@@ -1762,7 +1780,7 @@ public class PresentHistoryInfo
     public int message_param_value2;
     public int message_param_value3;
     public int message_param_value4;
-    public DateTime create_time;
+    public long create_time;
     public string message_text;
 }
 
@@ -1779,8 +1797,8 @@ public class PresentParameter
     public int message_param_value3;
     public int message_param_value4;
     public eRewardLimitType reward_limit_flag;
-    public DateTime reward_limit_time;
-    public DateTime create_time;
+    public long reward_limit_time;
+    public long create_time;
     public string message_text;
 }
 
@@ -2015,6 +2033,7 @@ public class ReplayUnitDataForView
 
 public class RequiredMaterialList
 {
+    public UserEquipParameterIdCount[] equip_list;
 }
 
 public class RestChallengeInfo
@@ -2048,11 +2067,15 @@ public class RoomExtensionItem
 
 public class RoomFloorLayout
 {
+    public RoomItemPosition[] floor;
+    public RoomItemPosition[] wall;
     public RoomTheme theme;
 }
 
 public class RoomFloorLayoutForMyset
 {
+    public RoomItemPositionForMyset[] floor;
+    public RoomItemPositionForMyset[] wall;
     public RoomTheme theme;
 }
 
@@ -2111,7 +2134,7 @@ public class RoomUserInfo
     public string comment;
     public int team_level;
     public bool today_like_flag;
-    public DateTime like_time;
+    public long like_time;
     public bool flag_read;
     public int total_liked;
     public int like_reward;
@@ -2134,6 +2157,7 @@ public class RoomUserItem
 public class RoomWholeLayout
 {
     public int background_theme;
+    public RoomFloorLayout[] floor_layout;
 }
 
 public class RoomWholeLayoutForMyset
@@ -2500,6 +2524,7 @@ public class TowerQueryUnit
     public int damage;
     public int hp;
     public int energy;
+    public SkillLimitCounter[] skill_limit_counter;
 }
 
 public class TowerReplayPartyInfo
@@ -2568,6 +2593,7 @@ public class TowerUnit
 public class TowerWaveResultInfo
 {
     public int wave_num;
+    public TowerWaveResultUnitInfo[] unit_info_list;
     public int remain_time;
 }
 
@@ -2712,7 +2738,7 @@ public class UnitDamageInfo
 public class UnitData
 {
     public int id;
-    public DateTime get_time;
+    public long get_time;
     public int start_rarety;
     public int unit_rarity;
     public int battle_rarity;
@@ -2783,7 +2809,7 @@ public class UnitDataForView
 public class UnitDataLight
 {
     public int id;
-    public DateTime get_time;
+    public long get_time;
     public int start_rarety;
     public int unit_rarity;
     public int battle_rarity;
@@ -2998,6 +3024,7 @@ public class UserMyQuestForPost
     public int tab_number;
     public string tab_name;
     public int skip_count;
+    public int[] skip_list;
 }
 
 public class UserQuestInfo
@@ -3036,7 +3063,7 @@ public class UserStory
 public class VersusResult
 {
     public int log_id;
-    public DateTime versus_time;
+    public long versus_time;
     public int win_or_lose;
     public OpponentUser opponent_user;
 }

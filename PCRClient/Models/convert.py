@@ -1,7 +1,7 @@
 import re
 import os
 
-member = re.compile('(public|private) ([A-Za-z0-9_<>]*?) ([A-Za-z0-9_]*?)\n')
+member = re.compile('(public|private) ([A-Za-z0-9_<>\\[\\]]*?) ([A-Za-z0-9_]*?)\n')
 enum = re.compile('([A-Za-z0-9_]*? = -?[0-9]*),?\n')
 upper = re.compile('([A-Z])')
 addtask = re.compile('this.addTask\(eApiType.(.*?), new ApiManager.(.*?)PostParam')
@@ -1419,6 +1419,9 @@ urls = {
 		"wac/read"
 	}
 urls2 = dict()
+urls['CheckAgreement'] = 'check/check_agreement'
+urls2['CheckAgreement'] = 'CheckAgreement'
+
 refered_enum = []
 headers = [
     'Arcade',
@@ -1432,7 +1435,7 @@ headers = [
     'Gacha',
     'GrandArena',
     'KaiserBattle',
-    'KmkTop',
+    'Kmk',
     'Music',
     'Pct',
     'ProfileMaker',
@@ -1464,10 +1467,10 @@ for file in os.listdir('.'):
         if f'public {classname}(JsonData _json)' not in text: continue
 
     if f'ReceiveParam' in classname:
-        fp = fp_req
+        fp = fp_resp
         fp.write(f'public class {classname[:-12]}Response : ResponseBase\n')
     elif f'PostParam' in classname:
-        fp = fp_resp
+        fp = fp_req
         fp.write(f'public class {classname[:-9]}Request : Request<{classname[:-9]}Response>\n')
     else:
         fp = fp_common
@@ -1486,6 +1489,7 @@ for file in os.listdir('.'):
         type = type.replace('ObscuredLong', 'long')
         type = type.replace('ObscuredString', 'string')
         type = type.replace('ObscuredFloat', 'float')
+        type = type.replace('DateTime', 'long')
         type = list.sub(lambda x: f'{x.group(1)}[]', type)
         fp.write(f'    public {type} {name};\n')
         if type.startswith('e'): refered_enum.append(type)
@@ -1500,11 +1504,10 @@ for file in os.listdir('.'):
                     header_used.append(header)
             if len(header_used) > 0:
                 p1 = sorted(header_used, key=lambda x: len(x))[0]
+                p2 = classname[len(p1):-9]
                 p1 = upper.sub(lambda x: '_' + x.group(1).lower(), p1)
-                if p1[0] == '_': p1 = p1[1:]
-                
-                p2 = classname[len(p1):].lower()
                 p2 = upper.sub(lambda x: '_' + x.group(1).lower(), p2)
+                if p1[0] == '_': p1 = p1[1:]
                 if p2[0] == '_': p2 = p2[1:]
 
                 fp.write(f'    internal override string Url => "{p1}/{p2}";\n')

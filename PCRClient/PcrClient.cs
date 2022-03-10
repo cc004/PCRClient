@@ -8,14 +8,15 @@ namespace PCRClient;
 public class PcrClient : PcrClientBase
 {
     public MasterContext? Database { get; private set; }
-
+    
     public async Task Login(AccountInfo info)
     {
         await Prepare(info);
+        var res = await BsGameSdk.Login(info, null!); 
         await Request(new ToolSdkLoginRequest()
         {
-            uid = info.uid,
-            access_key = info.accessKey,
+            uid = res.uid,
+            access_key = res.access_key,
             platform = info.platform.ToString(),
             channel_id = info.channel.ToString()
         });
@@ -34,7 +35,8 @@ public class PcrClient : PcrClientBase
         {
             message_id = 1,
             gold_history = 0,
-            is_first = 1
+            is_first = 1,
+            tips_id_list = Array.Empty<int>()
         });
     }
 
@@ -79,6 +81,6 @@ public class PcrClient : PcrClientBase
 
 public class AccountInfo
 {
-    public string? uid, accessKey;
+    public string? username, password;
     public int platform, channel;
 }

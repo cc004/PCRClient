@@ -46,7 +46,7 @@ namespace PCRClient.Models
 
     public class SourceIniIndexResponse : ResponseBase
     {
-        public string[] servers;
+        public string[] server;
     }
     public class SourceIniGetMaintenanceStatusRequest : Request<SourceIniGetMaintenanceStatusResponse>
     {

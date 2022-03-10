@@ -72,7 +72,7 @@ public class PcrClientBase
                 response = response
             };
 
-        if (response.data_headers.sid != null)
+        if (!string.IsNullOrEmpty(response.data_headers.sid))
         {
             using var md5 = MD5.Create();
             _sessionId = string.Concat(md5
@@ -80,8 +80,8 @@ public class PcrClientBase
                 .Select(b => b.ToString("x2")));
         }
 
-        if (response.data_headers.request_id != null) _requestId = response.data_headers.request_id;
-        if (response.data_headers.viewer_id != null) _viewerId = int.Parse(response.data_headers.viewer_id);
+        if (!string.IsNullOrEmpty(response.data_headers.request_id)) _requestId = response.data_headers.request_id;
+        if (!string.IsNullOrEmpty(response.data_headers.viewer_id)) _viewerId = long.Parse(response.data_headers.viewer_id);
 
         if (response.data.server_error != null)
             throw new ApiException<T>(
@@ -97,7 +97,7 @@ public class PcrClientBase
         _client.DefaultRequestHeaders.TryAddWithoutValidation("PLATFORM", info.platform.ToString());
         _client.DefaultRequestHeaders.TryAddWithoutValidation("PLATFORM-ID", info.platform.ToString());
         _client.DefaultRequestHeaders.TryAddWithoutValidation("CHANNEL-ID", info.channel.ToString());
-        UrlRoot = $"http://{(await Request(new SourceIniIndexRequest())).servers[0]}".Replace("\t", "");
+        UrlRoot = $"http://{(await Request(new SourceIniIndexRequest())).server[0]}".Replace("\t", "");
         var manifest = await Request(new SourceIniGetMaintenanceStatusRequest());
         _client.DefaultRequestHeaders.TryAddWithoutValidation("MANIFEST-VER", manifest.required_manifest_ver);
     }

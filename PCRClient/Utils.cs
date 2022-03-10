@@ -26,4 +26,16 @@ public static class Utils
         return string.Concat(md5.ComputeHash(content).Select(b => $"{b:x2}"));
     }
     public static string CalcMd5(string content) => CalcMd5(Encoding.UTF8.GetBytes(content));
+
+    private static readonly DateTime dateTimeStart = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
+
+    public static DateTime ToDateTime(this long timeStamp)
+    {
+        return dateTimeStart.Add(new TimeSpan(10000 * timeStamp));
+    }
+
+    public static long ToTimestamp(this DateTime time)
+    {
+        return (long)(time - dateTimeStart).TotalMilliseconds;
+    }
 }

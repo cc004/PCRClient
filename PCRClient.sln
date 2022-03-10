@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCRClient", "PCRClient\PCRClient.csproj", "{9CE3BA21-89E6-4D6B-8ABF-32E7868416D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCRClient", "PCRClient\PCRClient.csproj", "{9CE3BA21-89E6-4D6B-8ABF-32E7868416D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsgPack", "MsgPack\MsgPack.csproj", "{A2097E23-A7CE-4D55-A0A7-95D350727ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCRClientTest", "PCRClientTest\PCRClientTest.csproj", "{C00E97F2-3DB7-4375-8D89-9BBEBD69D339}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A2097E23-A7CE-4D55-A0A7-95D350727ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2097E23-A7CE-4D55-A0A7-95D350727ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2097E23-A7CE-4D55-A0A7-95D350727ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00E97F2-3DB7-4375-8D89-9BBEBD69D339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00E97F2-3DB7-4375-8D89-9BBEBD69D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00E97F2-3DB7-4375-8D89-9BBEBD69D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00E97F2-3DB7-4375-8D89-9BBEBD69D339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
