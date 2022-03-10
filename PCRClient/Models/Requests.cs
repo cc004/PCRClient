@@ -2,3091 +2,2976 @@ namespace PCRClient.Models;
 // ReSharper disable InconsistentNaming
 #pragma warning disable CS8618
 
-public class AcceptAgreementResponse : ResponseBase
+public class AcceptAgreementRequest : Request<AcceptAgreementResponse>
 {
+    public int agreement_type;
+    public int agreement_ver;
+    public int policy_ver;
+    internal override string Url => "check/accept_agreement";
 }
 
-public class AddUserTipsResponse : ResponseBase
+public class AddUserTipsRequest : Request<AddUserTipsResponse>
 {
+    internal override string Url => "tips/add_user_tips";
 }
 
-public class ArcadeBuyResponse : ResponseBase
+public class ArcadeBuyRequest : Request<ArcadeBuyResponse>
 {
-    public InventoryInfo[] item_data;
+    public int arcade_id;
+    public int room_coin;
+    internal override string Url => "arcade/buy";
 }
 
-public class ArcadeReadStoryResponse : ResponseBase
+public class ArcadeReadStoryRequest : Request<ArcadeReadStoryResponse>
 {
+    public int story_id;
+    internal override string Url => "arcade/read_story";
 }
 
-public class ArcadeStoryListResponse : ResponseBase
+public class ArcadeStoryListRequest : Request<ArcadeStoryListResponse>
 {
-    public int[] story_id_list;
+    public int arcade_id;
+    internal override string Url => "arcade/story_list";
 }
 
-public class ArcadeSyncStoryListResponse : ResponseBase
+public class ArcadeSyncStoryListRequest : Request<ArcadeSyncStoryListResponse>
 {
-    public int[] story_id_list;
+    public int arcade_id;
+    internal override string Url => "arcade/sync_story_list";
 }
 
-public class ArcadeTopResponse : ResponseBase
+public class ArcadeTopRequest : Request<ArcadeTopResponse>
 {
-    public int[] arcade_id_list;
+    internal override string Url => "arcade/toppostparam";
 }
 
-public class ArenaApplyResponse : ResponseBase
+public class ArenaApplyRequest : Request<ArenaApplyResponse>
 {
     public long battle_viewer_id;
-    public int true_rank;
+    public int opponent_rank;
+    internal override string Url => "arena/apply";
 }
 
-public class ArenaCancelResponse : ResponseBase
+public class ArenaCancelRequest : Request<ArenaCancelResponse>
 {
-    public SearchOpponent[] search_opponent;
-}
-
-public class ArenaFinishResponse : ResponseBase
-{
-    public int old_record;
-    public int new_record;
-    public ArenaInfo arena_info;
-    public InventoryInfo highest_rank_reward;
-}
-
-public class ArenaHistoryDamageRankingResponse : ResponseBase
-{
-    public UnitDataForView[] user_unit_list;
-    public UnitDataForView[] opponent_unit_list;
-    public UnitDamageInfo[] damage_list;
-}
-
-public class ArenaHistoryDetailResponse : ResponseBase
-{
-    public VersusResultDetail versus_result_detail;
-}
-
-public class ArenaHistoryResponse : ResponseBase
-{
-    public VersusResult[] versus_result_list;
-}
-
-public class ArenaInfoResponse : ResponseBase
-{
-    public ArenaInfo arena_info;
-    public DeckData attack_deck;
-    public DeckData defend_deck;
-    public SearchOpponent[] search_opponent;
-    public InventoryInfo reward_info;
-    public int reward_hour_num;
-    public bool is_time_reward_max;
-}
-
-public class ArenaIntervalCancelResponse : ResponseBase
-{
-    public ArenaInfo arena_info;
-    public UserJewel user_jewel;
-}
-
-public class ArenaMoveGroupResponse : ResponseBase
-{
-    public ArenaInfo arena_info;
-}
-
-public class ArenaRankingResponse : ResponseBase
-{
-    public RankingSearchOpponent[] ranking;
-}
-
-public class ArenaReplayResponse : ResponseBase
-{
-    public int seed;
-    public int is_challenge;
-    public UnitData[] user_unit_list;
-    public UnitData[] opponent_unit_list;
-}
-
-public class ArenaResetBattleNumberResponse : ResponseBase
-{
-    public ArenaInfo arena_info;
-    public UserJewel user_jewel;
-}
-
-public class ArenaSearchResponse : ResponseBase
-{
-    public SearchOpponent[] search_opponent;
-}
-
-public class ArenaStartResponse : ResponseBase
-{
-    public long my_viewer_id;
     public long battle_viewer_id;
+    internal override string Url => "arena/cancel";
+}
+
+public class ArenaFinishRequest : Request<ArenaFinishResponse>
+{
     public int battle_id;
-    public int battle_speed;
-    public ArenaWaveInfo[] wave_info_list;
+    public int is_skipped;
+    internal override string Url => "arena/finish";
 }
 
-public class ArenaTimeRewardAcceptResponse : ResponseBase
+public class ArenaHistoryDamageRankingRequest : Request<ArenaHistoryDamageRankingResponse>
 {
-    public InventoryInfo reward_info;
-    public int add_present_count;
+    public int log_id;
+    internal override string Url => "arena/history_damage_ranking";
 }
 
-public class AutomaticEnhanceResponse : ResponseBase
+public class ArenaHistoryDetailRequest : Request<ArenaHistoryDetailResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
+    public int log_id;
+    internal override string Url => "arena/history_detail";
 }
 
-public class AutomaticEquipEnhanceResponse : ResponseBase
+public class ArenaHistoryRequest : Request<ArenaHistoryResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] item_list;
-    public UserGold user_gold;
+    internal override string Url => "arena/historypostparam";
 }
 
-public class AutomaticEquipEnhanceUniqueResponse : ResponseBase
+public class ArenaInfoRequest : Request<ArenaInfoResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] item_list;
-    public UserGold user_gold;
+    internal override string Url => "arena/infopostparam";
 }
 
-public class BaseResponse : ResponseBase
+public class ArenaIntervalCancelRequest : Request<ArenaIntervalCancelResponse>
 {
-    public Notification notification;
+    internal override string Url => "arena/intervalcancelpostparam";
 }
 
-public class ChangeRarityResponse : ResponseBase
+public class ArenaMoveGroupRequest : Request<ArenaMoveGroupResponse>
 {
-    public UnitData[] unit_data_list;
+    public int group_id;
+    internal override string Url => "arena/move_group";
 }
 
-public class ChangeRoleResponse : ResponseBase
+public class ArenaRankingRequest : Request<ArenaRankingResponse>
 {
-    public ClanMemberInfo[] members;
+    public int limit;
+    public int page;
+    internal override string Url => "arena/ranking";
 }
 
-public class ChangeSkinResponse : ResponseBase
+public class ArenaReplayRequest : Request<ArenaReplayResponse>
 {
+    public int log_id;
+    internal override string Url => "arena/replay";
 }
 
-public class CharaETicketExchangeResponse : ResponseBase
+public class ArenaResetBattleNumberRequest : Request<ArenaResetBattleNumberResponse>
 {
-    public InventoryInfo[] reward_info_list;
-    public InventoryInfo[] item_data;
+    internal override string Url => "arena/resetbattlenumberpostparam";
 }
 
-public class CharaETicketRewardsResponse : ResponseBase
+public class ArenaSearchRequest : Request<ArenaSearchResponse>
 {
-    public CharaExchangeTicketReward[] rewards;
+    internal override string Url => "arena/searchpostparam";
 }
 
-public class CheckAgreementResponse : ResponseBase
+public class ArenaStartRequest : Request<ArenaStartResponse>
 {
-    public AgreementStatus agreement;
-    public AgreementStatus policy;
+    public string token;
+    public long battle_viewer_id;
+    public int remain_battle_number;
+    public int disable_skin;
+    internal override string Url => "arena/start";
 }
 
-public class CheckExistClanResponse : ResponseBase
+public class ArenaTimeRewardAcceptRequest : Request<ArenaTimeRewardAcceptResponse>
 {
+    internal override string Url => "arena/timerewardacceptpostparam";
 }
 
-public class ClanBattleBossHistoryResponse : ResponseBase
+public class AutomaticEnhanceRequest : Request<AutomaticEnhanceResponse>
 {
-    public BossHistory[] boss_history;
+    public int unit_id;
+    public int excludes_equip;
+    internal override string Url => "unit/automatic_enhance";
 }
 
-public class ClanBattleBossInfoResponse : ResponseBase
+public class AutomaticEquipEnhanceRequest : Request<AutomaticEquipEnhanceResponse>
 {
-    public DamageHistory[] damage_history;
-    public int current_hp;
-    public int attack_count;
-    public int fighter_num;
+    public int unit_id;
+    public int equip_slot_num;
+    public int current_enhancement_pt;
+    internal override string Url => "equipment/automatic_enhance";
 }
 
-public class ClanBattleBossRankingInClanResponse : ResponseBase
+public class AutomaticEquipEnhanceUniqueRequest : Request<AutomaticEquipEnhanceUniqueResponse>
 {
-    public BossRankingInClan[] bosses;
-    public BossRankingInClanSummary summary;
+    public int unit_id;
+    public int equip_slot_num;
+    public int current_enhancement_pt;
+    internal override string Url => "equipment/automatic_enhance_unique";
 }
 
-public class ClanBattleConfirmRehearsalMyLogResponse : ResponseBase
+public class ChangeRarityRequest : Request<ChangeRarityResponse>
 {
-    public int is_full;
-    public MyLog[] mylogs;
+    internal override string Url => "unit/change_rarity";
 }
 
-public class ClanBattleConfirmTrainingMyLogResponse : ResponseBase
+public class ChangeRoleRequest : Request<ChangeRoleResponse>
 {
-    public int is_full;
-    public MyLog[] mylogs;
+    internal override string Url => "clan/change_role";
 }
 
-public class ClanBattleDamageReportResponse : ResponseBase
+public class ChangeSkinRequest : Request<ChangeSkinResponse>
 {
-    public DamageReport[] damage_report;
-    public int max_hp;
+    public SkinDataForRequest skin_data_for_request;
+    internal override string Url => "unit/change_skin";
 }
 
-public class ClanBattleDeleteRehearsalMyLogResponse : ResponseBase
+public class CharaETicketExchangeRequest : Request<CharaETicketExchangeResponse>
 {
-    public int mylog_count;
+    public int ticket_id;
+    public int ticket_count;
+    public int unit_id;
+    internal override string Url => "chara_e_ticket/exchange";
 }
 
-public class ClanBattleDeleteTrainingMyLogResponse : ResponseBase
+public class CharaETicketRewardsRequest : Request<CharaETicketRewardsResponse>
 {
-    public int mylog_count;
+    public int ticket_id;
+    internal override string Url => "chara_e_ticket/rewards";
 }
 
-public class ClanBattleFinishResponse : ResponseBase
+public class CheckAgreementRequest : Request<CheckAgreementResponse>
 {
-    public int acquired_gold;
-    public UserGold user_gold;
-    public int damage_result;
-    public int dead;
-    public int carry_over_time;
-    public int is_over_kill;
-    public int attack_count;
-    public InventoryInfo[] challenge_reward;
-    public int add_present_count;
+    internal override string Url => "check/agreementpostparam";
 }
 
-public class ClanBattleHistoryReportResponse : ResponseBase
+public class CheckExistClanRequest : Request<CheckExistClanResponse>
 {
-    public HistoryReport[] history_report;
-    public int lap_num;
-    public int order_num;
+    internal override string Url => "check/existclanpostparam";
 }
 
-public class ClanBattleMissionIndexResponse : ResponseBase
-{
-    public UserMissionInfo[] missions;
-    public long daily_reset_time;
-}
-
-public class ClanBattleMyLogDetailResponse : ResponseBase
-{
-    public int lap_num;
-    public int order_num;
-}
-
-public class ClanBattleMyLogResponse : ResponseBase
-{
-    public MyLog[] actual_logs;
-    public MyLog[] rehearsal_logs;
-    public MyLog[] training_logs;
-}
-
-public class ClanBattlePeriodRankingResponse : ResponseBase
-{
-    public PeriodRanking[] period_ranking;
-    public PeriodRanking my_clan_data;
-    public int clan_battle_id;
-    public int period;
-    public int clan_battle_mode;
-}
-
-public class ClanBattleRehearsalFinishResponse : ResponseBase
-{
-    public int damage_result;
-    public int carry_over_time;
-}
-
-public class ClanBattleRehearsalStartResponse : ResponseBase
-{
-    public int limit_time;
-    public UnitData enemy_data;
-    public int battle_log_id;
-    public SkinDataForRequest[] skin_data_for_request;
-    public int seed;
-    public int current_hp;
-}
-
-public class ClanBattleReloadDetailInfoResponse : ResponseBase
-{
-    public int fighter_num;
-    public int current_hp;
-}
-
-public class ClanBattleResetHpResponse : ResponseBase
-{
-    public UserJewel user_jewel;
-    public int[] used_unit;
-}
-
-public class ClanBattleSaveRehearsalMyLogResponse : ResponseBase
-{
-    public int mylog_count;
-}
-
-public class ClanBattleSaveTrainingMyLogResponse : ResponseBase
-{
-    public int mylog_count;
-}
-
-public class ClanBattleStartResponse : ResponseBase
-{
-    public int limit_time;
-    public UnitData enemy_data;
-    public int battle_log_id;
-    public int current_hp;
-    public UserGold user_gold;
-    public SkinDataForRequest[] skin_data_for_request;
-    public int seed;
-}
-
-public class ClanBattleSuggestDeckListResponse : ResponseBase
-{
-    public ClanBattleSuggestDeck[] suggest_deck_list;
-}
-
-public class ClanBattleSuggestDeckReplayResponse : ResponseBase
-{
-    public int limit_time;
-    public UnitData[] user_unit_list;
-    public UnitData enemy_data;
-    public int current_hp;
-    public int seed;
-    public string report_key;
-}
-
-public class ClanBattleSuggestDeckReplayReportResponse : ResponseBase
-{
-}
-
-public class ClanBattleSupportUnitList2Response : ResponseBase
-{
-    public ClanBattleSupportUnitLight[] support_unit_list;
-}
-
-public class ClanBattleSupportUnitListResponse : ResponseBase
-{
-    public ClanBattleSupportUnit[] support_unit_list;
-}
-
-public class ClanBattleTopResponse : ResponseBase
-{
-    public int clan_battle_id;
-    public int period;
-    public int lap_num;
-    public BossInfo[] boss_info;
-    public DamageHistory[] damage_history;
-    public int period_rank;
-    public int remaining_count;
-    public int[] used_unit;
-    public int[] using_unit;
-    public int point;
-    public int hp_reset_count;
-    public BossReward[] boss_reward;
-    public RankResult[] last_rank_result;
-    public int change_period;
-    public int change_season;
-    public int add_present_count;
-    public int carry_over_time;
-    public int clan_battle_mode;
-    public int next_clan_battle_mode;
-    public ClanBattleTopUserClanInformation user_clan;
-    public UserMissionInfo[] missions;
-    public ClanBattleExtraBattleChallengeRewardInfo[] challenge_reward;
-}
-
-public class ClanBattleTrainingFinishResponse : ResponseBase
-{
-    public int damage_result;
-    public int carry_over_time;
-}
-
-public class ClanBattleTrainingStartResponse : ResponseBase
-{
-    public int limit_time;
-    public UnitData enemy_data;
-    public int battle_log_id;
-    public SkinDataForRequest[] skin_data_for_request;
-    public int seed;
-    public int current_hp;
-}
-
-public class ClanBlockListResponse : ResponseBase
-{
-    public BlockUserDetail[] list;
-}
-
-public class ClanBreakUpResponse : ResponseBase
-{
-    public int add_present_count;
-}
-
-public class ClanChatInfoListResponse : ResponseBase
-{
-    public ChatMessageInfo[] clan_chat_message;
-    public ChatMemberInfo[] users;
-    public EquipRequests[] equip_requests;
-    public UserEquipParameter[] user_equip_data;
-    public int latest_comment_id;
-    public int[] expired_message_ids;
-    public string next_search_date;
-    public int wait_interval;
-}
-
-public class ClanChatResponse : ResponseBase
-{
-}
-
-public class ClanCreateResponse : ResponseBase
+public class ClanBattleBossHistoryRequest : Request<ClanBattleBossHistoryResponse>
 {
     public int clan_id;
-    public eUserClanJoinStatus clan_status;
+    public int clan_battle_id;
+    public int period;
+    public int page;
+    internal override string Url => "clan_battle/boss_history";
 }
 
-public class ClanDamageReportResponse : ResponseBase
+public class ClanBattleBossInfoRequest : Request<ClanBattleBossInfoResponse>
 {
-    public HistoryReport[] damage_report;
+    public int clan_id;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    internal override string Url => "clan_battle/boss_info";
 }
 
-public class ClanDetailResponse : ResponseBase
+public class ClanBattleBossRankingInClanRequest : Request<ClanBattleBossRankingInClanResponse>
 {
-    public ClanMemberInfo[] member;
+    public int clan_id;
+    public int clan_battle_id;
+    public int month;
+    internal override string Url => "clan_battle/boss_ranking_in_clan";
+}
+
+public class ClanBattleConfirmRehearsalMyLogRequest : Request<ClanBattleConfirmRehearsalMyLogResponse>
+{
+    public int clan_id;
+    internal override string Url => "clan_battle/confirm_rehearsal_mylog";
+}
+
+public class ClanBattleConfirmTrainingMyLogRequest : Request<ClanBattleConfirmTrainingMyLogResponse>
+{
+    internal override string Url => "clan_battle/onfirmtrainingmylogpostparam";
+}
+
+public class ClanBattleDamageReportRequest : Request<ClanBattleDamageReportResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    internal override string Url => "clan_battle/damage_report";
+}
+
+public class ClanBattleDeleteRehearsalMyLogRequest : Request<ClanBattleDeleteRehearsalMyLogResponse>
+{
+    public int clan_id;
+    public int mylog_id;
+    internal override string Url => "clan_battle/delete_rehearsal_mylog";
+}
+
+public class ClanBattleDeleteTrainingMyLogRequest : Request<ClanBattleDeleteTrainingMyLogResponse>
+{
+    public int mylog_id;
+    internal override string Url => "clan_battle/delete_training_mylog";
+}
+
+public class ClanBattleFinishRequest : Request<ClanBattleFinishResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    public ClanBattleFinishUnit user_unit;
+    public int boss_hp;
+    public int boss_damage;
+    public int remain_time;
+    public int total_damage;
+    public int battle_log_id;
+    public int is_auto;
+    public string battle_log;
+    internal override string Url => "clan_battle/finish";
+}
+
+public class ClanBattleHistoryReportRequest : Request<ClanBattleHistoryReportResponse>
+{
+    public int clan_id;
+    public int history_id;
+    internal override string Url => "clan_battle/history_report";
+}
+
+public class ClanBattleMissionIndexRequest : Request<ClanBattleMissionIndexResponse>
+{
+    internal override string Url => "clan_battle/issionindexpostparam";
+}
+
+public class ClanBattleMyLogDetailRequest : Request<ClanBattleMyLogDetailResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    internal override string Url => "clan_battle/mylog_detail";
+}
+
+public class ClanBattleMyLogRequest : Request<ClanBattleMyLogResponse>
+{
+    public int clan_id;
+    internal override string Url => "clan_battle/mylog";
+}
+
+public class ClanBattlePeriodRankingRequest : Request<ClanBattlePeriodRankingResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int period;
+    public int month;
+    public int page;
+    public int is_my_clan;
+    public int is_first;
+    internal override string Url => "clan_battle/period_ranking";
+}
+
+public class ClanBattleRehearsalFinishRequest : Request<ClanBattleRehearsalFinishResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    public ClanBattleFinishUnit user_unit;
+    public int boss_hp;
+    public int boss_damage;
+    public int remain_time;
+    public int total_damage;
+    public int battle_log_id;
+    public int is_actual_boss_status;
+    internal override string Url => "clan_battle/rehearsal_finish";
+}
+
+public class ClanBattleRehearsalStartRequest : Request<ClanBattleRehearsalStartResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int period;
+    public int lap_num;
+    public int order_num;
     public long owner_viewer_id;
-    public int invite_id;
-    public int block_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    public int is_actual_boss_status;
+    internal override string Url => "clan_battle/rehearsal_start";
 }
 
-public class ClanInfoResponse : ResponseBase
+public class ClanBattleReloadDetailInfoRequest : Request<ClanBattleReloadDetailInfoResponse>
 {
-    public ClanData clan;
-    public eUserClanJoinStatus clan_status;
-    public InventoryInfoShort[] user_equip;
-    public int have_join_request;
-    public int unread_liked_count;
-    public int is_equip_request_finish_checked;
-    public int add_present_count;
-    public UserGold user_gold;
-    public long latest_request_time;
-    public int current_period_ranking;
-    public int last_total_ranking;
-    public int current_clan_battle_mode;
-    public int current_battle_joined;
-    public int last_clan_battle_mode;
-    public int last_battle_joined;
-    public int grade_rank;
-    public int clan_point;
+    public int clan_id;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    internal override string Url => "clan_battle/reload_detail_info";
+}
+
+public class ClanBattleResetHpRequest : Request<ClanBattleResetHpResponse>
+{
+    public int hp_reset_count;
+    public int current_currency_num;
+    internal override string Url => "clan_battle/reset_hp";
+}
+
+public class ClanBattleSaveRehearsalMyLogRequest : Request<ClanBattleSaveRehearsalMyLogResponse>
+{
+    public int clan_id;
+    public int mylog_id;
+    public int lap_num;
+    public int order_num;
+    public int total_damage;
+    public int boss_damage;
+    public int battle_log_id;
+    public int is_auto;
+    internal override string Url => "clan_battle/save_rehearsal_mylog";
+}
+
+public class ClanBattleSaveTrainingMyLogRequest : Request<ClanBattleSaveTrainingMyLogResponse>
+{
+    public int clan_id;
+    public int training_id;
+    public int mylog_id;
+    public int clan_battle_mode;
+    public int phase;
+    public int order_num;
+    public int total_damage;
+    public int boss_damage;
+    public int battle_log_id;
+    public int is_auto;
+    internal override string Url => "clan_battle/save_training_mylog";
+}
+
+public class ClanBattleStartRequest : Request<ClanBattleStartResponse>
+{
+    public int clan_id;
+    public int clan_battle_id;
+    public int period;
+    public int lap_num;
+    public int order_num;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
     public int remaining_count;
+    internal override string Url => "clan_battle/start";
 }
 
-public class ClanInviteBlockResponse : ResponseBase
+public class ClanBattleSuggestDeckListRequest : Request<ClanBattleSuggestDeckListResponse>
 {
+    public int recommend_group;
+    public int clan_battle_id;
+    public int lap_num;
+    public int order_num;
+    internal override string Url => "clan_battle/suggest_deck_list";
 }
 
-public class ClanInviteCancelResponse : ResponseBase
+public class ClanBattleSuggestDeckReplayRequest : Request<ClanBattleSuggestDeckReplayResponse>
 {
+    public int clan_battle_id;
+    public string enc_key;
+    internal override string Url => "clan_battle/suggest_deck_replay";
 }
 
-public class ClanInvitedUserListResponse : ResponseBase
+public class ClanBattleSuggestDeckReplayReportRequest : Request<ClanBattleSuggestDeckReplayReportResponse>
 {
-    public InvitedUserDetail[] list;
+    public int clan_battle_id;
+    public string report_key;
+    internal override string Url => "clan_battle/suggest_deck_replay_report";
+}
+
+public class ClanBattleSupportUnitList2Request : Request<ClanBattleSupportUnitList2Response>
+{
+    public int clan_id;
+    internal override string Url => "clan_battle/support_unit_list_2";
+}
+
+public class ClanBattleSupportUnitListRequest : Request<ClanBattleSupportUnitListResponse>
+{
+    public int clan_id;
+    internal override string Url => "clan_battle/support_unit_list";
+}
+
+public class ClanBattleTopRequest : Request<ClanBattleTopResponse>
+{
+    public int clan_id;
+    public int is_first;
+    public int current_clan_battle_coin;
+    internal override string Url => "clan_battle/top";
+}
+
+public class ClanBattleTrainingFinishRequest : Request<ClanBattleTrainingFinishResponse>
+{
+    public int clan_id;
+    public int training_id;
+    public int clan_battle_mode;
+    public int phase;
+    public int order_num;
+    public ClanBattleFinishUnit user_unit;
+    public int boss_hp;
+    public int boss_damage;
+    public int remain_time;
+    public int total_damage;
+    public int battle_log_id;
+    public int is_auto;
+    internal override string Url => "clan_battle/training_finish";
+}
+
+public class ClanBattleTrainingStartRequest : Request<ClanBattleTrainingStartResponse>
+{
+    public int clan_id;
+    public int training_id;
+    public int clan_battle_mode;
+    public int phase;
+    public int order_num;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    internal override string Url => "clan_battle/training_start";
+}
+
+public class ClanBlockListRequest : Request<ClanBlockListResponse>
+{
+    public int page;
+    internal override string Url => "clan/block_list";
+}
+
+public class ClanBreakUpRequest : Request<ClanBreakUpResponse>
+{
+    public int clan_id;
+    internal override string Url => "clan/breakup";
+}
+
+public class ClanChatInfoListRequest : Request<ClanChatInfoListResponse>
+{
+    public int clan_id;
+    public int start_message_id;
+    public string search_date;
+    public int direction;
+    public int count;
+    public int wait_interval;
+    internal override string Url => "clan/chat_info_list";
+}
+
+public class ClanChatRequest : Request<ClanChatResponse>
+{
+    public int clan_id;
+    public int type;
+    public string message;
+    internal override string Url => "clan/chat";
+}
+
+public class ClanCreateRequest : Request<ClanCreateResponse>
+{
+    public string clan_name;
+    public string description;
+    public int join_condition;
+    public int activity;
+    public int clan_battle_mode;
+    internal override string Url => "clan/create";
+}
+
+public class ClanDamageReportRequest : Request<ClanDamageReportResponse>
+{
+    public long target_viewer_id;
+    public int clan_id;
+    public int battle_type;
+    public int battle_log_id;
+    internal override string Url => "clan/chat_damage_report";
+}
+
+public class ClanDetailRequest : Request<ClanDetailResponse>
+{
+    public int clan_id;
+    public int page;
+    internal override string Url => "clan/detail";
+}
+
+public class ClanInfoRequest : Request<ClanInfoResponse>
+{
+    public int clan_id;
+    public int get_user_equip;
+    internal override string Url => "clan/info";
+}
+
+public class ClanInviteBlockRequest : Request<ClanInviteBlockResponse>
+{
+    public int invite_id;
+    internal override string Url => "clan/block_invite";
+}
+
+public class ClanInviteCancelRequest : Request<ClanInviteCancelResponse>
+{
+    public int invite_id;
+    internal override string Url => "clan/cancel_invite";
+}
+
+public class ClanInvitedUserListRequest : Request<ClanInvitedUserListResponse>
+{
+    public int clan_id;
+    public int page;
     public long oldest_time;
+    internal override string Url => "clan/invite_user_list";
 }
 
-public class ClanInvitePermissionResponse : ResponseBase
+public class ClanInvitePermissionRequest : Request<ClanInvitePermissionResponse>
 {
+    public int invite_accept_flag;
+    internal override string Url => "clan/update_invite_accept_flag";
 }
 
-public class ClanInviteResponse : ResponseBase
+public class ClanInviteRequest : Request<ClanInviteResponse>
 {
+    public long invited_viewer_id;
+    public string invite_message;
+    internal override string Url => "clan/invite";
 }
 
-public class ClanInviteRejectResponse : ResponseBase
+public class ClanInviteRejectRequest : Request<ClanInviteRejectResponse>
 {
+    public int invite_id;
+    internal override string Url => "clan/reject_invite";
 }
 
-public class ClanInviteUnblockResponse : ResponseBase
+public class ClanInviteUnblockRequest : Request<ClanInviteUnblockResponse>
 {
+    public int block_id;
+    internal override string Url => "clan/cancel_block_invite";
 }
 
-public class ClanJoinResponse : ResponseBase
+public class ClanJoinRequest : Request<ClanJoinResponse>
 {
-    public eUserClanJoinStatus clan_status;
+    public int clan_id;
+    public int from_invite;
+    internal override string Url => "clan/join";
 }
 
-public class ClanJoinRequestAcceptResponse : ResponseBase
+public class ClanJoinRequestAcceptRequest : Request<ClanJoinRequestAcceptResponse>
 {
+    public long request_viewer_id;
+    public int clan_id;
+    internal override string Url => "clan/join_request_accept";
 }
 
-public class ClanJoinRequestCancelResponse : ResponseBase
+public class ClanJoinRequestCancelRequest : Request<ClanJoinRequestCancelResponse>
 {
+    public int clan_id;
+    internal override string Url => "clan/join_request_cancel";
 }
 
-public class ClanJoinRequestListResponse : ResponseBase
+public class ClanJoinRequestListRequest : Request<ClanJoinRequestListResponse>
 {
-    public JoinRequestUserInfo[] list;
+    public int clan_id;
+    public int page;
     public long oldest_time;
+    internal override string Url => "clan/join_request_list";
 }
 
-public class ClanJoinRequestRejectResponse : ResponseBase
+public class ClanJoinRequestRejectRequest : Request<ClanJoinRequestRejectResponse>
 {
+    public long request_viewer_id;
+    public int clan_id;
+    internal override string Url => "clan/join_request_reject";
 }
 
-public class ClanLeaveResponse : ResponseBase
+public class ClanLeaveRequest : Request<ClanLeaveResponse>
 {
-    public int add_present_count;
+    public int clan_id;
+    internal override string Url => "clan/leave";
 }
 
-public class ClanLikeResponse : ResponseBase
+public class ClanLikeRequest : Request<ClanLikeResponse>
 {
-    public UserStaminaInfo stamina_info;
+    public int clan_id;
+    public long target_viewer_id;
+    internal override string Url => "clan/like";
 }
 
-public class ClanMemberBattleFinishResponse : ResponseBase
-{
-}
-
-public class ClanMemberBattleStartResponse : ResponseBase
+public class ClanMemberBattleFinishRequest : Request<ClanMemberBattleFinishResponse>
 {
     public int battle_id;
-    public PracticeWaveInfo[] wave_info_list;
+    internal override string Url => "clan/clan_member_battle_finish";
 }
 
-public class ClanRemoveResponse : ResponseBase
+public class ClanMemberBattleStartRequest : Request<ClanMemberBattleStartResponse>
 {
+    public long battle_viewer_id;
+    public int disable_skin;
+    public long create_time;
+    internal override string Url => "clan/clan_member_battle_start";
 }
 
-public class ClanSearchResponse : ResponseBase
+public class ClanRemoveRequest : Request<ClanRemoveResponse>
 {
-    public ClanInfo[] list;
+    public int clan_id;
+    public long remove_viewer_id;
+    internal override string Url => "clan/remove";
 }
 
-public class ClanSearchUserResponse : ResponseBase
+public class ClanSearchRequest : Request<ClanSearchResponse>
 {
-    public ClanMemberInfo[] search_user_list;
+    public string clan_name;
+    public int join_condition;
+    public int member_condition_range;
+    public int activity;
+    public int clan_battle_mode;
+    internal override string Url => "clan/search_clan";
 }
 
-public class ClanSetDispatchStatusResponse : ResponseBase
+public class ClanSearchUserRequest : Request<ClanSearchUserResponse>
 {
-    public UnitDataForClanMember[] dispatch_units;
-    public InventoryInfo dispatch_time_bonus;
-    public InventoryInfo dispatch_count_bonus;
-    public int add_present_count;
+    public int level_group_id;
+    internal override string Url => "clan/search_user";
 }
 
-public class ClanUpdateResponse : ResponseBase
+public class ClanSetDispatchStatusRequest : Request<ClanSetDispatchStatusResponse>
 {
-    public ClanInfo clan;
+    public int clan_id;
+    public int unit_id;
+    public int position;
+    public int action;
+    internal override string Url => "clan/set_dispatch_status";
 }
 
-public class CloisterBattleSkipResponse : ResponseBase
+public class ClanUpdateRequest : Request<ClanUpdateResponse>
 {
-    public QuestResult[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_list;
-    public int cloister_remain_clear_count;
-    public int add_present_count;
+    public int clan_id;
+    public string clan_name;
+    public string description;
+    public int join_condition;
+    public int activity;
+    public int clan_battle_mode;
+    internal override string Url => "clan/update";
 }
 
-public class DeckUpdateListResponse : ResponseBase
-{
-}
-
-public class DeckUpdateResponse : ResponseBase
-{
-}
-
-public class DungeonBattleFinishResponse : ResponseBase
-{
-    public int quest_id;
-    public bool complete;
-    public DungeonQuest[] area_quest_list;
-    public RestChallengeInfo[] rest_challenge_count;
-    public InventoryInfo[] reward_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public int add_present_count;
-    public int first_area_clear_flag;
-    public DungeonBattleMission[] current_battle_mission_list;
-}
-
-public class DungeonBattleRetireResponse : ResponseBase
-{
-}
-
-public class DungeonBattleStartResponse : ResponseBase
-{
-    public UnitData[] user_unit;
-    public UnitData[] versus_user_unit;
-    public int battle_log_id;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public int seed;
-    public int support_unit_hp;
-}
-
-public class DungeonClanDispatchUnitListResponse : ResponseBase
-{
-    public ClanDispatchUnit[] dispatch_unit_list;
-}
-
-public class DungeonDispatchUnitList2Response : ResponseBase
-{
-    public ClanDispatchUnitLight[] dispatch_unit_list;
-}
-
-public class DungeonEnterAreaResponse : ResponseBase
+public class CloisterBattleSkipRequest : Request<CloisterBattleSkipResponse>
 {
     public int quest_id;
-    public bool complete;
-    public DungeonQuest[] area_quest_list;
-    public DungeonUnit[] dungeon_unit;
-    public RestChallengeInfo[] rest_challenge_count;
-    public int[] dungeon_cleared_area_id_list;
-    public int season_pack_rate;
-    public DungeonBattleMission[] current_battle_mission_list;
-    public long enter_reset_time;
+    public int skip_count;
+    public int current_ticket_num;
+    internal override string Url => "tower/cloister_battle_skip";
 }
 
-public class DungeonInfoResponse : ResponseBase
+public class DeckUpdateListRequest : Request<DeckUpdateListResponse>
 {
-    public int enter_area_id;
-    public RestChallengeInfo[] rest_challenge_count;
-    public DungeonArea[] dungeon_area;
-    public int[] dungeon_cleared_area_id_list;
-    public int season_pack_rate;
+    internal override string Url => "deck/update_list";
 }
 
-public class DungeonResetResponse : ResponseBase
+public class DeckUpdateRequest : Request<DeckUpdateResponse>
 {
-    public RestChallengeInfo[] rest_challenge_count;
-    public DungeonArea[] dungeon_area;
-    public int season_pack_rate;
+    public int deck_number;
+    public int unit_id_1;
+    public int unit_id_2;
+    public int unit_id_3;
+    public int unit_id_4;
+    public int unit_id_5;
+    internal override string Url => "deck/update";
 }
 
-public class DungeonSkipResponse : ResponseBase
+public class DungeonBattleFinishRequest : Request<DungeonBattleFinishResponse>
 {
-    public int start_quest_id;
-    public RestChallengeInfo[] rest_challenge_count;
-    public int season_pack_rate;
-    public QuestResult[] skip_result_list;
-    public UserGold user_gold;
-    public int add_present_count;
-    public bool upper_limit_flag;
+    public int quest_id;
+    public int remain_time;
+    public int total_damage;
+    internal override string Url => "dungeon/battle_finish";
 }
 
-public class EmblemChangeResponse : ResponseBase
+public class DungeonBattleRetireRequest : Request<DungeonBattleRetireResponse>
 {
+    public int quest_id;
+    internal override string Url => "dungeon/battle_retire";
 }
 
-public class EmblemTopResponse : ResponseBase
+public class DungeonBattleStartRequest : Request<DungeonBattleStartResponse>
 {
-    public UserEmblem[] user_emblem_list;
+    public int quest_id;
+    public int disable_skin;
+    public int support_battle_rarity;
+    internal override string Url => "dungeon/battle_start";
 }
 
-public class EquipCraftResponse : ResponseBase
+public class DungeonClanDispatchUnitListRequest : Request<DungeonClanDispatchUnitListResponse>
 {
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
+    public int dungeon_area_id;
+    internal override string Url => "dungeon/clandispatchunitlistpostparam";
 }
 
-public class EquipDonateResponse : ResponseBase
+public class DungeonDispatchUnitList2Request : Request<DungeonDispatchUnitList2Response>
 {
+    public int dungeon_area_id;
+    internal override string Url => "dungeon/dispatch_unit_list_2";
+}
+
+public class DungeonEnterAreaRequest : Request<DungeonEnterAreaResponse>
+{
+    public int dungeon_area_id;
+    internal override string Url => "dungeon/enter_area";
+}
+
+public class DungeonInfoRequest : Request<DungeonInfoResponse>
+{
+    internal override string Url => "dungeon/infopostparam";
+}
+
+public class DungeonResetRequest : Request<DungeonResetResponse>
+{
+    public int dungeon_area_id;
+    internal override string Url => "dungeon/reset";
+}
+
+public class DungeonSkipRequest : Request<DungeonSkipResponse>
+{
+    public int dungeon_area_id;
+    internal override string Url => "dungeon/skip";
+}
+
+public class EmblemChangeRequest : Request<EmblemChangeResponse>
+{
+    public int emblem_id;
+    internal override string Url => "emblem/change";
+}
+
+public class EmblemTopRequest : Request<EmblemTopResponse>
+{
+    internal override string Url => "emblem/toppostparam";
+}
+
+public class EquipCraftRequest : Request<EquipCraftResponse>
+{
+    public int equip_id;
+    public int current_equip_num;
+    internal override string Url => "equipment/craft";
+}
+
+public class EquipDonateRequest : Request<EquipDonateResponse>
+{
+    public int clan_id;
+    public int message_id;
     public int donation_num;
-    public InventoryInfo donate_equip;
-    public InventoryInfo[] rewards;
-    public int add_present_count;
+    public int current_equip_num;
+    internal override string Url => "equipment/donate";
 }
 
-public class EquipEnhanceMaxResponse : ResponseBase
+public class EquipEnhanceMaxRequest : Request<EquipEnhanceMaxResponse>
 {
-    public UnitData unit_data;
-    public UserJewel user_jewel;
+    public int unit_id;
+    public int equip_slot_num;
+    internal override string Url => "equipment/enhance_max";
 }
 
-public class EquipEnhanceResponse : ResponseBase
+public class EquipEnhanceRequest : Request<EquipEnhanceResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public InventoryInfo[] item_list;
+    public int unit_id;
+    public int equip_slot_num;
+    public int current_enhancement_pt;
+    internal override string Url => "equipment/enhance";
 }
 
-public class EquipGetRequestResponse : ResponseBase
+public class EquipGetRequestRequest : Request<EquipGetRequestResponse>
 {
-    public EquipRequests request;
-    public InventoryInfo[] equip_list;
-    public int receive_donation_sum;
-    public int add_present_count;
+    public int clan_id;
+    public int message_id;
+    internal override string Url => "equipment/get_request";
 }
 
-public class EquipmentFreeEnhanceResponse : ResponseBase
+public class EquipmentFreeEnhanceRequest : Request<EquipmentFreeEnhanceResponse>
 {
-    public UnitData unit_data;
+    public int unit_id;
+    public int equip_slot_num;
+    public int after_equip_level;
+    internal override string Url => "equipment/free_enhance";
 }
 
-public class EquipRequestResponse : ResponseBase
+public class EquipRequestRequest : Request<EquipRequestResponse>
 {
-    public long latest_request_time;
+    public int equip_id;
+    public int clan_id;
+    internal override string Url => "equipment/request";
 }
 
-public class EventGachaExecResponse : ResponseBase
+public class EventGachaExecRequest : Request<EventGachaExecResponse>
 {
-    public EventBoxGachaHitRewardInfo[] draw_result;
-    public InventoryInfo[] reward_info_list;
-    public int add_present_count;
-    public HatsuneEventBossStatus[] unlock_bosses;
+    public int event_id;
+    public int gacha_id;
+    public int gacha_times;
+    public int current_cost_num;
+    public int loop_box_multi_gacha_flag;
+    internal override string Url => "event/hatsune/gacha_exec";
 }
 
-public class EventGachaIndexResponse : ResponseBase
+public class EventGachaIndexRequest : Request<EventGachaIndexResponse>
 {
-    public EventGachaInfo event_gacha_info;
+    public int event_id;
+    public int gacha_id;
+    internal override string Url => "event/hatsune/gacha_index";
 }
 
-public class EventGachaLineupResponse : ResponseBase
+public class EventGachaLineupRequest : Request<EventGachaLineupResponse>
 {
-    public EventBoxGachaSet[] event_gacha_lineup;
+    public int event_id;
+    public int gacha_id;
+    internal override string Url => "event/hatsune/gacha_lineup";
 }
 
-public class EventGachaResetResponse : ResponseBase
+public class EventGachaResetRequest : Request<EventGachaResetResponse>
 {
-    public EventGachaInfo event_gacha_info;
+    public int event_id;
+    public int gacha_id;
+    internal override string Url => "event/hatsune/gacha_reset";
 }
 
-public class FkeFinishResponse : ResponseBase
-{
-    public int total_fke_point;
-    public int add_present_count;
-}
-
-public class FkeStartResponse : ResponseBase
+public class FkeFinishRequest : Request<FkeFinishResponse>
 {
     public int fke_play_id;
+    public int base_fke_point;
+    internal override string Url => "fke/finish";
 }
 
-public class FkeSyncTopResponse : ResponseBase
+public class FkeStartRequest : Request<FkeStartResponse>
 {
-    public int total_fke_point;
-    public int best_fke_point;
-    public int[] happening_id_list;
+    internal override string Url => "fke/startpostparam";
 }
 
-public class FkeTopResponse : ResponseBase
+public class FkeSyncTopRequest : Request<FkeSyncTopResponse>
 {
-    public int total_fke_point;
-    public int best_fke_point;
-    public int[] happening_id_list;
+    internal override string Url => "fke/sync_top";
 }
 
-public class FriendAcceptResponse : ResponseBase
+public class FkeTopRequest : Request<FkeTopResponse>
 {
+    internal override string Url => "fke/toppostparam";
 }
 
-public class FriendBattleFinishResponse : ResponseBase
+public class FriendAcceptRequest : Request<FriendAcceptResponse>
 {
+    public long target_viewer_id;
+    internal override string Url => "friend/accept";
 }
 
-public class FriendBattleStartResponse : ResponseBase
-{
-    public int battle_id;
-    public PracticeWaveInfo[] wave_info_list;
-}
-
-public class FriendBattleTopResponse : ResponseBase
-{
-    public PracticeDeckData[] my_deck_list;
-    public FriendBattleInfo[] friend;
-}
-
-public class FriendBattleUpdateDeckResponse : ResponseBase
-{
-}
-
-public class FriendCancelResponse : ResponseBase
-{
-}
-
-public class FriendFriendListResponse : ResponseBase
-{
-    public FriendInfo[] friend_list;
-    public CampaignTarget[] campaign_target_list;
-}
-
-public class FriendGetMissionTargetFriendCountResponse : ResponseBase
-{
-    public int target_friend_count;
-}
-
-public class FriendMissionAcceptResponse : ResponseBase
-{
-    public int team_level;
-    public int team_exp;
-    public UserStaminaInfo stamina_info;
-    public InventoryInfo[] rewards;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-}
-
-public class FriendMissionIndexResponse : ResponseBase
-{
-    public UserMissionInfo[] missions;
-    public bool campaign_target_flag;
-}
-
-public class FriendPendingListResponse : ResponseBase
-{
-    public FriendInfo[] pending_list;
-    public int friend_num;
-    public CampaignTarget[] campaign_target_list;
-}
-
-public class FriendRejectResponse : ResponseBase
-{
-}
-
-public class FriendRemoveResponse : ResponseBase
-{
-}
-
-public class FriendRequestListResponse : ResponseBase
-{
-    public FriendInfo[] request_list;
-    public int friend_num;
-    public CampaignTarget[] campaign_target_list;
-}
-
-public class FriendRequestResponse : ResponseBase
-{
-    public UnitDataForView favorite_unit;
-}
-
-public class FriendSearchResponse : ResponseBase
-{
-    public FriendInfo[] search_list;
-    public int friend_num;
-    public CampaignTarget[] campaign_target_list;
-}
-
-public class GachaExchangePointResponse : ResponseBase
-{
-    public InventoryInfo[] reward_info_list;
-    public GachaPointInfo gacha_point_info;
-    public GachaPointInfo sdfes_gacha_point_info;
-    public GachaBonusResult bonus_reward_info;
-    public GachaGrowthUnitInfo growth_unit_info;
-}
-
-public class GachaExecResponse : ResponseBase
-{
-    public InventoryInfo[] reward_info_list;
-    public UserGold user_gold;
-    public PrizeRewardInfo prize_reward_info;
-    public GachaPointInfo gacha_point_info;
-    public GachaPointInfo sdfes_gacha_point_info;
-    public int add_present_count;
-    public GachaBonusResult bonus_reward_info;
-    public GachaGrowthUnitInfo growth_unit_info;
-}
-
-public class GachaIndexResponse : ResponseBase
-{
-    public GachaParameter[] gacha_info;
-    public int nngtime;
-    public CampaignGachaInfo campaign_info;
-    public string sdg_url_param;
-    public GachaPointReset[] gacha_point_reset_list;
-    public GachaPointReset gacha_point_reset;
-    public GachaPointReset sdfes_gacha_point_reset;
-    public GachaPointReset return_fes_gacha_point_reset;
-    public int current_gacha_point;
-    public TicketGachaParameter[] ticket_gacha_info;
-}
-
-public class GachaPrizeHistoryResponse : ResponseBase
-{
-    public GachaPrizeHistoryList[] gacha_prize_history_list;
-}
-
-public class GachaPrizeRewardResponse : ResponseBase
-{
-    public GachaPrizeItemDetail[] gacha_prize_reward_list;
-}
-
-public class GachaSelectPrizeResponse : ResponseBase
-{
-}
-
-public class GachaSpecialFesIndexResponse : ResponseBase
-{
-    public GachaParameter[] gacha_info;
-    public TicketGachaParameter[] ticket_gacha_info;
-}
-
-public class GetFriendSupportUnitListResponse : ResponseBase
-{
-    public SupportUnitStatus[] friend_support_unit_list;
-    public SupportUnitStatus[] general_support_unit_list;
-}
-
-public class GetTipsListResponse : ResponseBase
-{
-    public int[] tips_id_list;
-}
-
-public class GrandArenaApplyResponse : ResponseBase
-{
-    public long battle_viewer_id;
-    public int true_rank;
-}
-
-public class GrandArenaCancelIntervalResponse : ResponseBase
-{
-    public GrandArenaInfo grand_arena_info;
-    public UserJewel user_jewel;
-}
-
-public class GrandArenaCancelResponse : ResponseBase
-{
-    public GrandArenaSearchOpponent[] search_opponent;
-}
-
-public class GrandArenaFinishResponse : ResponseBase
-{
-    public int old_record;
-    public int new_record;
-    public GrandArenaInfo grand_arena_info;
-    public InventoryInfo highest_rank_reward;
-}
-
-public class GrandArenaGetDestinationGroupResponse : ResponseBase
-{
-    public RankingGroupInfo[] group_list;
-}
-
-public class GrandArenaHistoryDetailResponse : ResponseBase
-{
-    public GrandArenaHistoryDetailInfo grand_arena_history_detail;
-}
-
-public class GrandArenaHistoryResponse : ResponseBase
-{
-    public GrandArenaHistoryInfo[] grand_arena_history_list;
-}
-
-public class GrandArenaInfoResponse : ResponseBase
-{
-    public GrandArenaInfo grand_arena_info;
-    public DeckData[] attack_deck_list;
-    public DeckData[] defend_deck_list;
-    public GrandArenaSearchOpponent[] search_opponent;
-    public InventoryInfo reward_info;
-    public int reward_hour_num;
-    public bool is_time_reward_max;
-}
-
-public class GrandArenaMoveGroupResponse : ResponseBase
-{
-    public GrandArenaInfo grand_arena_info;
-}
-
-public class GrandArenaRankingResponse : ResponseBase
-{
-    public GrandArenaSearchOpponent[] ranking;
-}
-
-public class GrandArenaReplayResponse : ResponseBase
-{
-    public int seed;
-    public int is_challenge;
-    public UnitData[] user_unit_list;
-    public UnitData[] vs_user_unit_list;
-}
-
-public class GrandArenaResetBattleNumberResponse : ResponseBase
-{
-    public GrandArenaInfo grand_arena_info;
-    public UserJewel user_jewel;
-}
-
-public class GrandArenaSearchResponse : ResponseBase
-{
-    public GrandArenaSearchOpponent[] search_opponent;
-}
-
-public class GrandArenaStartResponse : ResponseBase
+public class FriendBattleFinishRequest : Request<FriendBattleFinishResponse>
 {
     public int battle_id;
-    public long my_viewer_id;
+    internal override string Url => "practice/friend_battle_finish";
+}
+
+public class FriendBattleStartRequest : Request<FriendBattleStartResponse>
+{
     public long battle_viewer_id;
-    public int battle_speed;
-    public ArenaWaveInfo[] wave_info_list;
+    public int deck_number;
+    public int disable_skin;
+    public int is_clan;
+    internal override string Url => "practice/friend_battle_start";
 }
 
-public class GrandArenaTimeRewardAcceptResponse : ResponseBase
+public class FriendBattleTopRequest : Request<FriendBattleTopResponse>
 {
-    public InventoryInfo reward_info;
-    public int add_present_count;
+    public int is_clan;
+    internal override string Url => "practice/friend_battle_top";
 }
 
-public class HatsuneBossBattleFinishResponse : ResponseBase
+public class FriendBattleUpdateDeckRequest : Request<FriendBattleUpdateDeckResponse>
 {
-    public LevelInfo level_info;
-    public int result_type;
-    public int[] unlock_quest_list;
-    public int unlock_story_id;
-    public int[] unlock_story_id_list;
-    public InventoryInfo[] quest_rewards;
-    public InventoryInfo[] first_clear_rewards;
-    public int acquired_gold;
-    public UserGold user_gold;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public InventoryInfo[] treasure_rewards;
-    public InventoryInfo[] item_list;
-    public UnitData unlock_unit;
-    public int[] event_present_list;
-    public int unlock_dear_story_id;
-    public int[] release_diary_ids;
-    public int[] new_omp_story_ids;
-    public int[] release_nyx_story_ids;
-    public EventSubStoryInfo[] new_sub_story_info_list;
-    public HatsuneEventBossStatus next_boss;
-    public int damage_result;
-    public HatsuneEventBossStatus[] unlock_bosses;
-    public int[] unlock_boss_id_list;
+    public int deck_number;
+    public string deck_name;
+    public int unit_id_1;
+    public int unit_id_2;
+    public int unit_id_3;
+    public int unit_id_4;
+    public int unit_id_5;
+    public int mask_bit_flag;
+    internal override string Url => "practice/update_deck";
 }
 
-public class HatsuneBossBattleSkipResponse : ResponseBase
+public class FriendCancelRequest : Request<FriendCancelResponse>
 {
-    public QuestResult[] quest_result_list;
-    public QuestResult[] crush_reward_list;
-    public UserGold user_gold;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public InventoryInfo[] item_list;
-    public int unlock_dear_story_id;
-    public int[] release_diary_ids;
-    public int[] release_nyx_story_ids;
+    public long target_viewer_id;
+    internal override string Url => "friend/cancel";
 }
 
-public class HatsuneBossBattleStartResponse : ResponseBase
+public class FriendFriendListRequest : Request<FriendFriendListResponse>
 {
-    public int limit_time;
-    public int battle_log_id;
-    public int seed;
-    public UnitData boss_unit_data;
-    public int[] hit_treasure_nums;
-    public EventHitTreasureInfo[] hit_treasure_list;
+    internal override string Url => "friend/friendlistpostparam";
 }
 
-public class HatsuneChangeNyxItemColorResponse : ResponseBase
+public class FriendGetMissionTargetFriendCountRequest : Request<FriendGetMissionTargetFriendCountResponse>
+{
+    public int campaign_id;
+    public int mission_id;
+    internal override string Url => "friend/get_mission_target_friend_count";
+}
+
+public class FriendMissionAcceptRequest : Request<FriendMissionAcceptResponse>
+{
+    public int campaign_id;
+    public int type;
+    public int id;
+    internal override string Url => "friend/mission_accept";
+}
+
+public class FriendMissionIndexRequest : Request<FriendMissionIndexResponse>
+{
+    public int campaign_id;
+    internal override string Url => "friend/mission_index";
+}
+
+public class FriendPendingListRequest : Request<FriendPendingListResponse>
+{
+    internal override string Url => "friend/pendinglistpostparam";
+}
+
+public class FriendRejectRequest : Request<FriendRejectResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "friend/reject";
+}
+
+public class FriendRemoveRequest : Request<FriendRemoveResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "friend/remove";
+}
+
+public class FriendRequestListRequest : Request<FriendRequestListResponse>
+{
+    internal override string Url => "friend/requestlistpostparam";
+}
+
+public class FriendRequestRequest : Request<FriendRequestResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "friend/request";
+}
+
+public class FriendSearchRequest : Request<FriendSearchResponse>
+{
+    public int level_group_id;
+    internal override string Url => "friend/search";
+}
+
+public class GachaExchangePointRequest : Request<GachaExchangePointResponse>
+{
+    public int exchange_id;
+    public int unit_id;
+    public int current_point;
+    internal override string Url => "gacha/exchange_point";
+}
+
+public class GachaExecRequest : Request<GachaExecResponse>
+{
+    public int gacha_id;
+    public int gacha_times;
+    public int exchange_id;
+    public int draw_type;
+    public int current_cost_num;
+    public int campaign_id;
+    internal override string Url => "gacha/exec";
+}
+
+public class GachaIndexRequest : Request<GachaIndexResponse>
+{
+    internal override string Url => "gacha/indexpostparam";
+}
+
+public class GachaPrizeHistoryRequest : Request<GachaPrizeHistoryResponse>
+{
+    public int gacha_id;
+    public int offset;
+    public int page;
+    internal override string Url => "gacha/prize_history";
+}
+
+public class GachaPrizeRewardRequest : Request<GachaPrizeRewardResponse>
+{
+    public int gacha_id;
+    internal override string Url => "gacha/prize_reward";
+}
+
+public class GachaSelectPrizeRequest : Request<GachaSelectPrizeResponse>
+{
+    public int prizegacha_id;
+    public int item_id;
+    internal override string Url => "gacha/select_prize";
+}
+
+public class GachaSpecialFesIndexRequest : Request<GachaSpecialFesIndexResponse>
+{
+    internal override string Url => "gacha/specialfesindexpostparam";
+}
+
+public class GetFriendSupportUnitListRequest : Request<GetFriendSupportUnitListResponse>
 {
 }
 
-public class HatsuneDearFinishResponse : ResponseBase
+public class GetTipsListRequest : Request<GetTipsListResponse>
 {
-    public DearPointInfo before_dear_point_info;
-    public DearPointInfo after_dear_point_info;
-    public int add_present_count;
 }
 
-public class HatsuneDearTopResponse : ResponseBase
+public class GrandArenaApplyRequest : Request<GrandArenaApplyResponse>
 {
-    public DearStoryInfo[] unlock_dear_story_info_list;
-    public DearPointInfo[] dear_point_info_list;
+    public long battle_viewer_id;
+    public int opponent_rank;
+    internal override string Url => "grand_arena/apply";
 }
 
-public class HatsuneMissionAcceptResponse : ResponseBase
+public class GrandArenaCancelIntervalRequest : Request<GrandArenaCancelIntervalResponse>
 {
-    public int team_level;
-    public int team_exp;
-    public UserStaminaInfo stamina_info;
-    public InventoryInfo[] rewards;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ReleaseContentData[] release_contents;
+    internal override string Url => "grand_arena/ancelintervalpostparam";
 }
 
-public class HatsuneMissionIndexResponse : ResponseBase
+public class GrandArenaCancelRequest : Request<GrandArenaCancelResponse>
 {
-    public UserMissionInfo[] missions;
-    public UserSeasonPackInfo[] season_pack;
-    public long daily_reset_time;
-    public HatsuneSeriesInfo[] series_info_list;
+    public long battle_viewer_id;
+    internal override string Url => "grand_arena/cancel";
 }
 
-public class HatsuneQuestFinishResponse : ResponseBase
+public class GrandArenaFinishRequest : Request<GrandArenaFinishResponse>
 {
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public InventoryInfo[] reward_list;
-    public bool flag_exchange_team_exp;
-    public int[] unlock_quest_list;
-    public int unlock_story_id;
+    public int battle_id;
+    public int is_skipped;
+    internal override string Url => "grand_arena/finish";
+}
+
+public class GrandArenaGetDestinationGroupRequest : Request<GrandArenaGetDestinationGroupResponse>
+{
+    internal override string Url => "grand_arena/etdestinationgrouppostparam";
+}
+
+public class GrandArenaHistoryDetailRequest : Request<GrandArenaHistoryDetailResponse>
+{
+    public int log_id;
+    internal override string Url => "grand_arena/history_detail";
+}
+
+public class GrandArenaHistoryRequest : Request<GrandArenaHistoryResponse>
+{
+    internal override string Url => "grand_arena/istorypostparam";
+}
+
+public class GrandArenaInfoRequest : Request<GrandArenaInfoResponse>
+{
+    internal override string Url => "grand_arena/nfopostparam";
+}
+
+public class GrandArenaMoveGroupRequest : Request<GrandArenaMoveGroupResponse>
+{
+    public int group_id;
+    internal override string Url => "grand_arena/move_group";
+}
+
+public class GrandArenaRankingRequest : Request<GrandArenaRankingResponse>
+{
+    public int limit;
+    public int page;
+    internal override string Url => "grand_arena/ranking";
+}
+
+public class GrandArenaReplayRequest : Request<GrandArenaReplayResponse>
+{
+    public int log_id;
+    public int round;
+    internal override string Url => "grand_arena/replay";
+}
+
+public class GrandArenaResetBattleNumberRequest : Request<GrandArenaResetBattleNumberResponse>
+{
+    internal override string Url => "grand_arena/esetbattlenumberpostparam";
+}
+
+public class GrandArenaSearchRequest : Request<GrandArenaSearchResponse>
+{
+    internal override string Url => "grand_arena/earchpostparam";
+}
+
+public class GrandArenaStartRequest : Request<GrandArenaStartResponse>
+{
+    public string token;
+    public long battle_viewer_id;
+    public int remain_battle_number;
+    public int disable_skin;
+    internal override string Url => "grand_arena/start";
+}
+
+public class GrandArenaTimeRewardAcceptRequest : Request<GrandArenaTimeRewardAcceptResponse>
+{
+    internal override string Url => "grand_arena/imerewardacceptpostparam";
+}
+
+public class HatsuneBossBattleFinishRequest : Request<HatsuneBossBattleFinishResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public HatsuneBossBattleFinishUnit user_unit;
+    public int remain_time;
+    public int total_damage;
+    internal override string Url => "event/hatsune/boss_battle_finish";
+}
+
+public class HatsuneBossBattleSkipRequest : Request<HatsuneBossBattleSkipResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public int exec_skip_num;
+    public int current_skip_ticket_num;
+    public int current_boss_ticket_num;
+    internal override string Url => "event/hatsune/boss_battle_skip";
+}
+
+public class HatsuneBossBattleStartRequest : Request<HatsuneBossBattleStartResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public int current_ticket_num;
+    internal override string Url => "event/hatsune/boss_battle_start";
+}
+
+public class HatsuneChangeNyxItemColorRequest : Request<HatsuneChangeNyxItemColorResponse>
+{
+    public int color_id;
+    internal override string Url => "event/hatsune/change_nyx_item_color";
+}
+
+public class HatsuneDearFinishRequest : Request<HatsuneDearFinishResponse>
+{
+    public int event_id;
+    public int story_id;
+    public int choice;
+    internal override string Url => "event/hatsune/dear_finish";
+}
+
+public class HatsuneDearTopRequest : Request<HatsuneDearTopResponse>
+{
+    public int event_id;
+    internal override string Url => "event/hatsune/dear_top";
+}
+
+public class HatsuneMissionAcceptRequest : Request<HatsuneMissionAcceptResponse>
+{
+    public int event_id;
+    public int type;
+    public int id;
+    public int buy_id;
+    internal override string Url => "event/hatsune/mission_accept";
+}
+
+public class HatsuneMissionIndexRequest : Request<HatsuneMissionIndexResponse>
+{
+    public int event_id;
+    internal override string Url => "event/hatsune/mission_index";
+}
+
+public class HatsuneQuestFinishRequest : Request<HatsuneQuestFinishResponse>
+{
+    public int event_id;
     public int quest_id;
-    public int clear_flag;
-    public int result_type;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public int daily_clear_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public int has_drop;
-    public ClanPoint clan_point;
-    public InventoryInfo[] drop_rewards;
-    public int[] event_present_list;
-    public int[] unlock_quiz;
-    public eExchangeStaminaState state_exchange_stamina;
-    public int unlock_dear_story_id;
-    public int[] release_diary_ids;
-    public int[] new_relay_story_ids;
-    public int[] new_omp_story_ids;
-    public int[] release_nyx_story_ids;
-    public UserGold user_gold;
-    public EventSubStoryInfo[] new_sub_story_info_list;
-    public HatsuneEventBossStatus[] unlock_bosses;
-    public int[] unlock_boss_id_list;
-}
-
-public class HatsuneQuestRetireResponse : ResponseBase
-{
-}
-
-public class HatsuneQuestSkipResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public bool flag_exchange_team_exp;
-    public QuestResult[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public UserGold user_gold;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public InventoryInfo[] item_list;
-    public int daily_clear_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public ClanPoint clan_point;
-    public eExchangeStaminaState state_exchange_stamina;
-    public int unlock_dear_story_id;
-    public int[] release_diary_ids;
-    public int[] release_nyx_story_ids;
-}
-
-public class HatsuneQuestStartResponse : ResponseBase
-{
-    public WaveEnemyInfoList[] quest_wave_info;
-    public UserStaminaInfo user_info;
-    public int quest_id;
-    public UnitData[] enemy_list;
-    public int battle_log_id;
-    public int seed;
-    public UserGold user_gold;
+    public int remain_time;
+    public long owner_viewer_id;
     public int support_position;
+    public int is_friend;
+    internal override string Url => "event/hatsune/quest_finish";
 }
 
-public class HatsuneQuestTopResponse : ResponseBase
+public class HatsuneQuestRetireRequest : Request<HatsuneQuestRetireResponse>
 {
-    public HatsuneUserEventQuest[] quest_list;
-    public EventQuizInfo[] quiz;
-    public int[] release_diary_ids;
-    public HatsuneEventBossStatus[] bosses;
-    public HatsuneEventBossStatus[] boss_battle_info;
-    public HatsuneEventBossEnemyInfo[] boss_enemy_info;
+    public int event_id;
+    public int quest_id;
+    internal override string Url => "event/hatsune/quest_retire";
 }
 
-public class HatsuneQuizAnswerResponse : ResponseBase
+public class HatsuneQuestSkipRequest : Request<HatsuneQuestSkipResponse>
 {
-    public int is_correct;
-    public int[] unlock_quest_list;
-    public int[] unlock_quiz;
-    public int add_present_count;
+    public int event_id;
+    public int quest_id;
+    public int use_ticket_num;
+    public int current_ticket_num;
+    internal override string Url => "event/hatsune/quest_skip";
 }
 
-public class HatsuneReadDiaryResponse : ResponseBase
+public class HatsuneQuestStartRequest : Request<HatsuneQuestStartResponse>
 {
+    public int event_id;
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    public int is_friend;
+    internal override string Url => "event/hatsune/quest_start";
 }
 
-public class HatsuneReadNyxStoryResponse : ResponseBase
+public class HatsuneQuestTopRequest : Request<HatsuneQuestTopResponse>
 {
+    public int event_id;
+    internal override string Url => "event/hatsune/quest_top";
 }
 
-public class HatsuneReadOmpStoryResponse : ResponseBase
+public class HatsuneQuizAnswerRequest : Request<HatsuneQuizAnswerResponse>
 {
-    public int add_present_count;
+    public int event_id;
+    public int quiz_id;
+    public int choice;
+    internal override string Url => "event/hatsune/quiz_answer";
 }
 
-public class HatsuneReadRelayStoryResponse : ResponseBase
+public class HatsuneReadDiaryRequest : Request<HatsuneReadDiaryResponse>
 {
+    public int diary_id;
+    internal override string Url => "event/hatsune/read_diary";
 }
 
-public class HatsuneRecoverChallengeResponse : ResponseBase
+public class HatsuneReadNyxStoryRequest : Request<HatsuneReadNyxStoryResponse>
 {
-    public UserJewel user_jewel;
-    public QuestRecoverInfo user_quest;
+    public int id;
+    internal override string Url => "event/hatsune/read_nyx_story";
 }
 
-public class HatsuneSpecialBattleExFinishResponse : ResponseBase
+public class HatsuneReadOmpStoryRequest : Request<HatsuneReadOmpStoryResponse>
 {
-    public int result_type;
-    public int chat_battle_log_flag;
-    public int damage_result;
+    public int omp_story_id;
+    internal override string Url => "event/hatsune/read_omp_story";
 }
 
-public class HatsuneSpecialBattleExHistoryResponse : ResponseBase
+public class HatsuneReadRelayStoryRequest : Request<HatsuneReadRelayStoryResponse>
 {
-    public int total_attack_count;
-    public DateTime clear_time;
-    public EventSpecialBattleExHistory[] history;
+    public int relay_story_id;
+    internal override string Url => "event/hatsune/read_relay_story";
 }
 
-public class HatsuneSpecialBattleExResetResponse : ResponseBase
+public class HatsuneRecoverChallengeRequest : Request<HatsuneRecoverChallengeResponse>
 {
-    public SpecialBattleInfo special_battle_info;
+    public int quest_id;
+    public int current_currency_num;
+    public int event_id;
+    internal override string Url => "event/hatsune/recover_challenge";
 }
 
-public class HatsuneSpecialBattleExRetireResponse : ResponseBase
+public class HatsuneSpecialBattleExFinishRequest : Request<HatsuneSpecialBattleExFinishResponse>
 {
+    public int event_id;
+    public int boss_id;
+    public HatsuneBossBattleFinishUnit user_unit;
+    public int total_damage;
+    public int remain_time;
+    public int mode;
+    public int manual_flags;
+    internal override string Url => "event/hatsune/special_battle_ex_finish";
 }
 
-public class HatsuneSpecialBattleExStartResponse : ResponseBase
+public class HatsuneSpecialBattleExHistoryRequest : Request<HatsuneSpecialBattleExHistoryResponse>
 {
-    public int limit_time;
+    public int event_id;
+    public int appear_num;
+    public int page;
+    internal override string Url => "event/hatsune/special_battle_ex_history";
+}
+
+public class HatsuneSpecialBattleExResetRequest : Request<HatsuneSpecialBattleExResetResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public int appear_num;
+    internal override string Url => "event/hatsune/special_battle_ex_reset";
+}
+
+public class HatsuneSpecialBattleExRetireRequest : Request<HatsuneSpecialBattleExRetireResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public int manual_flags;
+    internal override string Url => "event/hatsune/special_battle_ex_retire";
+}
+
+public class HatsuneSpecialBattleExStartRequest : Request<HatsuneSpecialBattleExStartResponse>
+{
+    public int boss_id;
+    public int event_id;
+    public int mode;
+    internal override string Url => "event/hatsune/special_battle_ex_start";
+}
+
+public class HatsuneSpecialBattleFinishRequest : Request<HatsuneSpecialBattleFinishResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public HatsuneBossBattleFinishUnit user_unit;
+    public int total_damage;
+    public int remain_time;
+    public int mode;
+    internal override string Url => "event/hatsune/special_battle_finish";
+}
+
+public class HatsuneSpecialBattleRetireRequest : Request<HatsuneSpecialBattleRetireResponse>
+{
+    public int event_id;
+    public int boss_id;
+    internal override string Url => "event/hatsune/special_battle_retire";
+}
+
+public class HatsuneSpecialBattleStartRequest : Request<HatsuneSpecialBattleStartResponse>
+{
+    public int boss_id;
+    public int event_id;
+    public int current_ticket_num;
+    public int mode;
+    internal override string Url => "event/hatsune/special_battle_start";
+}
+
+public class HatsuneTopRequest : Request<HatsuneTopResponse>
+{
+    public int event_id;
+    internal override string Url => "event/hatsune/top";
+}
+
+public class HomeIndexRequest : Request<HomeIndexResponse>
+{
+    public int message_id;
+    public int is_first;
+    public int gold_history;
+    internal override string Url => "home/index";
+}
+
+public class ItemETicketExchangeRequest : Request<ItemETicketExchangeResponse>
+{
+    public int ticket_id;
+    public int ticket_count;
+    public int exchange_number;
+    internal override string Url => "item_e_ticket/exchange";
+}
+
+public class KaiserBattleGetMainBossInfoRequest : Request<KaiserBattleGetMainBossInfoResponse>
+{
+    internal override string Url => "kaiser_battle/etmainbossinfopostparam";
+}
+
+public class KaiserBattleMainFinishRequest : Request<KaiserBattleMainFinishResponse>
+{
+    public int kaiser_boss_id;
     public int battle_log_id;
-    public EventEnemyInfo[] enemy_info;
+    public int remain_time;
+    public int total_damage;
+    public int mode;
+    public BossBattleFinishUnit battle_finish_unit;
+    internal override string Url => "kaiser_battle/main_finish";
 }
 
-public class HatsuneSpecialBattleFinishResponse : ResponseBase
+public class KaiserBattleMainRetireRequest : Request<KaiserBattleMainRetireResponse>
 {
-    public LevelInfo level_info;
-    public int result_type;
-    public int unlock_story_id;
-    public InventoryInfo[] first_clear_rewards;
-    public InventoryInfo[] quest_rewards;
-    public int acquired_gold;
-    public UserGold user_gold;
-    public InventoryInfo[] item_list;
-    public InventoryInfo[] treasure_rewards;
-    public UnitData unlock_unit;
-    public int add_present_count;
-    public int chat_battle_log_flag;
-    public int unlock_dear_story_id;
-    public int[] release_nyx_story_ids;
-    public int damage_result;
-}
-
-public class HatsuneSpecialBattleRetireResponse : ResponseBase
-{
-}
-
-public class HatsuneSpecialBattleStartResponse : ResponseBase
-{
-    public int limit_time;
+    public int kaiser_boss_id;
     public int battle_log_id;
-    public EventEnemyInfo[] enemy_info;
-    public int[] hit_treasure_nums;
-    public EventHitTreasureInfo[] hit_treasure_list;
+    internal override string Url => "kaiser_battle/main_retire";
 }
 
-public class HatsuneTopResponse : ResponseBase
+public class KaiserBattleMainStartRequest : Request<KaiserBattleMainStartResponse>
 {
-    public HatsuneEventStatus[] event_status;
-    public HatsuneEventStoryState[] additional_stories;
-    public InventoryInfo boss_ticket_info;
-    public DeckData[] event_decks;
-    public HatsuneLoginBonusData login_bonus;
-    public int add_present_count;
-    public UserMissionInfo[] missions;
-    public bool is_hard_quest_unlocked;
-    public SpecialBattleInfo special_battle_info;
-    public EventQuizInfo[] quiz;
-    public int[] unchoiced_dear_story_id_list;
-    public EventSpecialBattleExRankingInfo[] ex_mode_ranking;
-    public int[] release_minigame;
-    public int[] release_diary_ids;
-    public HatsuneSeriesInfo[] series_info_list;
-    public bool uek_mission_acceptable_flg;
-    public int[] new_omp_story_ids;
-    public HatsuneEventBossStatus[] bosses;
-    public HatsuneEventBossStatus[] boss_battle_info;
-    public HatsuneEventBossEnemyInfo[] boss_enemy_info;
+    public int kaiser_boss_id;
+    public string token;
+    public int mode;
+    public int from_event_flag;
+    internal override string Url => "kaiser_battle/main_start";
 }
 
-public class HomeIndexResponse : ResponseBase
+public class KaiserBattleMySupportListRequest : Request<KaiserBattleMySupportListResponse>
 {
-    public UnreadMessageList unread_message_list;
-    public UserMissionInfo[] missions;
-    public UserSeasonPackInfo[] season_pack;
-    public long daily_reset_time;
-    public LimitedShop[] limited_shop;
-    public DailyShop daily_shop;
-    public UserClan user_clan;
-    public int have_clan_invitation;
-    public EquipRequests new_equip_donation;
-    public int have_join_request;
-    public UserQuestInfo[] quest_list;
-    public DungeonInfo dungeon_info;
-    public TrainingQuestCount training_quest_count;
-    public TrainingQuestCount training_quest_max_count;
-    public long training_quest_pack_end_time;
-    public int have_clan_battle_reward;
-    public int[] gold;
-    public int paid_jewel;
-    public int free_jewel;
-    public AlchemyReward[] alchemy_reward_list;
-    public long alchemy_reward_time;
-    public int season_pack_alert;
-    public long season_pack_end_time;
-    public long daily_jewel_pack_end;
-    public LastFriendTime last_friend_time;
-    public int clan_battle_remaining_count;
-    public bool campaign_target_flag;
-    public bool everyday_jewel_pack_buy;
-    public CharaExchangeTicketProductData[] chara_e_ticket_purchased_times;
-    public int[] purchased_arcade_id_list;
-    public ShioriQuestInfo shiori_quest_info;
-    public int[] srt_story_id_list;
-    public SeasonPassData season_ticket;
-    public int[] custom_season_pack_alert;
-    public long[] custom_season_pack_end_time;
+    internal override string Url => "kaiser_battle/ysupportlistpostparam";
 }
 
-public class ItemETicketExchangeResponse : ResponseBase
+public class KaiserBattleSetSupportUnitRequest : Request<KaiserBattleSetSupportUnitResponse>
 {
-    public InventoryInfo[] reward_list;
-    public InventoryInfo[] item_data;
-    public int add_present_count;
-    public bool upper_limit_flag;
+    public int position;
+    public int unit_id;
+    internal override string Url => "kaiser_battle/set_support_unit";
 }
 
-public class KaiserBattleGetMainBossInfoResponse : ResponseBase
+public class KaiserBattleSubFinishRequest : Request<KaiserBattleSubFinishResponse>
 {
-    public KaiserBossInfo main_boss_info;
-    public DeckData[] deck_list;
-}
-
-public class KaiserBattleMainFinishResponse : ResponseBase
-{
-    public int damage_result;
-    public int acquired_gold;
-    public UserGold user_gold;
-    public InventoryInfo[] boss_rewards;
-    public InventoryInfo[] item_list;
-    public int add_present_count;
-    public int attack_count;
-}
-
-public class KaiserBattleMainRetireResponse : ResponseBase
-{
-}
-
-public class KaiserBattleMainStartResponse : ResponseBase
-{
+    public int kaiser_boss_id;
     public int battle_log_id;
-    public EventEnemyInfo[] enemy_info;
-    public UnitData[] support_unit_info;
-    public SkinDataForRequest[] skin_data_for_request;
-}
-
-public class KaiserBattleMySupportListResponse : ResponseBase
-{
-    public SupportUnitSetting[] my_support_list;
-}
-
-public class KaiserBattleSetSupportUnitResponse : ResponseBase
-{
-    public InventoryInfo[] rewards;
-    public int add_present_count;
-    public SupportUnitSetting my_support_info;
-}
-
-public class KaiserBattleSubFinishResponse : ResponseBase
-{
-    public int damage_result;
-    public int acquired_gold;
-    public UserGold user_gold;
-    public InventoryInfo[] boss_rewards;
-    public int add_present_count;
-}
-
-public class KaiserBattleSubStartResponse : ResponseBase
-{
-    public int battle_log_id;
-    public int seed;
-    public UnitData[] support_unit_info;
-    public SkinDataForRequest[] skin_data_for_request;
-}
-
-public class KaiserBattleSupportListResponse : ResponseBase
-{
-    public SupportUnitStatus[] friend_support_unit_list;
-    public SupportUnitStatus[] general_support_unit_list;
-}
-
-public class KaiserBattleTopResponse : ResponseBase
-{
     public int remaining_count;
-    public KaiserBossInfo[] sub_boss_list;
-    public InventoryInfo[] sub_boss_reward;
-    public int add_present_count;
-    public int[] extermination_boss_id_list;
-    public KaiserBossInfo main_boss_info;
-    public DeckData[] deck_list;
-    public SupportUnitSetting[] my_support_list;
+    public int remain_time;
+    public int total_damage;
+    public BossBattleFinishUnit battle_finish_unit;
+    internal override string Url => "kaiser_battle/sub_finish";
 }
 
-public class KaiserBattleUpdateDeckResponse : ResponseBase
+public class KaiserBattleSubStartRequest : Request<KaiserBattleSubStartResponse>
 {
+    public int kaiser_boss_id;
+    public string token;
+    internal override string Url => "kaiser_battle/sub_start";
 }
 
-public class KmkFinishResponse : ResponseBase
+public class KaiserBattleSupportListRequest : Request<KaiserBattleSupportListResponse>
 {
-    public int current_score;
-    public int total_score_all;
-    public int is_opened_extra_first;
-    public InventoryInfo special_reward_list;
-    public KmkKillList kill_list;
-    public int max_combo_count_score;
-    public int after_hp_score;
-    public int fever_score;
-    public int add_present_count;
+    public int kaiser_boss_id;
+    internal override string Url => "kaiser_battle/support_list";
 }
 
-public class KmkStartResponse : ResponseBase
+public class KaiserBattleTopRequest : Request<KaiserBattleTopResponse>
+{
+    internal override string Url => "kaiser_battle/oppostparam";
+}
+
+public class KaiserBattleUpdateDeckRequest : Request<KaiserBattleUpdateDeckResponse>
+{
+    public int kaiser_boss_id;
+    public int unit_id_1;
+    public int unit_id_2;
+    public int unit_id_3;
+    public int unit_id_4;
+    public int unit_id_5;
+    internal override string Url => "kaiser_battle/update_deck";
+}
+
+public class KmkFinishRequest : Request<KmkFinishResponse>
 {
     public int play_id;
-    public int seed;
+    public int base_score;
+    public KmkKillList kill_list;
+    public int max_combo_count;
+    public int after_hp;
+    public int fever_score;
+    internal override string Url => "kmk/finish";
 }
 
-public class KmkTopResponse : ResponseBase
+public class KmkStartRequest : Request<KmkStartResponse>
 {
-    public int total_score_all;
-    public int normal_high_score;
-    public int hard_high_score;
-    public int extra_high_score;
+    public int difficulty_level;
+    internal override string Url => "kmk/start";
 }
 
-public class LoadIndexResponse : ResponseBase
+public class KmkTopRequest : Request<KmkTopResponse>
 {
-    public UserInfo user_info;
-    public UserJewel user_jewel;
-    public UserGold user_gold;
-    public UnitData[] unit_list;
-    public UserChara[] user_chara_info;
-    public LoadDeckData[] deck_list;
-    public InventoryInfo[] material_list;
-    public InventoryInfo[] item_list;
-    public InventoryInfo[] user_equip;
-    public int today_start_level;
-    public Shop shop;
-    public int[] tips_id_list;
-    public IniSetting ini_setting;
-    public long daily_reset_time;
-    public int present_count;
-    public LoginBonusList login_bonus_list;
-    public int max_storage_num;
-    public int can_free_gacha;
-    public int can_receive_clan_battle_reward;
-    public int[] campaign_list;
-    public int[] read_story_ids;
-    public int clan_like_count;
-    public UnitDataForClanMember[] dispatch_units;
-    public ClanBattleData clan_battle;
-    public EventStatus[] event_statuses;
-    public TowerStatus tower_status;
-    public MusicIdData[] bgm;
-    public int[] unlock_story_ids;
-    public int can_campaign_gacha;
-    public int can_guarantee_gacha;
-    public int can_limited_guarantee_gacha;
-    public StartDashFesInfo[] start_dash_fes_info_list;
-    public ReturnFesInfo[] return_fes_info_list;
-    public GrowthInfo[] growth_unit_list;
-    public int pa;
-    public long sdg_start;
-    public long sdg_end;
-    public RaceLoginBonusInfo cf;
-    public CampaignDate drj;
-    public GachaPointInfo[] gacha_point_info_list;
-    public GachaPointInfo gacha_point_info;
-    public UserBirthDayVoice voice;
-    public MaintenanceStatus maintenance_status;
-    public UserMyParty[] user_my_party;
-    public UserMyPartyTab[] user_my_party_tab;
-    public UserMyQuest[] user_my_quest;
-    public CounterStopCoinExchange csc;
-    public long tt;
-    public long cgl;
-    public long ab;
-    public long ebm;
-    public long lsm;
-    public long last_login_bonus_time;
-    public SupportUnitSetting[] friend_support_units;
-    public bool my_page_exists;
-    public MyPage[] my_page;
-    public int[] limit_still_ids;
-    public int[] read_diary_ids;
-    public int[] unlock_diary_ids;
-    public int[] read_relay_story_ids;
-    public int[] unlock_relay_story_ids;
-    public int[] read_omp_story_ids;
-    public int[] unlock_omp_story_ids;
-    public int[] read_nyx_story_ids;
-    public int[] unlock_nyx_story_ids;
-    public int nyx_color_id;
-    public long cbm;
-    public long csm;
-    public long cbs;
-    public long tbm;
-    public long dbm;
-    public long fst;
-    public int force_release_chapter;
-    public long cr;
-    public long fsr;
-    public long sfr;
-    public long pff;
-    public int een_n;
-    public int een_r;
-    public long serialcode_restrict_release_time;
-    public long chr;
-    public long nls;
-    public EventSubStory[] event_sub_story;
-    public long evmb;
-    public long gi;
-    public long erdr;
-    public long lbme;
+    internal override string Url => "kmk_top/ostparam";
 }
 
-public class LoadNextDayIndexResponse : ResponseBase
+public class LoadIndexRequest : Request<LoadIndexResponse>
 {
-    public long daily_reset_time;
-    public LoginBonusList login_bonus_list;
-    public int can_free_gacha;
-    public int can_receive_clan_battle_reward;
-    public int[] campaign_list;
-    public int present_count;
-    public Shop shop;
-    public EventStatus[] event_statuses;
-    public int can_campaign_gacha;
-    public UnitDataForClanMember[] dispatch_units;
-    public RaceLoginBonusInfo cf;
-    public MaintenanceStatus maintenance_status;
-    public CounterStopCoinExchange csc;
-    public SupportUnitSetting[] friend_support_units;
-    public StartDashFesInfo[] start_dash_fes_info_list;
-    public ReturnFesInfo[] return_fes_info_list;
-    public int[] unlock_story_ids;
+    public string carrier;
+    internal override string Url => "load/index";
 }
 
-public class MissionAcceptResponse : ResponseBase
+public class LoadNextDayIndexRequest : Request<LoadNextDayIndexResponse>
 {
-    public int team_level;
-    public int team_exp;
-    public UserStaminaInfo stamina_info;
-    public InventoryInfo[] rewards;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ReleaseContentData[] release_contents;
-    public int[] room_item_level_mission;
+    public string carrier;
+    internal override string Url => "load/next_day_index";
 }
 
-public class MissionIndexResponse : ResponseBase
+public class MissionAcceptRequest : Request<MissionAcceptResponse>
 {
-    public UserMissionInfo[] missions;
-    public UserSeasonPackInfo[] season_pack;
-    public long daily_reset_time;
+    public int type;
+    public int id;
+    public int buy_id;
+    internal override string Url => "mission/accept";
 }
 
-public class MultiUnlockRaritySixSlotResponse : ResponseBase
+public class MissionIndexRequest : Request<MissionIndexResponse>
 {
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
+    public MissionRequestFlag request_flag;
+    internal override string Url => "mission/index";
 }
 
-public class MusicBuyResponse : ResponseBase
+public class MultiUnlockRaritySixSlotRequest : Request<MultiUnlockRaritySixSlotResponse>
+{
+    public int unit_id;
+    public int slot_id;
+    public int current_gold_num;
+    internal override string Url => "unit/multi_unlock_rarity_6_slot";
+}
+
+public class MusicBuyRequest : Request<MusicBuyResponse>
 {
     public int music_id;
-    public long purchased_time;
-    public InventoryInfo[] item_data;
+    public int room_coin;
+    internal override string Url => "music/buy";
 }
 
-public class MusicSetResponse : ResponseBase
+public class MusicSetRequest : Request<MusicSetResponse>
 {
+    internal override string Url => "music/set";
 }
 
-public class MusicTopResponse : ResponseBase
+public class MusicTopRequest : Request<MusicTopResponse>
 {
-    public int[] bgm_keys;
-    public MusicPurchasedData[] music_list_purchased;
+    internal override string Url => "music/toppostparam";
 }
 
-public class MyPageSetMyPageResponse : ResponseBase
+public class MyPageSetMyPageRequest : Request<MyPageSetMyPageResponse>
 {
+    internal override string Url => "my_page/set_my_page";
 }
 
-public class OtherClanInfoResponse : ResponseBase
+public class OtherClanInfoRequest : Request<OtherClanInfoResponse>
 {
-    public OtherClanData clan;
-    public int current_clan_battle_mode;
-    public int current_battle_joined;
+    public int clan_id;
+    internal override string Url => "clan/others_info";
 }
 
-public class PctFinishResponse : ResponseBase
+public class PctFinishRequest : Request<PctFinishResponse>
 {
-    public PctBonusInfo[] bonus_list;
-    public int final_pct_point;
-    public int after_pct_point;
-    public PctUnitPointInfo after_pct_unit_point;
-    public int add_present_count;
-}
-
-public class PctStartResponse : ResponseBase
-{
-    public int seed;
     public int pct_play_id;
+    public int base_pct_point;
+    public int max_combo_count;
+    public int barrage_count;
+    public int fruits_count;
+    public int special_item_count;
+    public int fever_count;
+    internal override string Url => "pct/finish";
 }
 
-public class PctTopResponse : ResponseBase
+public class PctStartRequest : Request<PctStartResponse>
 {
-    public int pct_point;
-    public PctUnitPointInfo[] unit_pct_point_list;
-    public PctCacaoInfo[] cacao_list;
+    public int unit_id;
+    public int use_item_id;
+    public int use_item_count;
+    internal override string Url => "pct/start";
 }
 
-public class PictureBookResponse : ResponseBase
+public class PctTopRequest : Request<PctTopResponse>
 {
-    public InventoryInfoShort[] item_list;
-    public InventoryInfoShort[] user_equip;
+    internal override string Url => "pct/toppostparam";
 }
 
-public class PkbFinishSoloResponse : ResponseBase
+public class PictureBookRequest : Request<PictureBookResponse>
 {
-    public int current_score;
-    public int total_score;
-    public InventoryInfo[] special_reward_list;
-    public int add_present_count;
+    public int mode;
+    internal override string Url => "picture_book/index";
 }
 
-public class PkbFinishVsResponse : ResponseBase
-{
-    public int current_score;
-    public int total_score;
-    public InventoryInfo[] special_reward_list;
-    public int add_present_count;
-}
-
-public class PkbReadCatalogResponse : ResponseBase
-{
-}
-
-public class PkbReadRankingResponse : ResponseBase
-{
-}
-
-public class PkbStartSoloResponse : ResponseBase
+public class PkbFinishSoloRequest : Request<PkbFinishSoloResponse>
 {
     public int play_id;
-    public int seed;
+    public int result_type;
+    public int total_batting_distance;
+    public int single_max_batting_distance;
+    public int home_run_num;
+    public int hit_num;
+    public int elapsed_frame;
+    public int from_system_id;
+    public ePkbHappenMode happen_mode;
+    internal override string Url => "pkb/finish_solo";
 }
 
-public class PkbStartVsResponse : ResponseBase
+public class PkbFinishVsRequest : Request<PkbFinishVsResponse>
 {
     public int play_id;
-    public int seed;
+    public int result_type;
+    public int base_score;
+    public int vs_base_score;
+    public int total_batting_distance;
+    public int single_max_batting_distance;
+    public int home_run_num;
+    public int hit_num;
+    public int elapsed_frame;
+    public int from_system_id;
+    public ePkbHappenMode happen_mode;
+    internal override string Url => "pkb/finish_vs";
 }
 
-public class PkbTopResponse : ResponseBase
+public class PkbReadCatalogRequest : Request<PkbReadCatalogResponse>
 {
-    public int total_score;
-    public int total_score_solo;
-    public int total_score_vs;
-    public PkbHighScoreInfo solo_high_score_info;
-    public PkbHighScoreInfo vs_high_score_info;
-    public PkbHighScoreInfo simple_solo_high_score_info;
-    public PkbHighScoreInfo simple_vs_high_score_info;
-    public PkbCatalogInfo catalog_info;
-    public PkbRankingInfo ranking_info;
-    public PkbRankingInfo simple_ranking_info;
+    public int from_system_id;
+    internal override string Url => "pkb/read_catalog";
 }
 
-public class PresentHistoryResponse : ResponseBase
+public class PkbReadRankingRequest : Request<PkbReadRankingResponse>
 {
-    public PresentHistoryInfo[] present_history;
+    public int from_system_id;
+    internal override string Url => "pkb/read_ranking";
 }
 
-public class PresentIndexResponse : ResponseBase
+public class PkbStartSoloRequest : Request<PkbStartSoloResponse>
 {
-    public PresentParameter[] present_info_list;
-    public int present_count;
+    public int difficulty_level;
+    public int batter_id;
+    public int from_system_id;
+    public ePkbHappenMode happen_mode;
+    internal override string Url => "pkb/start_solo";
 }
 
-public class PresentReceiveAllResponse : ResponseBase
+public class PkbStartVsRequest : Request<PkbStartVsResponse>
 {
-    public InventoryInfo[] rewards;
-    public UserStaminaInfo stamina_info;
-    public int flag_over_limit;
-    public int flag_expiration;
-    public PresentParameter[] present_info_list;
-    public ArenaCountInfo arena_count_info;
-    public GrandArenaCountInfo grand_arena_count_info;
+    public int difficulty_level;
+    public int batter_id;
+    public int vs_batter_id;
+    public int from_system_id;
+    public ePkbHappenMode happen_mode;
+    internal override string Url => "pkb/start_vs";
 }
 
-public class PresentReceiveSingleResponse : ResponseBase
+public class PkbTopRequest : Request<PkbTopResponse>
 {
-    public InventoryInfo[] rewards;
-    public UserStaminaInfo stamina_info;
-    public int flag_over_limit;
-    public int flag_expiration;
-    public ArenaCountInfo arena_count_info;
-    public GrandArenaCountInfo grand_arena_count_info;
+    public int from_system_id;
+    internal override string Url => "pkb/top";
 }
 
-public class ProfileFavoriteUnitResponse : ResponseBase
+public class PresentHistoryRequest : Request<PresentHistoryResponse>
 {
+    public int page;
+    internal override string Url => "present/history";
 }
 
-public class ProfileGetResponse : ResponseBase
+public class PresentIndexRequest : Request<PresentIndexResponse>
 {
-    public ProfileUserInfo user_info;
-    public ProfileQuestInfo quest_info;
-    public UnitDataForView favorite_unit;
-    public string clan_name;
-    public int own_clan_role;
-    public int clan_invite_result_code;
-    public long invite_enable_time;
-    public SupportUnitForProfile[] friend_support_units;
-    public SupportUnitForProfile[] clan_support_units;
-    public CampaignTarget[] campaign_target_list;
+    public int time_filter;
+    public int type_filter;
+    public bool desc_flag;
+    public int offset;
+    internal override string Url => "present/index";
 }
 
-public class ProfileMakerGetClanProfileResponse : ResponseBase
+public class PresentReceiveAllRequest : Request<PresentReceiveAllResponse>
+{
+    public int time_filter;
+    public int type_filter;
+    public bool desc_flag;
+    internal override string Url => "present/receive_all";
+}
+
+public class PresentReceiveSingleRequest : Request<PresentReceiveSingleResponse>
+{
+    public long present_id;
+    internal override string Url => "present/receive";
+}
+
+public class ProfileFavoriteUnitRequest : Request<ProfileFavoriteUnitResponse>
+{
+    public int unit_id;
+    internal override string Url => "profile/favorite_unit";
+}
+
+public class ProfileGetRequest : Request<ProfileGetResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "profile/get_profile";
+}
+
+public class ProfileMakerGetClanProfileRequest : Request<ProfileMakerGetClanProfileResponse>
+{
+    internal override string Url => "profile_maker/etclanprofilepostparam";
+}
+
+public class ProfileMakerGetMyProfileRequest : Request<ProfileMakerGetMyProfileResponse>
+{
+    internal override string Url => "profile_maker/etmyprofilepostparam";
+}
+
+public class ProfileMakerSetClanProfileRequest : Request<ProfileMakerSetClanProfileResponse>
 {
     public ClanProfileCardSetting profile;
-    public ClanProfileCardClanInfo clan;
+    internal override string Url => "profile_maker/set_clan_profile";
 }
 
-public class ProfileMakerGetMyProfileResponse : ResponseBase
+public class ProfileMakerSetMyProfileRequest : Request<ProfileMakerSetMyProfileResponse>
 {
     public MyProfileCardSetting profile;
-    public MyProfileCardScore score;
+    internal override string Url => "profile_maker/set_my_profile";
 }
 
-public class ProfileMakerSetClanProfileResponse : ResponseBase
+public class ProfileRenameRequest : Request<ProfileRenameResponse>
 {
+    public string user_name;
+    internal override string Url => "profile/rename";
 }
 
-public class ProfileMakerSetMyProfileResponse : ResponseBase
-{
-}
-
-public class ProfileRenameResponse : ResponseBase
-{
-}
-
-public class ProfileSetBirthDayResponse : ResponseBase
+public class ProfileSetBirthDayRequest : Request<ProfileSetBirthDayResponse>
 {
     public int birthday;
-    public int birthday_period;
+    internal override string Url => "profile/set_birthday";
 }
 
-public class ProfileUpdateCommentResponse : ResponseBase
+public class ProfileUpdateCommentRequest : Request<ProfileUpdateCommentResponse>
 {
+    public string user_comment;
+    internal override string Url => "profile/update_comment";
 }
 
-public class QuestFinishResponse : ResponseBase
+public class QuestFinishRequest : Request<QuestFinishResponse>
 {
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public InventoryInfo[] reward_list;
-    public bool flag_exchange_team_exp;
-    public int[] unlock_quest_list;
-    public int unlock_dungeon_area_id;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public UserStory[] open_story_ids;
     public int quest_id;
-    public int clear_flag;
-    public int result_type;
-    public int daily_clear_count;
-    public int add_present_count;
-    public ReleaseContentData[] release_contents;
-    public ClanPoint clan_point;
-    public eExchangeStaminaState state_exchange_stamina;
-    public UserGold user_gold;
-}
-
-public class QuestRecoverChallengeMultipleResponse : ResponseBase
-{
-    public UserJewel user_jewel;
-    public QuestRecoverInfo[] user_quest;
-}
-
-public class QuestRecoverChallengeResponse : ResponseBase
-{
-    public UserJewel user_jewel;
-    public QuestRecoverInfo user_quest;
-}
-
-public class QuestReplayListResponse : ResponseBase
-{
-    public QuestReplayData[] replay_list;
-}
-
-public class QuestReplayResponse : ResponseBase
-{
-    public UnitData[] user_unit_list;
-    public WaveEnemyInfoList[] quest_wave_info;
-    public UnitData[] enemy_list;
-}
-
-public class QuestReplayReportResponse : ResponseBase
-{
-}
-
-public class QuestRetireResponse : ResponseBase
-{
-}
-
-public class QuestSkipMultipleResponse : ResponseBase
-{
-    public QuestResultList[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public LevelInfo level_info;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-    public InventoryInfo[] item_list;
-    public UserStaminaInfo user_info;
-    public int daily_clear_count;
-    public int daily_challenge_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ClanPoint clan_point;
-    public eExchangeStaminaState state_exchange_stamina;
-}
-
-public class QuestSkipResponse : ResponseBase
-{
-    public QuestResult[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public LevelInfo level_info;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-    public InventoryInfo[] item_list;
-    public UserStaminaInfo user_info;
-    public int daily_clear_count;
-    public int daily_challenge_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ClanPoint clan_point;
-    public eExchangeStaminaState state_exchange_stamina;
-}
-
-public class QuestStartResponse : ResponseBase
-{
-    public WaveEnemyInfoList[] quest_wave_info;
-    public int limit_time;
-    public int quest_id;
-    public UnitData[] enemy_list;
-    public UserStaminaInfo user_info;
-    public int battle_log_id;
-    public int seed;
-    public SkinDataForRequest[] skin_data_for_request;
-    public UserGold user_gold;
+    public int remain_time;
+    public int auto_clear;
+    public int fps;
+    public long owner_viewer_id;
     public int support_position;
-    public InventoryInfo[] sub_drop;
+    public int is_friend;
+    internal override string Url => "quest/finish";
 }
 
-public class RaceLoginBonusCharaSelectDataResponse : ResponseBase
+public class QuestRecoverChallengeMultipleRequest : Request<QuestRecoverChallengeMultipleResponse>
 {
-    public InventoryInfo[] reward_list;
-    public int add_present_count;
+    public int current_currency_num;
+    internal override string Url => "quest/recover_challenge_multiple";
 }
 
-public class RaritySixQuestFinishResponse : ResponseBase
+public class QuestRecoverChallengeRequest : Request<QuestRecoverChallengeResponse>
 {
     public int quest_id;
-    public int clear_flag;
-    public int result_type;
-    public int add_present_count;
+    public int current_currency_num;
+    internal override string Url => "quest/recover_challenge";
 }
 
-public class RaritySixQuestStartResponse : ResponseBase
+public class QuestReplayListRequest : Request<QuestReplayListResponse>
 {
-    public int limit_time;
     public int quest_id;
-    public UnitData[] enemy_list;
-    public int battle_log_id;
-    public int seed;
-    public SkinDataForRequest[] skin_data_for_request;
-}
-
-public class RoomClanMemberResponse : ResponseBase
-{
-    public RoomUserInfo[] clan_members;
-}
-
-public class RoomExtendStorageResponse : ResponseBase
-{
-    public int max_storage_num;
-    public UserJewel user_jewel;
-}
-
-public class RoomFreeGiftResponse : ResponseBase
-{
-    public LevelInfo level_info;
-}
-
-public class RoomGiveGiftResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public InventoryInfo[] user_gift_item_list;
-}
-
-public class RoomItemBuyResponse : ResponseBase
-{
-    public RoomUserItem[] user_room_item_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-}
-
-public class RoomItemSellResponse : ResponseBase
-{
-    public RoomUserItem[] user_room_item_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-    public int add_present_count;
-}
-
-public class RoomLevelUpEndResponse : ResponseBase
-{
-    public RoomUserItem user_room_item;
-    public MaxExecNumList max_exec_num_list;
-}
-
-public class RoomLevelUpShorteningResponse : ResponseBase
-{
-    public RoomUserItem user_room_item;
-    public UserJewel user_jewel;
-    public MaxExecNumList max_exec_num_list;
-}
-
-public class RoomLevelUpStartResponse : ResponseBase
-{
-    public RoomUserItem user_room_item;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-}
-
-public class RoomLevelUpStopResponse : ResponseBase
-{
-    public RoomUserItem user_room_item;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-    public int add_present_count;
-}
-
-public class RoomLikeHistoryResponse : ResponseBase
-{
-    public int total_like;
-    public int total_be_liked;
-    public int today_like_count;
-    public int today_be_liked_count;
-    public RoomUserInfo[] like_history;
-    public int unread_count;
-    public RoomUserInfo[] be_liked_history;
-    public InventoryInfo[] reward_list;
-}
-
-public class RoomLikeResponse : ResponseBase
-{
-    public int total_like;
-    public int daily_like;
-    public RoomUserInfo[] like_history;
-    public InventoryInfo[] reward_list;
-    public RoomUserInfo room_user_info;
-}
-
-public class RoomMultiGiveGiftResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public InventoryInfo[] user_gift_item_list;
-}
-
-public class RoomMultiLevelUpEndResponse : ResponseBase
-{
-    public RoomUserItem[] user_room_item_list;
-}
-
-public class RoomMysetDeleteResponse : ResponseBase
-{
-}
-
-public class RoomMysetListResponse : ResponseBase
-{
-    public RoomMysetElement[] myset_list;
-}
-
-public class RoomMysetRenameResponse : ResponseBase
-{
-}
-
-public class RoomMysetSaveResponse : ResponseBase
-{
-    public string myset_update_time;
-}
-
-public class RoomReceiveItemAllResponse : ResponseBase
-{
-    public RoomUserItem[] user_room_item_list;
-    public InventoryInfo[] reward_list;
-    public UserStaminaInfo stamina_info;
-    public int add_present_count;
-}
-
-public class RoomReceiveItemResponse : ResponseBase
-{
-    public RoomUserItem user_room_item;
-    public InventoryInfo[] reward_list;
-    public UserStaminaInfo stamina_info;
-    public int add_present_count;
-}
-
-public class RoomStartResponse : ResponseBase
-{
-    public RoomWholeLayout room_layout;
-    public int max_storage_num;
-    public int unread_count;
-    public RoomUserItem[] user_room_item_list;
-    public RoomItemGetTime[] event_room_item_get_time_list;
-}
-
-public class RoomUpdateResponse : ResponseBase
-{
-    public RoomUserItem[] user_room_item_list;
-}
-
-public class RoomVisitResponse : ResponseBase
-{
-    public RoomWholeLayout room_layout;
-    public RoomUserItem[] user_room_item_list;
-    public RoomUserInfo room_user_info;
-    public DeckListDataForView[] deck_list;
-    public int unread_count;
-    public RoomExtensionItem extension_key;
-}
-
-public class SeasonPassBuyLevelResponse : ResponseBase
-{
-    public UserJewel user_jewel;
-    public int seasonpass_level;
-    public int user_point;
-    public int point_limit_flag;
-    public ExchangeRewards[] exchange_rewards;
-}
-
-public class SeasonPassIndexResponse : ResponseBase
-{
-    public int is_buy;
-    public int seasonpass_level;
-    public int user_point;
-    public int weekly_point;
-    public UserMissionInfo[] missions;
-    public int[] received_rewards;
-    public long daily_reset_time;
-    public long weekly_reset_time;
-}
-
-public class SeasonPassMissionAcceptResponse : ResponseBase
-{
-    public int seasonpass_level;
-    public int user_point;
-    public int weekly_point;
-    public int point_limit_flag;
-    public ExchangeRewards[] exchange_rewards;
-    public InventoryInfo[] rewards;
-    public int add_present_count;
-    public ReleaseContentData[] release_contents;
-    public int[] room_item_level_mission;
-}
-
-public class SeasonPassRewardAcceptResponse : ResponseBase
-{
-    public UserStaminaInfo stamina_info;
-    public InventoryInfo[] rewards;
-    public int add_present_count;
-    public int[] received_rewards;
-}
-
-public class SekaiBossInfoResponse : ResponseBase
-{
-    public DamageHistory damage_history;
-    public long current_hp;
-}
-
-public class SekaiFinishResponse : ResponseBase
-{
-}
-
-public class SekaiHistoryReportResponse : ResponseBase
-{
-    public HistoryReport[] history_report;
-}
-
-public class SekaiRankingInClanResponse : ResponseBase
-{
-    public int sekai_id;
-    public int my_rank;
-    public long my_damage;
-    public SekaiRanking[] ranking;
-}
-
-public class SekaiRankingResponse : ResponseBase
-{
-    public int sekai_id;
-    public int my_rank;
-    public long my_damage;
-    public SekaiRanking[] ranking;
-}
-
-public class SekaiRetireResponse : ResponseBase
-{
-    public int sekai_id;
-    public int my_rank;
-    public long my_damage;
-    public SekaiRanking[] ranking;
-}
-
-public class SekaiStartResponse : ResponseBase
-{
-    public UnitData enemy_data;
-    public int battle_log_id;
-    public long current_hp;
-    public UnitData[] user_unit;
-    public int seed;
-}
-
-public class SekaiSupportUnitList2Response : ResponseBase
-{
-    public ClanBattleSupportUnitLight[] support_unit_list;
-}
-
-public class SekaiTopResponse : ResponseBase
-{
-    public int sekai_id;
-    public long current_hp;
-    public DamageHistory[] damage_history;
-    public int rank;
-    public int remaining_count;
-}
-
-public class SellItemResponse : ResponseBase
-{
-    public InventoryInfo[] item_list;
-    public InventoryInfo[] material_list;
-    public InventoryInfo[] user_equip;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public int add_present_count;
-}
-
-public class SendBattleLogCsvResponse : ResponseBase
-{
-}
-
-public class SerialCodeRegisterResponse : ResponseBase
-{
-    public InventoryInfo[] reward_list;
-    public int serial_campaign_id;
-    public InventoryInfo[] group_reward_list;
-    public int serial_group_id;
-    public int add_present_count;
-}
-
-public class SetMyPartyResponse : ResponseBase
-{
-}
-
-public class SetMyPartyTabResponse : ResponseBase
-{
-}
-
-public class ShioriBossBattleFinishResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public int result_type;
-    public int[] unlock_quest_list;
-    public HatsuneEventBossStatus[] unlock_bosses;
-    public int unlock_story_id;
-    public int[] unlock_story_id_list;
-    public InventoryInfo[] quest_rewards;
-    public InventoryInfo[] first_clear_rewards;
-    public int acquired_gold;
-    public UserGold user_gold;
-    public int damage_result;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public InventoryInfo[] treasure_rewards;
-    public HatsuneEventBossStatus next_boss;
-    public InventoryInfo[] item_list;
-    public UnitData unlock_unit;
-    public int[] event_present_list;
-    public int[] new_dear_story_id_list;
-    public int[] release_diary_ids;
-    public int[] new_omp_story_ids;
-}
-
-public class ShioriBossBattleRetireResponse : ResponseBase
-{
-}
-
-public class ShioriBossBattleStartResponse : ResponseBase
-{
-    public UnitData boss_unit_data;
-    public int limit_time;
-    public int[] hit_treasure_nums;
-    public int battle_log_id;
-    public int seed;
-}
-
-public class ShioriDearFinishResponse : ResponseBase
-{
-    public DearPointInfo before_dear_point_info;
-    public DearPointInfo after_dear_point_info;
-    public int add_present_count;
-}
-
-public class ShioriDearTopResponse : ResponseBase
-{
-    public DearStoryInfo[] unlock_dear_story_info_list;
-    public DearPointInfo[] dear_point_info_list;
-}
-
-public class ShioriEventTopResponse : ResponseBase
-{
-    public HatsuneEventBossStatus[] bosses;
-    public DeckData[] event_decks;
-    public int login_count;
-    public UserMissionInfo[] missions;
-    public UserQuestInfo[] quest_list;
-    public EventQuizInfo[] quiz;
-    public int[] unchoiced_dear_story_id_list;
-    public int[] release_diary_ids;
-    public HatsuneSeriesInfo[] series_info_list;
-}
-
-public class ShioriFavoriteResponse : ResponseBase
-{
-}
-
-public class ShioriMissionAcceptResponse : ResponseBase
-{
+    public int fps;
     public int team_level;
-    public int team_exp;
-    public UserStaminaInfo stamina_info;
-    public InventoryInfo[] rewards;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ReleaseContentData[] release_contents;
+    internal override string Url => "quest/replay_list";
 }
 
-public class ShioriMissionIndexResponse : ResponseBase
+public class QuestReplayRequest : Request<QuestReplayResponse>
 {
-    public UserMissionInfo[] missions;
-    public UserSeasonPackInfo[] season_pack;
-    public long daily_reset_time;
-}
-
-public class ShioriQuestFinishResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public InventoryInfo[] reward_list;
-    public bool flag_exchange_team_exp;
-    public int[] unlock_quest_list;
-    public HatsuneEventBossStatus[] unlock_bosses;
-    public int unlock_story_id;
     public int quest_id;
-    public int clear_flag;
-    public int result_type;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public int daily_clear_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public int has_drop;
-    public ClanPoint clan_point;
-    public InventoryInfo[] drop_rewards;
-    public int[] event_present_list;
-    public int[] unlock_quiz;
-    public eExchangeStaminaState state_exchange_stamina;
-    public int[] release_diary_ids;
-    public int[] new_relay_story_ids;
-    public int[] new_omp_story_ids;
-    public UserGold user_gold;
+    public string enc_key;
+    internal override string Url => "quest/replay";
 }
 
-public class ShioriQuestRetireResponse : ResponseBase
+public class QuestReplayReportRequest : Request<QuestReplayReportResponse>
 {
-}
-
-public class ShioriQuestSkipResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public bool flag_exchange_team_exp;
-    public QuestResult[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public UserGold user_gold;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public InventoryInfo[] item_list;
-    public int daily_clear_count;
-    public LimitedShop[] limited_shop_list;
-    public DailyShop daily_shop;
-    public ClanPoint clan_point;
-    public eExchangeStaminaState state_exchange_stamina;
-    public int[] release_diary_ids;
-}
-
-public class ShioriQuestStartResponse : ResponseBase
-{
-    public WaveEnemyInfoList[] quest_wave_info;
-    public UserStaminaInfo user_info;
+    public string enc_key;
     public int quest_id;
+    internal override string Url => "quest/replay_report";
+}
+
+public class QuestRetireRequest : Request<QuestRetireResponse>
+{
+    public int quest_id;
+    internal override string Url => "quest/retire";
+}
+
+public class QuestSkipMultipleRequest : Request<QuestSkipMultipleResponse>
+{
+    public int current_ticket_num;
+    internal override string Url => "quest/quest_skip_multiple";
+}
+
+public class QuestSkipRequest : Request<QuestSkipResponse>
+{
+    public int quest_id;
+    public int random_count;
+    public int current_ticket_num;
+    internal override string Url => "quest/quest_skip";
+}
+
+public class QuestStartRequest : Request<QuestStartResponse>
+{
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    public int is_friend;
+    internal override string Url => "quest/start";
+}
+
+public class RaceLoginBonusCharaSelectDataRequest : Request<RaceLoginBonusCharaSelectDataResponse>
+{
+    public int fortune_id;
+    public int unit_id;
+    internal override string Url => "chara_fortune/draw";
+}
+
+public class RaritySixQuestFinishRequest : Request<RaritySixQuestFinishResponse>
+{
+    public int quest_id;
+    public int remain_time;
+    internal override string Url => "rarity_6_quest/finish";
+}
+
+public class RaritySixQuestStartRequest : Request<RaritySixQuestStartResponse>
+{
+    public int quest_id;
+    public string token;
+    internal override string Url => "rarity_6_quest/start";
+}
+
+public class RoomClanMemberRequest : Request<RoomClanMemberResponse>
+{
+    internal override string Url => "room/clanmemberpostparam";
+}
+
+public class RoomExtendStorageRequest : Request<RoomExtendStorageResponse>
+{
+    public int storage_num;
+    internal override string Url => "room/extend_storage";
+}
+
+public class RoomFreeGiftRequest : Request<RoomFreeGiftResponse>
+{
+    public int unit_id;
+    public int after_love_level;
+    internal override string Url => "room/free_gift";
+}
+
+public class RoomGiveGiftRequest : Request<RoomGiveGiftResponse>
+{
+    public int unit_id;
+    public int item_id;
+    public int item_num;
+    public int current_item_num;
+    internal override string Url => "room/give_gift";
+}
+
+public class RoomItemBuyRequest : Request<RoomItemBuyResponse>
+{
+    public int item_id;
+    public int item_count;
+    public int purchase_type;
+    public int floor_number;
+    public int background_theme;
+    public RoomFloorLayout layout;
+    public int has_update;
+    public int room_coin;
+    internal override string Url => "room/buy";
+}
+
+public class RoomItemSellRequest : Request<RoomItemSellResponse>
+{
+    public int floor_number;
+    public int background_theme;
+    public RoomFloorLayout layout;
+    internal override string Url => "room/sell";
+}
+
+public class RoomLevelUpEndRequest : Request<RoomLevelUpEndResponse>
+{
+    public int serial_id;
+    internal override string Url => "room/level_up_end";
+}
+
+public class RoomLevelUpShorteningRequest : Request<RoomLevelUpShorteningResponse>
+{
+    public int serial_id;
+    internal override string Url => "room/level_up_shortening";
+}
+
+public class RoomLevelUpStartRequest : Request<RoomLevelUpStartResponse>
+{
+    public int floor_number;
+    public int serial_id;
+    internal override string Url => "room/level_up_start";
+}
+
+public class RoomLevelUpStopRequest : Request<RoomLevelUpStopResponse>
+{
+    public int serial_id;
+    internal override string Url => "room/level_up_stop";
+}
+
+public class RoomLikeHistoryRequest : Request<RoomLikeHistoryResponse>
+{
+    internal override string Url => "room/likehistorypostparam";
+}
+
+public class RoomLikeRequest : Request<RoomLikeResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "room/like";
+}
+
+public class RoomMultiGiveGiftRequest : Request<RoomMultiGiveGiftResponse>
+{
+    public int unit_id;
+    internal override string Url => "room/multi_give_gift";
+}
+
+public class RoomMultiLevelUpEndRequest : Request<RoomMultiLevelUpEndResponse>
+{
+    internal override string Url => "room/multi_level_up_end";
+}
+
+public class RoomMysetDeleteRequest : Request<RoomMysetDeleteResponse>
+{
+    public int myset_index;
+    internal override string Url => "room/delete_myset";
+}
+
+public class RoomMysetListRequest : Request<RoomMysetListResponse>
+{
+    internal override string Url => "room/mysetlistpostparam";
+}
+
+public class RoomMysetRenameRequest : Request<RoomMysetRenameResponse>
+{
+    public int myset_index;
+    public string new_name;
+    internal override string Url => "room/rename_myset";
+}
+
+public class RoomMysetSaveRequest : Request<RoomMysetSaveResponse>
+{
+    public int myset_index;
+    public int background_theme;
+    public RoomFloorLayoutForMyset floor_layout;
+    internal override string Url => "room/save_myset";
+}
+
+public class RoomReceiveItemAllRequest : Request<RoomReceiveItemAllResponse>
+{
+    internal override string Url => "room/receiveitemallpostparam";
+}
+
+public class RoomReceiveItemRequest : Request<RoomReceiveItemResponse>
+{
+    public int serial_id;
+    internal override string Url => "room/receive";
+}
+
+public class RoomStartRequest : Request<RoomStartResponse>
+{
+    internal override string Url => "room/start";
+}
+
+public class RoomUpdateRequest : Request<RoomUpdateResponse>
+{
+    public int floor_number;
+    public RoomFloorLayout layout;
+    public int background_theme;
+    internal override string Url => "room/update";
+}
+
+public class RoomVisitRequest : Request<RoomVisitResponse>
+{
+    public long target_viewer_id;
+    internal override string Url => "room/visit";
+}
+
+public class SeasonPassBuyLevelRequest : Request<SeasonPassBuyLevelResponse>
+{
+    public int season_id;
+    public int current_currency_num;
+    public int cost_jewel_num;
+    public int current_level;
+    public int add_level;
+    internal override string Url => "season_pass/uylevelpostparam";
+}
+
+public class SeasonPassIndexRequest : Request<SeasonPassIndexResponse>
+{
+    public int season_id;
+    internal override string Url => "season_pass/ndexpostparam";
+}
+
+public class SeasonPassMissionAcceptRequest : Request<SeasonPassMissionAcceptResponse>
+{
+    public int season_id;
+    public int mission_id;
+    internal override string Url => "season_pass/issionacceptpostparam";
+}
+
+public class SeasonPassRewardAcceptRequest : Request<SeasonPassRewardAcceptResponse>
+{
+    public int season_id;
+    public int level;
+    public int index;
+    internal override string Url => "season_pass/ewardacceptpostparam";
+}
+
+public class SekaiBossInfoRequest : Request<SekaiBossInfoResponse>
+{
+    public int sekai_id;
+    internal override string Url => "sekai/bossinfopostparam";
+}
+
+public class SekaiFinishRequest : Request<SekaiFinishResponse>
+{
+    public int sekai_id;
+    public BossBattleFinishUnit user_unit;
+    public long boss_hp;
+    public int boss_damage;
+    public int remain_time;
+    public long total_damage;
+    public long score;
     public int battle_log_id;
-    public int seed;
-    public UserGold user_gold;
+    internal override string Url => "sekai/finish";
+}
+
+public class SekaiHistoryReportRequest : Request<SekaiHistoryReportResponse>
+{
+    public int sekai_id;
+    public int history_id;
+    public long history_viewer_id;
+    internal override string Url => "sekai/history_report";
+}
+
+public class SekaiRankingInClanRequest : Request<SekaiRankingInClanResponse>
+{
+    public int clan_id;
+    public int sekai_id;
+    internal override string Url => "sekai/ranking_in_clan";
+}
+
+public class SekaiRankingRequest : Request<SekaiRankingResponse>
+{
+    public int sekai_id;
+    public int page;
+    public int is_mine;
+    internal override string Url => "sekai/ranking";
+}
+
+public class SekaiRetireRequest : Request<SekaiRetireResponse>
+{
+    public int clan_id;
+    public int sekai_id;
+    internal override string Url => "sekai/retire";
+}
+
+public class SekaiStartRequest : Request<SekaiStartResponse>
+{
+    public int sekai_id;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public string token;
+    internal override string Url => "sekai/start";
+}
+
+public class SekaiSupportUnitList2Request : Request<SekaiSupportUnitList2Response>
+{
+    public int clan_id;
+    internal override string Url => "sekai/support_unit_list_2";
+}
+
+public class SekaiTopRequest : Request<SekaiTopResponse>
+{
+    internal override string Url => "sekai/toppostparam";
+}
+
+public class SellItemRequest : Request<SellItemResponse>
+{
+    public int item_type;
+    public int item_id;
+    public int item_num;
+    public int current_item_num;
+    internal override string Url => "item/sell";
+}
+
+public class SendBattleLogCsvRequest : Request<SendBattleLogCsvResponse>
+{
+    public int battle_log_id;
+    public int frame_rate;
+    public string battle_log;
+    public int system_id;
+    internal override string Url => "log/battle_log2";
+}
+
+public class SerialCodeRegisterRequest : Request<SerialCodeRegisterResponse>
+{
+    public string serial_code;
+    internal override string Url => "serial_code/register";
+}
+
+public class SetMyPartyRequest : Request<SetMyPartyResponse>
+{
+    public int tab_number;
+    public int party_number;
+    public int party_label_type;
+    public string party_name;
+    public int unit_id_1;
+    public int unit_id_2;
+    public int unit_id_3;
+    public int unit_id_4;
+    public int unit_id_5;
+    internal override string Url => "my_party/set_party";
+}
+
+public class SetMyPartyTabRequest : Request<SetMyPartyTabResponse>
+{
+    public int tab_number;
+    public string tab_name;
+    internal override string Url => "my_party/set_tab";
+}
+
+public class ShioriBossBattleFinishRequest : Request<ShioriBossBattleFinishResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public HatsuneBossBattleFinishUnit user_unit;
+    public int remain_time;
+    public int total_damage;
+    public int battle_log_id;
+    internal override string Url => "event/shiori/boss_battle_finish";
+}
+
+public class ShioriBossBattleRetireRequest : Request<ShioriBossBattleRetireResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public int battle_log_id;
+    internal override string Url => "event/shiori/boss_battle_retire";
+}
+
+public class ShioriBossBattleStartRequest : Request<ShioriBossBattleStartResponse>
+{
+    public int event_id;
+    public int boss_id;
+    public string token;
+    internal override string Url => "event/shiori/boss_battle_start";
+}
+
+public class ShioriDearFinishRequest : Request<ShioriDearFinishResponse>
+{
+    public int event_id;
+    public int story_id;
+    public int choice;
+    internal override string Url => "event/shiori/dear_finish";
+}
+
+public class ShioriDearTopRequest : Request<ShioriDearTopResponse>
+{
+    public int event_id;
+    internal override string Url => "event/shiori/dear_top";
+}
+
+public class ShioriEventTopRequest : Request<ShioriEventTopResponse>
+{
+    public int event_id;
+    internal override string Url => "event/shiori/event_top";
+}
+
+public class ShioriFavoriteRequest : Request<ShioriFavoriteResponse>
+{
+    public int event_id;
+    public int favorite_flag;
+    internal override string Url => "event/shiori/favorite";
+}
+
+public class ShioriMissionAcceptRequest : Request<ShioriMissionAcceptResponse>
+{
+    public int event_id;
+    public int type;
+    public int id;
+    public int buy_id;
+    internal override string Url => "event/shiori/mission_accept";
+}
+
+public class ShioriMissionIndexRequest : Request<ShioriMissionIndexResponse>
+{
+    public int event_id;
+    internal override string Url => "event/shiori/mission_index";
+}
+
+public class ShioriQuestFinishRequest : Request<ShioriQuestFinishResponse>
+{
+    public int event_id;
+    public int quest_id;
+    public int remain_time;
+    public long owner_viewer_id;
     public int support_position;
-}
-
-public class ShioriQuizAnswerResponse : ResponseBase
-{
-    public int is_correct;
-    public int[] unlock_quest_list;
-    public int[] unlock_quiz;
-    public int add_present_count;
-}
-
-public class ShioriTopResponse : ResponseBase
-{
-    public int[] new_event_list;
-    public int[] clear_event_list;
-    public int[] my_select_list;
-}
-
-public class ShopAlchemyResponse : ResponseBase
-{
-    public int team_level;
-    public int[] gold;
-    public AlchemyReward[] alchemy_reward_list;
-    public int paid_jewel;
-    public int free_jewel;
-    public int paid_gold;
-    public int free_gold;
-    public Alchemy alchemy;
-    public UserJewel user_jewel;
-    public UserGold user_gold;
-    public long alchemy_reward_time;
-}
-
-public class ShopBuyMultipleResponse : ResponseBase
-{
-    public InventoryInfo[] purchase_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-}
-
-public class ShopBuyResponse : ResponseBase
-{
-    public InventoryInfo[] purchase_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public UserJewel user_jewel;
-}
-
-public class ShopCloseDailyShopResponse : ResponseBase
-{
-}
-
-public class ShopCloseLimitedShopResponse : ResponseBase
-{
-}
-
-public class ShopComebackTutorialDailyShopResponse : ResponseBase
-{
-    public DailyShop daily_shop;
-}
-
-public class ShopItemListResponse : ResponseBase
-{
-    public ShopInfo[] shop_list;
-    public int is_got_csc;
-}
-
-public class ShopRecoverStaminaResponse : ResponseBase
-{
-    public RecoverStamina recover_stamina;
-    public UserJewel user_jewel;
-    public UserStaminaInfo user_info;
-}
-
-public class ShopResetResponse : ResponseBase
-{
-    public ShopInfo shop;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
-    public UserJewel user_jewel;
-}
-
-public class SkillLevelUpResponse : ResponseBase
-{
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-}
-
-public class SkillRemoveFreeResponse : ResponseBase
-{
-    public UnitData unit_data;
-}
-
-public class SkillSetFreeResponse : ResponseBase
-{
-    public UnitData unit_data;
-}
-
-public class SpaceFinishResponse : ResponseBase
-{
-    public int damage_result;
-    public InventoryInfo[] rewards;
-    public UserGold user_gold;
-    public int add_present_count;
-}
-
-public class SpaceRetireResponse : ResponseBase
-{
-}
-
-public class SpaceStartResponse : ResponseBase
-{
-    public UnitData boss_unit_data;
-    public long limit_time;
+    public int is_friend;
     public int battle_log_id;
-    public int seed;
+    internal override string Url => "event/shiori/quest_finish";
 }
 
-public class SpaceStoryCheckResponse : ResponseBase
+public class ShioriQuestRetireRequest : Request<ShioriQuestRetireResponse>
 {
+    public int event_id;
+    public int quest_id;
+    public int battle_log_id;
+    internal override string Url => "event/shiori/quest_retire";
 }
 
-public class SpaceStoryStartResponse : ResponseBase
+public class ShioriQuestSkipRequest : Request<ShioriQuestSkipResponse>
 {
+    public int event_id;
+    public int quest_id;
+    public int use_ticket_num;
+    public int current_ticket_num;
+    internal override string Url => "event/shiori/quest_skip";
 }
 
-public class SpaceSupportUnitList2Response : ResponseBase
+public class ShioriQuestStartRequest : Request<ShioriQuestStartResponse>
 {
-    public ClanBattleSupportUnitLight[] support_unit_list;
+    public int event_id;
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    public int is_friend;
+    internal override string Url => "event/shiori/quest_start";
 }
 
-public class SpaceTopResponse : ResponseBase
+public class ShioriQuizAnswerRequest : Request<ShioriQuizAnswerResponse>
+{
+    public int event_id;
+    public int quiz_id;
+    public int choice;
+    internal override string Url => "event/shiori/quiz_answer";
+}
+
+public class ShioriTopRequest : Request<ShioriTopResponse>
+{
+    internal override string Url => "shiori/toppostparam";
+}
+
+public class ShopAlchemyRequest : Request<ShopAlchemyResponse>
+{
+    public int multiple_count;
+    public int pay_or_free;
+    public int current_currency_num;
+    internal override string Url => "shop/alchemy";
+}
+
+public class ShopBuyMultipleRequest : Request<ShopBuyMultipleResponse>
+{
+    public int system_id;
+    public int current_currency_num;
+    internal override string Url => "shop/buy_multiple";
+}
+
+public class ShopBuyRequest : Request<ShopBuyResponse>
+{
+    public int system_id;
+    public int slot_id;
+    public int current_currency_num;
+    public int number;
+    public int total_price;
+    internal override string Url => "shop/buy";
+}
+
+public class ShopCloseDailyShopRequest : Request<ShopCloseDailyShopResponse>
+{
+    public int system_id;
+    internal override string Url => "shop/close_daily_shop";
+}
+
+public class ShopCloseLimitedShopRequest : Request<ShopCloseLimitedShopResponse>
+{
+    public int system_id;
+    public int appear_count;
+    public long close_time;
+    internal override string Url => "shop/close_limited_shop";
+}
+
+public class ShopComebackTutorialDailyShopRequest : Request<ShopComebackTutorialDailyShopResponse>
+{
+    internal override string Url => "shop/comebacktutorialdailyshoppostparam";
+}
+
+public class ShopItemListRequest : Request<ShopItemListResponse>
+{
+    internal override string Url => "shop/itemlistpostparam";
+}
+
+public class ShopRecoverStaminaRequest : Request<ShopRecoverStaminaResponse>
+{
+    public int current_currency_num;
+    internal override string Url => "shop/recover_stamina";
+}
+
+public class ShopResetRequest : Request<ShopResetResponse>
+{
+    public int system_id;
+    public int current_currency_num;
+    internal override string Url => "shop/reset";
+}
+
+public class SkillLevelUpRequest : Request<SkillLevelUpResponse>
+{
+    public int unit_id;
+    internal override string Url => "skill/level_up";
+}
+
+public class SkillRemoveFreeRequest : Request<SkillRemoveFreeResponse>
+{
+    public int unit_id;
+    public int location;
+    internal override string Url => "skill/remove_free";
+}
+
+public class SkillSetFreeRequest : Request<SkillSetFreeResponse>
+{
+    public int unit_id;
+    public int location;
+    public int origin_unit_id;
+    public int origin_location;
+    internal override string Url => "skill/set_free";
+}
+
+public class SpaceFinishRequest : Request<SpaceFinishResponse>
 {
     public int space_id;
-    public int progress;
     public int space_battle_id;
-    public int boss_hp;
+    public BossBattleFinishUnit user_unit;
+    public long total_damage;
+    public int remain_time;
+    public int battle_log_id;
+    internal override string Url => "space/finish";
 }
 
-public class SrtFinishResponse : ResponseBase
+public class SpaceRetireRequest : Request<SpaceRetireResponse>
 {
-    public int turn_num_bonus;
-    public int answer_time_bonus;
-    public int wrong_num_bonus;
-    public int current_score;
-    public int total_score_all;
-    public InventoryInfo[] special_reward_list;
-    public int add_present_count;
+    public int space_id;
+    public int space_battle_id;
+    public int battle_log_id;
+    internal override string Url => "space/retire";
 }
 
-public class SrtReadCatalogResponse : ResponseBase
+public class SpaceStartRequest : Request<SpaceStartResponse>
 {
+    public int space_id;
+    public int space_battle_id;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public string token;
+    internal override string Url => "space/start";
 }
 
-public class SrtStartResponse : ResponseBase
+public class SpaceStoryCheckRequest : Request<SpaceStoryCheckResponse>
+{
+    public int story_id;
+    internal override string Url => "space/story_check";
+}
+
+public class SpaceStoryStartRequest : Request<SpaceStoryStartResponse>
+{
+    public int story_id;
+    public int space_id;
+    public int progress;
+    internal override string Url => "space/story_start";
+}
+
+public class SpaceSupportUnitList2Request : Request<SpaceSupportUnitList2Response>
+{
+    public int clan_id;
+    internal override string Url => "space/support_unit_list_2";
+}
+
+public class SpaceTopRequest : Request<SpaceTopResponse>
+{
+    internal override string Url => "space/toppostparam";
+}
+
+public class SrtFinishRequest : Request<SrtFinishResponse>
 {
     public int play_id;
-    public int seed;
-    public int answer_limit_time;
-}
-
-public class SrtTopResponse : ResponseBase
-{
-    public int total_score_all;
-    public SrtHighScoreInfo high_score_info;
-    public SrtCatalogInfo[] catalog_info;
-}
-
-public class StoryForceReleaseResponse : ResponseBase
-{
-}
-
-public class StoryMaintenanceCheckResponse : ResponseBase
-{
-}
-
-public class StoryQuestStartResponse : ResponseBase
-{
-    public WaveEnemyInfoList[] quest_wave_info;
-    public int limit_time;
-    public int quest_id;
-    public UnitData[] enemy_list;
-    public UserStaminaInfo user_info;
-    public UnitData[] guest_data;
-}
-
-public class StoryViewingResponse : ResponseBase
-{
-    public InventoryInfo[] reward_info;
-    public ReleaseContentData[] release_contents;
-    public int add_present_count;
-    public int[] unlock_story_ids;
-    public int event_id;
-    public int[] unlocked_sub_story_list;
-}
-
-public class SubStoryLtoReadStoryResponse : ResponseBase
-{
-    public InventoryInfo[] reward_info;
-}
-
-public class SubStorySkeConfirmResponse : ResponseBase
-{
-}
-
-public class SubStorySkeReadStoryResponse : ResponseBase
-{
-    public EventSubStoryInfo new_sub_story_info;
-}
-
-public class SubStorySspReadSspStoryResponse : ResponseBase
-{
-}
-
-public class SupportUnitChangeSettingResponse : ResponseBase
-{
-    public SupportUnitSetting support_units;
-    public InventoryInfo[] support_time_bonus;
-    public InventoryInfo[] support_count_bonus;
-    public int add_present_count;
-}
-
-public class SupportUnitGetSettingResponse : ResponseBase
-{
-    public SupportUnitSetting[] friend_support_units;
-    public SupportUnitSetting[] clan_support_units;
-    public int clan_support_available_status;
-}
-
-public class TestBuyTicketResponse : ResponseBase
-{
-    public int ticket_status;
-}
-
-public class TowerBattleFinishResponse : ResponseBase
-{
-    public int quest_id;
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public UserGold user_gold;
-    public bool flag_exchange_team_exp;
-    public InventoryInfo[] reward_list;
-    public int add_present_count;
-    public ClanPoint clan_point;
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerBattleRetireResponse : ResponseBase
-{
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerBattleSkipResponse : ResponseBase
-{
-    public UserGold user_gold;
-    public int add_present_count;
-}
-
-public class TowerBattleStartResponse : ResponseBase
-{
-    public UnitData[] user_unit;
-    public UnitData[] versus_user_unit;
-    public UserStaminaInfo user_info;
-    public UserGold user_gold;
-    public int battle_log_id;
-    public int seed;
-    public int support_unit_hp;
-}
-
-public class TowerCloisterBattleFinishResponse : ResponseBase
-{
-    public int quest_id;
-    public UserGold user_gold;
-    public int add_present_count;
-    public TowerClanMemberInfo[] clan_member_info;
-    public int cloister_remain_clear_count;
-    public int is_joined_clan;
-}
-
-public class TowerCloisterBattleRetireResponse : ResponseBase
-{
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerCloisterBattleStartResponse : ResponseBase
-{
-    public UnitData[] user_unit;
-    public UnitData[] versus_user_unit1;
-    public UnitData[] versus_user_unit2;
-    public UnitData[] versus_user_unit3;
-    public UserGold user_gold;
-    public int battle_log_id;
-    public int seed;
-    public InventoryInfo[] reward_list;
-    public int support_unit_hp;
-}
-
-public class TowerExBattleFinishResponse : ResponseBase
-{
-    public int quest_id;
-    public LevelInfo level_info;
-    public UserStaminaInfo user_info;
-    public UserGold user_gold;
-    public bool flag_exchange_team_exp;
-    public int add_present_count;
-    public ClanPoint clan_point;
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerExBattleRetireResponse : ResponseBase
-{
-}
-
-public class TowerExBattleStartResponse : ResponseBase
-{
-    public int[] battle_log_ids;
-    public int[] seed_list;
-    public TowerExPartyInfo user_party_list;
-    public UnitData[] versus_user_unit;
-    public UserStaminaInfo user_info;
-    public UserGold user_gold;
-}
-
-public class TowerExSupportUnitList2Response : ResponseBase
-{
-    public TowerExDispatchUnitLight[] support_unit_list;
-}
-
-public class TowerExSupportUnitListResponse : ResponseBase
-{
-    public TowerExDispatchUnit[] support_unit_list;
-}
-
-public class TowerRehearsalFinishResponse : ResponseBase
-{
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerRehearsalRetireResponse : ResponseBase
-{
-    public TowerClanMemberInfo[] clan_member_info;
-    public int is_joined_clan;
-}
-
-public class TowerRehearsalStartResponse : ResponseBase
-{
-    public UnitData[] user_unit;
-    public UnitData[] versus_user_unit;
-    public int battle_log_id;
-    public int seed;
-    public int support_unit_hp;
-}
-
-public class TowerReplayListResponse : ResponseBase
-{
-    public TowerReplaySummary[] replay_list;
-}
-
-public class TowerReplayResponse : ResponseBase
-{
-    public int[] seed_list;
-    public TowerReplayPartyStatusList party_status_list;
-    public TowerReplayPartyList party_list;
-    public UnitData[] versus_user_unit;
-}
-
-public class TowerReplayReportResponse : ResponseBase
-{
-}
-
-public class TowerResetResponse : ResponseBase
-{
-    public int remain_reset_count;
-}
-
-public class TowerSupportUnitList2Response : ResponseBase
-{
-    public ClanDispatchUnitLight[] support_unit_list;
-}
-
-public class TowerSupportUnitListResponse : ResponseBase
-{
-    public ClanDispatchUnit[] support_unit_list;
-}
-
-public class TowerTopResponse : ResponseBase
-{
-    public int next_quest_id;
-    public TowerUnit[] user_unit;
-    public TowerUnit[] versus_user_unit;
-    public TowerClanMemberInfo[] clan_member_info;
-    public int remain_reset_count;
-    public int[] cleared_ex_quest_ids;
-    public int is_joined_clan;
-    public int last_login_schedule_id;
-    public int wave;
-    public int cloister_remain_clear_count;
-    public int cloister_first_cleared_flag;
-}
-
-public class TrainingQuestFinishResponse : ResponseBase
-{
-    public LevelInfo level_info;
-    public int quest_id;
-    public int clear_flag;
     public int result_type;
-    public TrainingQuestCount quest_challenge_count;
-    public InventoryInfo[] rewards;
-    public int add_present_count;
-    public UserStaminaInfo user_info;
-    public UserGold user_gold;
+    public int base_score;
+    public int turn_num;
+    public int avg_answer_time;
+    public int wrong_num;
+    internal override string Url => "srt/finish";
 }
 
-public class TrainingQuestRetireResponse : ResponseBase
+public class SrtReadCatalogRequest : Request<SrtReadCatalogResponse>
 {
+    internal override string Url => "srt/readcatalogpostparam";
 }
 
-public class TrainingQuestSkipResponse : ResponseBase
+public class SrtStartRequest : Request<SrtStartResponse>
 {
-    public QuestResult[] quest_result_list;
-    public InventoryInfo[] bonus_reward_list;
-    public LevelInfo level_info;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
-    public InventoryInfo[] item_list;
-    public UserStaminaInfo user_info;
-    public int daily_clear_count;
-    public TrainingQuestCount quest_challenge_count;
-    public int add_present_count;
+    public int difficulty_level;
+    public int priconne_mode;
+    internal override string Url => "srt/start";
 }
 
-public class TrainingQuestStartResponse : ResponseBase
+public class SrtTopRequest : Request<SrtTopResponse>
 {
-    public WaveEnemyInfoList[] quest_wave_info;
-    public int limit_time;
+    internal override string Url => "srt/toppostparam";
+}
+
+public class StoryForceReleaseRequest : Request<StoryForceReleaseResponse>
+{
+    public int story_group_id;
+    internal override string Url => "story/force_release";
+}
+
+public class StoryMaintenanceCheckRequest : Request<StoryMaintenanceCheckResponse>
+{
+    public int story_id;
+    internal override string Url => "story/check";
+}
+
+public class StoryQuestStartRequest : Request<StoryQuestStartResponse>
+{
     public int quest_id;
-    public UnitData[] enemy_list;
-    public UserStaminaInfo user_info;
-    public int battle_log_id;
-    public SkinDataForRequest[] skin_data_for_request;
-    public int seed;
-    public UserGold user_gold;
+    internal override string Url => "story/quest_start";
+}
+
+public class StoryViewingRequest : Request<StoryViewingResponse>
+{
+    public int story_id;
+    internal override string Url => "story/start";
+}
+
+public class SubStoryLtoReadStoryRequest : Request<SubStoryLtoReadStoryResponse>
+{
+    public int sub_story_id;
+    internal override string Url => "sub_story/lto/read_story";
+}
+
+public class SubStorySkeConfirmRequest : Request<SubStorySkeConfirmResponse>
+{
+}
+
+public class SubStorySkeReadStoryRequest : Request<SubStorySkeReadStoryResponse>
+{
+    public int sub_story_id;
+    internal override string Url => "sub_story/ske/read_story";
+}
+
+public class SubStorySspReadSspStoryRequest : Request<SubStorySspReadSspStoryResponse>
+{
+    public int sub_story_id;
+    internal override string Url => "sub_story/ssp/read_ssp_story";
+}
+
+public class SupportUnitChangeSettingRequest : Request<SupportUnitChangeSettingResponse>
+{
+    public int support_type;
+    public int position;
+    public int action;
+    public int unit_id;
+    internal override string Url => "support_unit/change_setting";
+}
+
+public class SupportUnitGetSettingRequest : Request<SupportUnitGetSettingResponse>
+{
+    internal override string Url => "support_unit/etsettingpostparam";
+}
+
+public class TestBuyTicketRequest : Request<TestBuyTicketResponse>
+{
+    public int season_id;
+    internal override string Url => "test/buyticketpostparam";
+}
+
+public class TowerBattleFinishRequest : Request<TowerBattleFinishResponse>
+{
+    public int quest_id;
+    public int remain_time;
+    public int fps;
+    public int auto_clear;
+    internal override string Url => "tower/battle_finish";
+}
+
+public class TowerBattleRetireRequest : Request<TowerBattleRetireResponse>
+{
+    public int quest_id;
+    internal override string Url => "tower/battle_retire";
+}
+
+public class TowerBattleSkipRequest : Request<TowerBattleSkipResponse>
+{
+    internal override string Url => "tower/battleskippostparam";
+}
+
+public class TowerBattleStartRequest : Request<TowerBattleStartResponse>
+{
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    internal override string Url => "tower/battle_start";
+}
+
+public class TowerCloisterBattleFinishRequest : Request<TowerCloisterBattleFinishResponse>
+{
+    public int quest_id;
+    public int wave;
+    public int remain_time;
+    public int fps;
+    public int auto_clear;
+    internal override string Url => "tower/cloister_battle_finish";
+}
+
+public class TowerCloisterBattleRetireRequest : Request<TowerCloisterBattleRetireResponse>
+{
+    public int quest_id;
+    internal override string Url => "tower/cloister_battle_retire";
+}
+
+public class TowerCloisterBattleStartRequest : Request<TowerCloisterBattleStartResponse>
+{
+    public int quest_id;
+    public int wave;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    internal override string Url => "tower/cloister_battle_start";
+}
+
+public class TowerExBattleFinishRequest : Request<TowerExBattleFinishResponse>
+{
+    public int quest_id;
+    public int total_damage;
+    public int fps;
+    public int auto_clear;
+    internal override string Url => "tower/ex_battle_finish";
+}
+
+public class TowerExBattleRetireRequest : Request<TowerExBattleRetireResponse>
+{
+    public int quest_id;
+    internal override string Url => "tower/ex_battle_retire";
+}
+
+public class TowerExBattleStartRequest : Request<TowerExBattleStartResponse>
+{
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    internal override string Url => "tower/ex_battle_start";
+}
+
+public class TowerExSupportUnitList2Request : Request<TowerExSupportUnitList2Response>
+{
+    internal override string Url => "tower/exsupportunitlist2postparam";
+}
+
+public class TowerExSupportUnitListRequest : Request<TowerExSupportUnitListResponse>
+{
+    internal override string Url => "tower/exsupportunitlistpostparam";
+}
+
+public class TowerRehearsalFinishRequest : Request<TowerRehearsalFinishResponse>
+{
+    public int quest_id;
+    public int remain_time;
+    public int fps;
+    public int auto_clear;
+    internal override string Url => "tower/rehearsal_finish";
+}
+
+public class TowerRehearsalRetireRequest : Request<TowerRehearsalRetireResponse>
+{
+    public int quest_id;
+    internal override string Url => "tower/rehearsalretirepostparam";
+}
+
+public class TowerRehearsalStartRequest : Request<TowerRehearsalStartResponse>
+{
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    internal override string Url => "tower/rehearsal_start";
+}
+
+public class TowerReplayListRequest : Request<TowerReplayListResponse>
+{
+    public int quest_id;
+    public int fps;
+    public int team_level;
+    internal override string Url => "tower/replay_list";
+}
+
+public class TowerReplayRequest : Request<TowerReplayResponse>
+{
+    public int quest_id;
+    public int fps;
+    public string enc_key;
+    internal override string Url => "tower/replay";
+}
+
+public class TowerReplayReportRequest : Request<TowerReplayReportResponse>
+{
+    public int quest_id;
+    public int fps;
+    public string enc_key;
+    internal override string Url => "tower/replay_report";
+}
+
+public class TowerResetRequest : Request<TowerResetResponse>
+{
+    internal override string Url => "tower/resetpostparam";
+}
+
+public class TowerSupportUnitList2Request : Request<TowerSupportUnitList2Response>
+{
+    internal override string Url => "tower/supportunitlist2postparam";
+}
+
+public class TowerSupportUnitListRequest : Request<TowerSupportUnitListResponse>
+{
+    internal override string Url => "tower/supportunitlistpostparam";
+}
+
+public class TowerTopRequest : Request<TowerTopResponse>
+{
+    public int is_first;
+    public int return_cleared_ex_quest;
+    internal override string Url => "tower/top";
+}
+
+public class TrainingQuestFinishRequest : Request<TrainingQuestFinishResponse>
+{
+    public int quest_id;
+    public int remain_time;
+    public long owner_viewer_id;
     public int support_position;
+    public int is_friend;
+    internal override string Url => "training_quest/finish";
 }
 
-public class TtkChooseWeaponResponse : ResponseBase
+public class TrainingQuestRetireRequest : Request<TrainingQuestRetireResponse>
 {
+    public int quest_id;
+    internal override string Url => "training_quest/retire";
 }
 
-public class TtkFinishResponse : ResponseBase
+public class TrainingQuestSkipRequest : Request<TrainingQuestSkipResponse>
 {
-    public int life_num_bonus;
-    public int coin_num_bonus;
-    public int current_score;
-    public int total_score_all;
-    public InventoryInfo[] special_reward_list;
-    public int add_present_count;
+    public int quest_id;
+    public int random_count;
+    public int current_ticket_num;
+    internal override string Url => "training_quest/quest_skip";
 }
 
-public class TtkReadCatalogResponse : ResponseBase
+public class TrainingQuestStartRequest : Request<TrainingQuestStartResponse>
 {
+    public int quest_id;
+    public string token;
+    public long owner_viewer_id;
+    public int support_unit_id;
+    public int support_battle_rarity;
+    public int is_friend;
+    internal override string Url => "training_quest/start";
 }
 
-public class TtkReadStoryResponse : ResponseBase
+public class TtkChooseWeaponRequest : Request<TtkChooseWeaponResponse>
 {
+    public int weapon_id;
+    internal override string Url => "ttk/choose_weapon";
 }
 
-public class TtkStartResponse : ResponseBase
+public class TtkFinishRequest : Request<TtkFinishResponse>
 {
     public int play_id;
-    public int seed;
+    public int base_score;
+    public int coin_num;
+    public int remain_life;
+    public int elapsed_frame;
+    internal override string Url => "ttk/finish";
 }
 
-public class TtkTopResponse : ResponseBase
+public class TtkReadCatalogRequest : Request<TtkReadCatalogResponse>
 {
-    public int total_score_all;
-    public TtkHighScoreInfo high_score_info;
-    public int total_coin;
-    public int weapon_in_equipment;
-    public int[] unlocked_ttk_story_ids;
-    public int[] read_ttk_story_ids;
-    public TtkCatalogInfo[] catalog_info;
-    public int condition_emblem_coin;
+    internal override string Url => "ttk/readcatalogpostparam";
 }
 
-public class TutorialUpdateResponse : ResponseBase
+public class TtkReadStoryRequest : Request<TtkReadStoryResponse>
+{
+    public int ttk_story_id;
+    internal override string Url => "ttk/read_story";
+}
+
+public class TtkStartRequest : Request<TtkStartResponse>
+{
+    public int difficulty_level;
+    internal override string Url => "ttk/start";
+}
+
+public class TtkTopRequest : Request<TtkTopResponse>
+{
+    internal override string Url => "ttk/toppostparam";
+}
+
+public class TutorialUpdateRequest : Request<TutorialUpdateResponse>
 {
     public int step;
-    public InventoryInfo[] reward_info_list;
-    public DeckData[] deck_list;
-    public UserStaminaInfo stamina_info;
-    public PrologueFirstStep prologue_first;
-    public PrologueLatterDStep prologue_latter_d;
-    public QuestOneStep quest_one;
-    public EquipStep equip;
-    public GachaStep gacha;
-    public QuestTwoStep quest_two;
-    public MissionStep mission;
+    public int skip;
+    public string user_name;
+    internal override string Url => "tutorial/update_step";
 }
 
-public class UekBossBattleFinishResponse : ResponseBase
+public class UekBossBattleFinishRequest : Request<UekBossBattleFinishResponse>
 {
-    public int result_type;
-    public int damage_result;
-    public InventoryInfo[] treasure_rewards;
-}
-
-public class UekBossBattleRetireResponse : ResponseBase
-{
-}
-
-public class UekBossBattleStartResponse : ResponseBase
-{
+    public int enemy_id;
     public int battle_log_id;
-    public int seed;
+    public HatsuneBossBattleFinishUnit user_unit;
+    public int remain_time;
+    public int total_damage;
+    internal override string Url => "uek/boss_battle_finish";
 }
 
-public class UekTopResponse : ResponseBase
+public class UekBossBattleRetireRequest : Request<UekBossBattleRetireResponse>
 {
-    public int current_area;
-    public UserMissionInfo[] missions;
-    public UekBossInfo boss_info;
-    public InventoryInfo[] rewards;
-    public int add_present_count;
-    public bool upper_limit_flag;
-    public int[] unlocked_uek_story_ids;
+    public int enemy_id;
+    public int battle_log_id;
+    internal override string Url => "uek/boss_battle_retire";
 }
 
-public class UniqueEquipCraftResponse : ResponseBase
+public class UekBossBattleStartRequest : Request<UekBossBattleStartResponse>
 {
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_list;
-    public UserGold user_gold;
+    public int enemy_id;
+    internal override string Url => "uek/boss_battle_start";
 }
 
-public class UniqueEquipEnhanceResponse : ResponseBase
+public class UekTopRequest : Request<UekTopResponse>
 {
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] item_list;
+    public int event_id;
+    internal override string Url => "uek/uek_top";
 }
 
-public class UniqueEquipMultiEnhanceResponse : ResponseBase
+public class UniqueEquipCraftRequest : Request<UniqueEquipCraftResponse>
 {
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_list;
+    public int equip_id;
+    public int current_equip_num;
+    internal override string Url => "equipment/craft_unique";
 }
 
-public class UniqueEquipRankupResponse : ResponseBase
+public class UniqueEquipEnhanceRequest : Request<UniqueEquipEnhanceResponse>
 {
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_list;
+    public int unit_id;
+    public int equip_slot_num;
+    public int current_enhancement_pt;
+    internal override string Url => "equipment/enhance_unique";
 }
 
-public class UnitCraftEquipResponse : ResponseBase
+public class UniqueEquipMultiEnhanceRequest : Request<UniqueEquipMultiEnhanceResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
+    public int unit_id;
+    public int slot_id;
+    public int current_gold;
+    public EnhanceRecipe[] craft_equip_recipe;
+    public EnhanceRecipe[] craft_item_recepe;
+    public EnhanceRecipe[] rankup_equip_recipe;
+    public EnhanceRecipe[] rankup_item_recipe;
+    public EnhanceRecipe[] rankup_potion_recipe;
+    public int current_rank;
+    public int after_rank;
+    public EnhanceRecipe[] enhancement_item_list;
+    public int current_enhancement_pt;
+    internal override string Url => "equipment/multi_enhance_unique";
 }
 
-public class UnitCraftEquipUniqueResponse : ResponseBase
+public class UniqueEquipRankupRequest : Request<UniqueEquipRankupResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_data;
-    public UserGold user_gold;
+    public int unit_id;
+    public int equip_slot_num;
+    public int current_rank;
+    internal override string Url => "equipment/rankup_unique";
 }
 
-public class UnitEquipResponse : ResponseBase
+public class UnitCraftEquipRequest : Request<UnitCraftEquipResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo equip_data;
+    public int unit_id;
+    public int equip_slot_num;
+    internal override string Url => "unit/craft_equip";
 }
 
-public class UnitEvolutionRaritySixResponse : ResponseBase
+public class UnitCraftEquipUniqueRequest : Request<UnitCraftEquipUniqueResponse>
 {
-    public UnitData unit_data;
+    public int unit_id;
+    public int equip_slot_num;
+    internal override string Url => "unit/craft_equip_unique";
 }
 
-public class UnitEvolutionResponse : ResponseBase
+public class UnitEquipRequest : Request<UnitEquipResponse>
 {
-    public UnitData[] unit_data_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
+    public int unit_id;
+    public int equip_slot_num;
+    internal override string Url => "unit/equip";
 }
 
-public class UnitFavoriteResponse : ResponseBase
+public class UnitEvolutionRequest : Request<UnitEvolutionResponse>
 {
+    public int unit_id;
+    public int current_unit_rarity;
+    internal override string Url => "unit/evolutionpostparam";
 }
 
-public class UnitFreeAutomaticEnhanceResponse : ResponseBase
+public class UnitEvolutionRaritySixRequest : Request<UnitEvolutionRaritySixResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
+    public int unit_id;
+    public int current_unit_rarity;
+    internal override string Url => "unit/evolution_rarity_6";
 }
 
-public class UnitFreeEquipResponse : ResponseBase
+public class UnitFavoriteRequest : Request<UnitFavoriteResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
+    internal override string Url => "unit/favorite";
 }
 
-public class UnitFreeEvolutionResponse : ResponseBase
+public class UnitFreeAutomaticEnhanceRequest : Request<UnitFreeAutomaticEnhanceResponse>
 {
-    public UnitData unit_data;
+    public int unit_id;
+    public int after_level;
+    public int excludes_equip;
+    internal override string Url => "unit/free_automatic_enhance";
 }
 
-public class UnitFreeLevelUpResponse : ResponseBase
+public class UnitFreeEquipRequest : Request<UnitFreeEquipResponse>
 {
-    public UnitData unit_data;
+    public int unit_id;
+    internal override string Url => "unit/free_equip";
 }
 
-public class UnitFreeMultiEvolutionResponse : ResponseBase
+public class UnitFreeEvolutionRequest : Request<UnitFreeEvolutionResponse>
 {
-    public UnitData unit_data;
+    public int unit_id;
+    public int current_unit_rarity;
+    internal override string Url => "unit/freeevolutionpostparam";
 }
 
-public class UnitFreePromotionResponse : ResponseBase
+public class UnitFreeLevelUpRequest : Request<UnitFreeLevelUpResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] refund_items;
-    public int add_present_count;
-    public InventoryInfo[] equip_list;
+    public int unit_id;
+    public int after_level;
+    internal override string Url => "unit/free_level_up";
 }
 
-public class UnitGrowthEnhanceResponse : ResponseBase
+public class UnitFreeMultiEvolutionRequest : Request<UnitFreeMultiEvolutionResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] refund_items;
-    public int add_present_count;
-    public InventoryInfo[] equip_list;
+    public int unit_id;
+    public int current_rarity;
+    public int after_rarity;
+    internal override string Url => "unit/free_multi_evolution";
 }
 
-public class UnitMultiEquipResponse : ResponseBase
+public class UnitFreePromotionRequest : Request<UnitFreePromotionResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
+    public int unit_id;
+    public int target_promotion_level;
+    internal override string Url => "unit/free_promotion";
 }
 
-public class UnitMultiEvolutionResponse : ResponseBase
+public class UnitGrowthEnhanceRequest : Request<UnitGrowthEnhanceResponse>
 {
-    public UnitData[] unit_data_list;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
+    public int unit_id;
+    public int target_promotion_level;
+    internal override string Url => "unit/growth_enhance";
 }
 
-public class UnitMultiPromotionResponse : ResponseBase
+public class UnitMultiEquipRequest : Request<UnitMultiEquipResponse>
 {
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_data;
-    public InventoryInfo[] refund_items;
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public int add_present_count;
+    public int unit_id;
+    internal override string Url => "unit/multi_equip";
 }
 
-public class UnitPromotionResponse : ResponseBase
+public class UnitMultiEvolutionRequest : Request<UnitMultiEvolutionResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] refund_items;
-    public int add_present_count;
+    public int unit_id;
+    public int current_rarity;
+    public int after_rarity;
+    public int current_gold_num;
+    public int current_memory_piece_num;
+    internal override string Url => "unit/multi_evolution";
 }
 
-public class UnitSetGrowthItemResponse : ResponseBase
+public class UnitMultiPromotionRequest : Request<UnitMultiPromotionResponse>
 {
-    public InventoryInfo[] item_data;
-    public GrowthInfo growth_unit_info;
+    public int target_promotion_level;
+    public int unit_id;
+    internal override string Url => "unit/multi_promotion";
 }
 
-public class UnitUniqueEquipResponse : ResponseBase
+public class UnitPromotionRequest : Request<UnitPromotionResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo equip_data;
+    public int unit_id;
+    public int current_promotion_level;
+    internal override string Url => "unit/promotion";
 }
 
-public class UnlockRaritySixSlotResponse : ResponseBase
+public class UnitSetGrowthItemRequest : Request<UnitSetGrowthItemResponse>
 {
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] item_data;
+    public int unit_id;
+    public int item_id;
+    internal override string Url => "unit/set_growth_item";
 }
 
-public class UnlockUnitResponse : ResponseBase
+public class UnitUniqueEquipRequest : Request<UnitUniqueEquipResponse>
 {
-    public UnitData unit_data;
-    public InventoryInfo[] item_data;
+    public int unit_id;
+    public int equip_slot_num;
+    internal override string Url => "unit/equip_unique";
 }
 
-public class UpdateSkipQuestListResponse : ResponseBase
+public class UnlockRaritySixSlotRequest : Request<UnlockRaritySixSlotResponse>
 {
+    public int unit_id;
+    public int slot_id;
+    public int current_unlock_level;
+    internal override string Url => "unit/unlock_rarity_6_slot";
 }
 
-public class UpdateTabResponse : ResponseBase
+public class UnlockUnitRequest : Request<UnlockUnitResponse>
 {
+    public int unit_id;
+    internal override string Url => "unit/unlock_unit";
 }
 
-public class UseExpItemResponse : ResponseBase
+public class UpdateSkipQuestListRequest : Request<UpdateSkipQuestListResponse>
 {
-    public InventoryInfo[] item_data;
-    public UnitData unit_data;
+    internal override string Url => "my_quest/update_skip_quest_list";
 }
 
-public class UserInviteClanListResponse : ResponseBase
+public class UpdateTabRequest : Request<UpdateTabResponse>
 {
-    public InviteClanDetail[] list;
+    public int tab_number;
+    public string tab_name;
+    internal override string Url => "my_quest/update_tab";
 }
 
-public class VoteExecResponse : ResponseBase
+public class UseExpItemRequest : Request<UseExpItemResponse>
 {
+    public int unit_id;
+    internal override string Url => "item/exp";
 }
 
-public class VoteTopResponse : ResponseBase
+public class UserInviteClanListRequest : Request<UserInviteClanListResponse>
 {
-    public VotedUnit voted_unit;
-    public VoteRanking ranking;
+    public int page;
+    internal override string Url => "clan/invited_clan_list";
+}
+
+public class VoteExecRequest : Request<VoteExecResponse>
+{
+    public int vote_id;
+    public int unit_rarity;
+    public int unit_id;
+    internal override string Url => "vote/exec";
+}
+
+public class VoteTopRequest : Request<VoteTopResponse>
+{
+    public int vote_id;
+    internal override string Url => "vote/top";
 }
 
