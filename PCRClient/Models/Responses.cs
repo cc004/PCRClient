@@ -2,50 +2,50 @@ namespace PCRClient.Models;
 // ReSharper disable InconsistentNaming
 #pragma warning disable CS8618
 
-public class AcceptAgreementResponse : ResponseBase
+public partial class AcceptAgreementResponse : ResponseBase
 {
 }
 
-public class AddUserTipsResponse : ResponseBase
+public partial class AddUserTipsResponse : ResponseBase
 {
 }
 
-public class ArcadeBuyResponse : ResponseBase
+public partial class ArcadeBuyResponse : ResponseBase
 {
     public InventoryInfo[] item_data;
 }
 
-public class ArcadeReadStoryResponse : ResponseBase
+public partial class ArcadeReadStoryResponse : ResponseBase
 {
 }
 
-public class ArcadeStoryListResponse : ResponseBase
-{
-    public int[] story_id_list;
-}
-
-public class ArcadeSyncStoryListResponse : ResponseBase
+public partial class ArcadeStoryListResponse : ResponseBase
 {
     public int[] story_id_list;
 }
 
-public class ArcadeTopResponse : ResponseBase
+public partial class ArcadeSyncStoryListResponse : ResponseBase
+{
+    public int[] story_id_list;
+}
+
+public partial class ArcadeTopResponse : ResponseBase
 {
     public int[] arcade_id_list;
 }
 
-public class ArenaApplyResponse : ResponseBase
+public partial class ArenaApplyResponse : ResponseBase
 {
     public long battle_viewer_id;
     public int true_rank;
 }
 
-public class ArenaCancelResponse : ResponseBase
+public partial class ArenaCancelResponse : ResponseBase
 {
     public SearchOpponent[] search_opponent;
 }
 
-public class ArenaFinishResponse : ResponseBase
+public partial class ArenaFinishResponse : ResponseBase
 {
     public int old_record;
     public int new_record;
@@ -53,24 +53,24 @@ public class ArenaFinishResponse : ResponseBase
     public InventoryInfo highest_rank_reward;
 }
 
-public class ArenaHistoryDamageRankingResponse : ResponseBase
+public partial class ArenaHistoryDamageRankingResponse : ResponseBase
 {
     public UnitDataForView[] user_unit_list;
     public UnitDataForView[] opponent_unit_list;
     public UnitDamageInfo[] damage_list;
 }
 
-public class ArenaHistoryDetailResponse : ResponseBase
+public partial class ArenaHistoryDetailResponse : ResponseBase
 {
     public VersusResultDetail versus_result_detail;
 }
 
-public class ArenaHistoryResponse : ResponseBase
+public partial class ArenaHistoryResponse : ResponseBase
 {
     public VersusResult[] versus_result_list;
 }
 
-public class ArenaInfoResponse : ResponseBase
+public partial class ArenaInfoResponse : ResponseBase
 {
     public ArenaInfo arena_info;
     public DeckData attack_deck;
@@ -81,23 +81,23 @@ public class ArenaInfoResponse : ResponseBase
     public bool is_time_reward_max;
 }
 
-public class ArenaIntervalCancelResponse : ResponseBase
+public partial class ArenaIntervalCancelResponse : ResponseBase
 {
     public ArenaInfo arena_info;
     public UserJewel user_jewel;
 }
 
-public class ArenaMoveGroupResponse : ResponseBase
+public partial class ArenaMoveGroupResponse : ResponseBase
 {
     public ArenaInfo arena_info;
 }
 
-public class ArenaRankingResponse : ResponseBase
+public partial class ArenaRankingResponse : ResponseBase
 {
     public RankingSearchOpponent[] ranking;
 }
 
-public class ArenaReplayResponse : ResponseBase
+public partial class ArenaReplayResponse : ResponseBase
 {
     public int seed;
     public int is_challenge;
@@ -105,18 +105,18 @@ public class ArenaReplayResponse : ResponseBase
     public UnitData[] opponent_unit_list;
 }
 
-public class ArenaResetBattleNumberResponse : ResponseBase
+public partial class ArenaResetBattleNumberResponse : ResponseBase
 {
     public ArenaInfo arena_info;
     public UserJewel user_jewel;
 }
 
-public class ArenaSearchResponse : ResponseBase
+public partial class ArenaSearchResponse : ResponseBase
 {
     public SearchOpponent[] search_opponent;
 }
 
-public class ArenaStartResponse : ResponseBase
+public partial class ArenaStartResponse : ResponseBase
 {
     public long my_viewer_id;
     public long battle_viewer_id;
@@ -125,13 +125,13 @@ public class ArenaStartResponse : ResponseBase
     public ArenaWaveInfo[] wave_info_list;
 }
 
-public class ArenaTimeRewardAcceptResponse : ResponseBase
+public partial class ArenaTimeRewardAcceptResponse : ResponseBase
 {
     public InventoryInfo reward_info;
     public int add_present_count;
 }
 
-public class AutomaticEnhanceResponse : ResponseBase
+public partial class AutomaticEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] equip_list;
@@ -139,66 +139,66 @@ public class AutomaticEnhanceResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class AutomaticEquipEnhanceResponse : ResponseBase
+public partial class AutomaticEquipEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] item_list;
     public UserGold user_gold;
 }
 
-public class AutomaticEquipEnhanceUniqueResponse : ResponseBase
+public partial class AutomaticEquipEnhanceUniqueResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] item_list;
     public UserGold user_gold;
 }
 
-public class BaseResponse : ResponseBase
+public partial class BaseResponse : ResponseBase
 {
     public Notification notification;
 }
 
-public class ChangeRarityResponse : ResponseBase
+public partial class ChangeRarityResponse : ResponseBase
 {
     public UnitData[] unit_data_list;
 }
 
-public class ChangeRoleResponse : ResponseBase
+public partial class ChangeRoleResponse : ResponseBase
 {
     public ClanMemberInfo[] members;
 }
 
-public class ChangeSkinResponse : ResponseBase
+public partial class ChangeSkinResponse : ResponseBase
 {
 }
 
-public class CharaETicketExchangeResponse : ResponseBase
+public partial class CharaETicketExchangeResponse : ResponseBase
 {
     public InventoryInfo[] reward_info_list;
     public InventoryInfo[] item_data;
 }
 
-public class CharaETicketRewardsResponse : ResponseBase
+public partial class CharaETicketRewardsResponse : ResponseBase
 {
     public CharaExchangeTicketReward[] rewards;
 }
 
-public class CheckAgreementResponse : ResponseBase
+public partial class CheckAgreementResponse : ResponseBase
 {
     public AgreementStatus agreement;
     public AgreementStatus policy;
 }
 
-public class CheckExistClanResponse : ResponseBase
+public partial class CheckExistClanResponse : ResponseBase
 {
 }
 
-public class ClanBattleBossHistoryResponse : ResponseBase
+public partial class ClanBattleBossHistoryResponse : ResponseBase
 {
     public BossHistory[] boss_history;
 }
 
-public class ClanBattleBossInfoResponse : ResponseBase
+public partial class ClanBattleBossInfoResponse : ResponseBase
 {
     public DamageHistory[] damage_history;
     public int current_hp;
@@ -206,41 +206,41 @@ public class ClanBattleBossInfoResponse : ResponseBase
     public int fighter_num;
 }
 
-public class ClanBattleBossRankingInClanResponse : ResponseBase
+public partial class ClanBattleBossRankingInClanResponse : ResponseBase
 {
     public BossRankingInClan[] bosses;
     public BossRankingInClanSummary summary;
 }
 
-public class ClanBattleConfirmRehearsalMyLogResponse : ResponseBase
+public partial class ClanBattleConfirmRehearsalMyLogResponse : ResponseBase
 {
     public int is_full;
     public MyLog[] mylogs;
 }
 
-public class ClanBattleConfirmTrainingMyLogResponse : ResponseBase
+public partial class ClanBattleConfirmTrainingMyLogResponse : ResponseBase
 {
     public int is_full;
     public MyLog[] mylogs;
 }
 
-public class ClanBattleDamageReportResponse : ResponseBase
+public partial class ClanBattleDamageReportResponse : ResponseBase
 {
     public DamageReport[] damage_report;
     public int max_hp;
 }
 
-public class ClanBattleDeleteRehearsalMyLogResponse : ResponseBase
+public partial class ClanBattleDeleteRehearsalMyLogResponse : ResponseBase
 {
     public int mylog_count;
 }
 
-public class ClanBattleDeleteTrainingMyLogResponse : ResponseBase
+public partial class ClanBattleDeleteTrainingMyLogResponse : ResponseBase
 {
     public int mylog_count;
 }
 
-public class ClanBattleFinishResponse : ResponseBase
+public partial class ClanBattleFinishResponse : ResponseBase
 {
     public int acquired_gold;
     public UserGold user_gold;
@@ -253,33 +253,33 @@ public class ClanBattleFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class ClanBattleHistoryReportResponse : ResponseBase
+public partial class ClanBattleHistoryReportResponse : ResponseBase
 {
     public HistoryReport[] history_report;
     public int lap_num;
     public int order_num;
 }
 
-public class ClanBattleMissionIndexResponse : ResponseBase
+public partial class ClanBattleMissionIndexResponse : ResponseBase
 {
     public UserMissionInfo[] missions;
     public long daily_reset_time;
 }
 
-public class ClanBattleMyLogDetailResponse : ResponseBase
+public partial class ClanBattleMyLogDetailResponse : ResponseBase
 {
     public int lap_num;
     public int order_num;
 }
 
-public class ClanBattleMyLogResponse : ResponseBase
+public partial class ClanBattleMyLogResponse : ResponseBase
 {
     public MyLog[] actual_logs;
     public MyLog[] rehearsal_logs;
     public MyLog[] training_logs;
 }
 
-public class ClanBattlePeriodRankingResponse : ResponseBase
+public partial class ClanBattlePeriodRankingResponse : ResponseBase
 {
     public PeriodRanking[] period_ranking;
     public PeriodRanking my_clan_data;
@@ -288,13 +288,13 @@ public class ClanBattlePeriodRankingResponse : ResponseBase
     public int clan_battle_mode;
 }
 
-public class ClanBattleRehearsalFinishResponse : ResponseBase
+public partial class ClanBattleRehearsalFinishResponse : ResponseBase
 {
     public int damage_result;
     public int carry_over_time;
 }
 
-public class ClanBattleRehearsalStartResponse : ResponseBase
+public partial class ClanBattleRehearsalStartResponse : ResponseBase
 {
     public int limit_time;
     public UnitData enemy_data;
@@ -304,29 +304,29 @@ public class ClanBattleRehearsalStartResponse : ResponseBase
     public int current_hp;
 }
 
-public class ClanBattleReloadDetailInfoResponse : ResponseBase
+public partial class ClanBattleReloadDetailInfoResponse : ResponseBase
 {
     public int fighter_num;
     public int current_hp;
 }
 
-public class ClanBattleResetHpResponse : ResponseBase
+public partial class ClanBattleResetHpResponse : ResponseBase
 {
     public UserJewel user_jewel;
     public int[] used_unit;
 }
 
-public class ClanBattleSaveRehearsalMyLogResponse : ResponseBase
+public partial class ClanBattleSaveRehearsalMyLogResponse : ResponseBase
 {
     public int mylog_count;
 }
 
-public class ClanBattleSaveTrainingMyLogResponse : ResponseBase
+public partial class ClanBattleSaveTrainingMyLogResponse : ResponseBase
 {
     public int mylog_count;
 }
 
-public class ClanBattleStartResponse : ResponseBase
+public partial class ClanBattleStartResponse : ResponseBase
 {
     public int limit_time;
     public UnitData enemy_data;
@@ -337,12 +337,12 @@ public class ClanBattleStartResponse : ResponseBase
     public int seed;
 }
 
-public class ClanBattleSuggestDeckListResponse : ResponseBase
+public partial class ClanBattleSuggestDeckListResponse : ResponseBase
 {
     public ClanBattleSuggestDeck[] suggest_deck_list;
 }
 
-public class ClanBattleSuggestDeckReplayResponse : ResponseBase
+public partial class ClanBattleSuggestDeckReplayResponse : ResponseBase
 {
     public int limit_time;
     public UnitData[] user_unit_list;
@@ -352,21 +352,21 @@ public class ClanBattleSuggestDeckReplayResponse : ResponseBase
     public string report_key;
 }
 
-public class ClanBattleSuggestDeckReplayReportResponse : ResponseBase
+public partial class ClanBattleSuggestDeckReplayReportResponse : ResponseBase
 {
 }
 
-public class ClanBattleSupportUnitList2Response : ResponseBase
+public partial class ClanBattleSupportUnitList2Response : ResponseBase
 {
     public ClanBattleSupportUnitLight[] support_unit_list;
 }
 
-public class ClanBattleSupportUnitListResponse : ResponseBase
+public partial class ClanBattleSupportUnitListResponse : ResponseBase
 {
     public ClanBattleSupportUnit[] support_unit_list;
 }
 
-public class ClanBattleTopResponse : ResponseBase
+public partial class ClanBattleTopResponse : ResponseBase
 {
     public int clan_battle_id;
     public int period;
@@ -392,13 +392,13 @@ public class ClanBattleTopResponse : ResponseBase
     public ClanBattleExtraBattleChallengeRewardInfo[] challenge_reward;
 }
 
-public class ClanBattleTrainingFinishResponse : ResponseBase
+public partial class ClanBattleTrainingFinishResponse : ResponseBase
 {
     public int damage_result;
     public int carry_over_time;
 }
 
-public class ClanBattleTrainingStartResponse : ResponseBase
+public partial class ClanBattleTrainingStartResponse : ResponseBase
 {
     public int limit_time;
     public UnitData enemy_data;
@@ -408,17 +408,17 @@ public class ClanBattleTrainingStartResponse : ResponseBase
     public int current_hp;
 }
 
-public class ClanBlockListResponse : ResponseBase
+public partial class ClanBlockListResponse : ResponseBase
 {
     public BlockUserDetail[] list;
 }
 
-public class ClanBreakUpResponse : ResponseBase
+public partial class ClanBreakUpResponse : ResponseBase
 {
     public int add_present_count;
 }
 
-public class ClanChatInfoListResponse : ResponseBase
+public partial class ClanChatInfoListResponse : ResponseBase
 {
     public ChatMessageInfo[] clan_chat_message;
     public ChatMemberInfo[] users;
@@ -430,22 +430,22 @@ public class ClanChatInfoListResponse : ResponseBase
     public int wait_interval;
 }
 
-public class ClanChatResponse : ResponseBase
+public partial class ClanChatResponse : ResponseBase
 {
 }
 
-public class ClanCreateResponse : ResponseBase
+public partial class ClanCreateResponse : ResponseBase
 {
     public int clan_id;
     public eUserClanJoinStatus clan_status;
 }
 
-public class ClanDamageReportResponse : ResponseBase
+public partial class ClanDamageReportResponse : ResponseBase
 {
     public HistoryReport[] damage_report;
 }
 
-public class ClanDetailResponse : ResponseBase
+public partial class ClanDetailResponse : ResponseBase
 {
     public ClanMemberInfo[] member;
     public long owner_viewer_id;
@@ -453,7 +453,7 @@ public class ClanDetailResponse : ResponseBase
     public int block_id;
 }
 
-public class ClanInfoResponse : ResponseBase
+public partial class ClanInfoResponse : ResponseBase
 {
     public ClanData clan;
     public eUserClanJoinStatus clan_status;
@@ -475,94 +475,94 @@ public class ClanInfoResponse : ResponseBase
     public int remaining_count;
 }
 
-public class ClanInviteBlockResponse : ResponseBase
+public partial class ClanInviteBlockResponse : ResponseBase
 {
 }
 
-public class ClanInviteCancelResponse : ResponseBase
+public partial class ClanInviteCancelResponse : ResponseBase
 {
 }
 
-public class ClanInvitedUserListResponse : ResponseBase
+public partial class ClanInvitedUserListResponse : ResponseBase
 {
     public InvitedUserDetail[] list;
     public long oldest_time;
 }
 
-public class ClanInvitePermissionResponse : ResponseBase
+public partial class ClanInvitePermissionResponse : ResponseBase
 {
 }
 
-public class ClanInviteResponse : ResponseBase
+public partial class ClanInviteResponse : ResponseBase
 {
 }
 
-public class ClanInviteRejectResponse : ResponseBase
+public partial class ClanInviteRejectResponse : ResponseBase
 {
 }
 
-public class ClanInviteUnblockResponse : ResponseBase
+public partial class ClanInviteUnblockResponse : ResponseBase
 {
 }
 
-public class ClanJoinResponse : ResponseBase
+public partial class ClanJoinResponse : ResponseBase
 {
     public eUserClanJoinStatus clan_status;
 }
 
-public class ClanJoinRequestAcceptResponse : ResponseBase
+public partial class ClanJoinRequestAcceptResponse : ResponseBase
 {
 }
 
-public class ClanJoinRequestCancelResponse : ResponseBase
+public partial class ClanJoinRequestCancelResponse : ResponseBase
 {
 }
 
-public class ClanJoinRequestListResponse : ResponseBase
+public partial class ClanJoinRequestListResponse : ResponseBase
 {
     public JoinRequestUserInfo[] list;
     public long oldest_time;
 }
 
-public class ClanJoinRequestRejectResponse : ResponseBase
+public partial class ClanJoinRequestRejectResponse : ResponseBase
 {
 }
 
-public class ClanLeaveResponse : ResponseBase
+public partial class ClanLeaveResponse : ResponseBase
 {
     public int add_present_count;
 }
 
-public class ClanLikeResponse : ResponseBase
+public partial class ClanLikeResponse : ResponseBase
 {
     public UserStaminaInfo stamina_info;
 }
 
-public class ClanMemberBattleFinishResponse : ResponseBase
+public partial class ClanMemberBattleFinishResponse : ResponseBase
 {
 }
 
-public class ClanMemberBattleStartResponse : ResponseBase
+public partial class ClanMemberBattleStartResponse : ResponseBase
 {
     public int battle_id;
     public PracticeWaveInfo[] wave_info_list;
 }
 
-public class ClanRemoveResponse : ResponseBase
+public partial class ClanRemoveResponse : ResponseBase
 {
 }
 
-public class ClanSearchResponse : ResponseBase
+public partial class ClanSearchResponse : ResponseBase
 {
     public ClanInfo[] list;
 }
 
-public class ClanSearchUserResponse : ResponseBase
+public partial class ClanSearchUserResponse : ResponseBase
 {
     public ClanMemberInfo[] search_user_list;
 }
 
-public class ClanSetDispatchStatusResponse : ResponseBase
+public partial class ClanSetDispatchStatusResponse : ResponseBase
 {
     public UnitDataForClanMember[] dispatch_units;
     public InventoryInfo dispatch_time_bonus;
@@ -570,12 +570,12 @@ public class ClanSetDispatchStatusResponse : ResponseBase
     public int add_present_count;
 }
 
-public class ClanUpdateResponse : ResponseBase
+public partial class ClanUpdateResponse : ResponseBase
 {
     public ClanInfo clan;
 }
 
-public class CloisterBattleSkipResponse : ResponseBase
+public partial class CloisterBattleSkipResponse : ResponseBase
 {
     public QuestResult[] quest_result_list;
     public InventoryInfo[] bonus_reward_list;
@@ -585,15 +585,15 @@ public class CloisterBattleSkipResponse : ResponseBase
     public int add_present_count;
 }
 
-public class DeckUpdateListResponse : ResponseBase
+public partial class DeckUpdateListResponse : ResponseBase
 {
 }
 
-public class DeckUpdateResponse : ResponseBase
+public partial class DeckUpdateResponse : ResponseBase
 {
 }
 
-public class DungeonBattleFinishResponse : ResponseBase
+public partial class DungeonBattleFinishResponse : ResponseBase
 {
     public int quest_id;
     public bool complete;
@@ -607,11 +607,11 @@ public class DungeonBattleFinishResponse : ResponseBase
     public DungeonBattleMission[] current_battle_mission_list;
 }
 
-public class DungeonBattleRetireResponse : ResponseBase
+public partial class DungeonBattleRetireResponse : ResponseBase
 {
 }
 
-public class DungeonBattleStartResponse : ResponseBase
+public partial class DungeonBattleStartResponse : ResponseBase
 {
     public UnitData[] user_unit;
     public UnitData[] versus_user_unit;
@@ -622,17 +622,17 @@ public class DungeonBattleStartResponse : ResponseBase
     public int support_unit_hp;
 }
 
-public class DungeonClanDispatchUnitListResponse : ResponseBase
+public partial class DungeonClanDispatchUnitListResponse : ResponseBase
 {
     public ClanDispatchUnit[] dispatch_unit_list;
 }
 
-public class DungeonDispatchUnitList2Response : ResponseBase
+public partial class DungeonDispatchUnitList2Response : ResponseBase
 {
     public ClanDispatchUnitLight[] dispatch_unit_list;
 }
 
-public class DungeonEnterAreaResponse : ResponseBase
+public partial class DungeonEnterAreaResponse : ResponseBase
 {
     public int quest_id;
     public bool complete;
@@ -645,7 +645,7 @@ public class DungeonEnterAreaResponse : ResponseBase
     public long enter_reset_time;
 }
 
-public class DungeonInfoResponse : ResponseBase
+public partial class DungeonInfoResponse : ResponseBase
 {
     public int enter_area_id;
     public RestChallengeInfo[] rest_challenge_count;
@@ -654,14 +654,14 @@ public class DungeonInfoResponse : ResponseBase
     public int season_pack_rate;
 }
 
-public class DungeonResetResponse : ResponseBase
+public partial class DungeonResetResponse : ResponseBase
 {
     public RestChallengeInfo[] rest_challenge_count;
     public DungeonArea[] dungeon_area;
     public int season_pack_rate;
 }
 
-public class DungeonSkipResponse : ResponseBase
+public partial class DungeonSkipResponse : ResponseBase
 {
     public int start_quest_id;
     public RestChallengeInfo[] rest_challenge_count;
@@ -672,23 +672,23 @@ public class DungeonSkipResponse : ResponseBase
     public bool upper_limit_flag;
 }
 
-public class EmblemChangeResponse : ResponseBase
+public partial class EmblemChangeResponse : ResponseBase
 {
 }
 
-public class EmblemTopResponse : ResponseBase
+public partial class EmblemTopResponse : ResponseBase
 {
     public UserEmblem[] user_emblem_list;
 }
 
-public class EquipCraftResponse : ResponseBase
+public partial class EquipCraftResponse : ResponseBase
 {
     public InventoryInfo[] equip_list;
     public InventoryInfo[] item_data;
     public UserGold user_gold;
 }
 
-public class EquipDonateResponse : ResponseBase
+public partial class EquipDonateResponse : ResponseBase
 {
     public int donation_num;
     public InventoryInfo donate_equip;
@@ -696,13 +696,13 @@ public class EquipDonateResponse : ResponseBase
     public int add_present_count;
 }
 
-public class EquipEnhanceMaxResponse : ResponseBase
+public partial class EquipEnhanceMaxResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserJewel user_jewel;
 }
 
-public class EquipEnhanceResponse : ResponseBase
+public partial class EquipEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] item_data;
@@ -710,7 +710,7 @@ public class EquipEnhanceResponse : ResponseBase
     public InventoryInfo[] item_list;
 }
 
-public class EquipGetRequestResponse : ResponseBase
+public partial class EquipGetRequestResponse : ResponseBase
 {
     public EquipRequests request;
     public InventoryInfo[] equip_list;
@@ -718,17 +718,17 @@ public class EquipGetRequestResponse : ResponseBase
     public int add_present_count;
 }
 
-public class EquipmentFreeEnhanceResponse : ResponseBase
+public partial class EquipmentFreeEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class EquipRequestResponse : ResponseBase
+public partial class EquipRequestResponse : ResponseBase
 {
     public long latest_request_time;
 }
 
-public class EventGachaExecResponse : ResponseBase
+public partial class EventGachaExecResponse : ResponseBase
 {
     public EventBoxGachaHitRewardInfo[] draw_result;
     public InventoryInfo[] reward_info_list;
@@ -736,86 +736,86 @@ public class EventGachaExecResponse : ResponseBase
     public HatsuneEventBossStatus[] unlock_bosses;
 }
 
-public class EventGachaIndexResponse : ResponseBase
+public partial class EventGachaIndexResponse : ResponseBase
 {
     public EventGachaInfo event_gacha_info;
 }
 
-public class EventGachaLineupResponse : ResponseBase
+public partial class EventGachaLineupResponse : ResponseBase
 {
     public EventBoxGachaSet[] event_gacha_lineup;
 }
 
-public class EventGachaResetResponse : ResponseBase
+public partial class EventGachaResetResponse : ResponseBase
 {
     public EventGachaInfo event_gacha_info;
 }
 
-public class FkeFinishResponse : ResponseBase
+public partial class FkeFinishResponse : ResponseBase
 {
     public int total_fke_point;
     public int add_present_count;
 }
 
-public class FkeStartResponse : ResponseBase
+public partial class FkeStartResponse : ResponseBase
 {
     public int fke_play_id;
 }
 
-public class FkeSyncTopResponse : ResponseBase
+public partial class FkeSyncTopResponse : ResponseBase
 {
     public int total_fke_point;
     public int best_fke_point;
     public int[] happening_id_list;
 }
 
-public class FkeTopResponse : ResponseBase
+public partial class FkeTopResponse : ResponseBase
 {
     public int total_fke_point;
     public int best_fke_point;
     public int[] happening_id_list;
 }
 
-public class FriendAcceptResponse : ResponseBase
+public partial class FriendAcceptResponse : ResponseBase
 {
 }
 
-public class FriendBattleFinishResponse : ResponseBase
+public partial class FriendBattleFinishResponse : ResponseBase
 {
 }
 
-public class FriendBattleStartResponse : ResponseBase
+public partial class FriendBattleStartResponse : ResponseBase
 {
     public int battle_id;
     public PracticeWaveInfo[] wave_info_list;
 }
 
-public class FriendBattleTopResponse : ResponseBase
+public partial class FriendBattleTopResponse : ResponseBase
 {
     public PracticeDeckData[] my_deck_list;
     public FriendBattleInfo[] friend;
 }
 
-public class FriendBattleUpdateDeckResponse : ResponseBase
+public partial class FriendBattleUpdateDeckResponse : ResponseBase
 {
 }
 
-public class FriendCancelResponse : ResponseBase
+public partial class FriendCancelResponse : ResponseBase
 {
 }
 
-public class FriendFriendListResponse : ResponseBase
+public partial class FriendFriendListResponse : ResponseBase
 {
     public FriendInfo[] friend_list;
     public CampaignTarget[] campaign_target_list;
 }
 
-public class FriendGetMissionTargetFriendCountResponse : ResponseBase
+public partial class FriendGetMissionTargetFriendCountResponse : ResponseBase
 {
     public int target_friend_count;
 }
 
-public class FriendMissionAcceptResponse : ResponseBase
+public partial class FriendMissionAcceptResponse : ResponseBase
 {
     public int team_level;
     public int team_exp;
@@ -825,47 +825,47 @@ public class FriendMissionAcceptResponse : ResponseBase
     public int add_present_count;
 }
 
-public class FriendMissionIndexResponse : ResponseBase
+public partial class FriendMissionIndexResponse : ResponseBase
 {
     public UserMissionInfo[] missions;
     public bool campaign_target_flag;
 }
 
-public class FriendPendingListResponse : ResponseBase
+public partial class FriendPendingListResponse : ResponseBase
 {
     public FriendInfo[] pending_list;
     public int friend_num;
     public CampaignTarget[] campaign_target_list;
 }
 
-public class FriendRejectResponse : ResponseBase
+public partial class FriendRejectResponse : ResponseBase
 {
 }
 
-public class FriendRemoveResponse : ResponseBase
+public partial class FriendRemoveResponse : ResponseBase
 {
 }
 
-public class FriendRequestListResponse : ResponseBase
+public partial class FriendRequestListResponse : ResponseBase
 {
     public FriendInfo[] request_list;
     public int friend_num;
     public CampaignTarget[] campaign_target_list;
 }
 
-public class FriendRequestResponse : ResponseBase
+public partial class FriendRequestResponse : ResponseBase
 {
     public UnitDataForView favorite_unit;
 }
 
-public class FriendSearchResponse : ResponseBase
+public partial class FriendSearchResponse : ResponseBase
 {
     public FriendInfo[] search_list;
     public int friend_num;
     public CampaignTarget[] campaign_target_list;
 }
 
-public class GachaExchangePointResponse : ResponseBase
+public partial class GachaExchangePointResponse : ResponseBase
 {
     public InventoryInfo[] reward_info_list;
     public GachaPointInfo gacha_point_info;
@@ -874,7 +874,7 @@ public class GachaExchangePointResponse : ResponseBase
     public GachaGrowthUnitInfo growth_unit_info;
 }
 
-public class GachaExecResponse : ResponseBase
+public partial class GachaExecResponse : ResponseBase
 {
     public InventoryInfo[] reward_info_list;
     public UserGold user_gold;
@@ -886,7 +886,7 @@ public class GachaExecResponse : ResponseBase
     public GachaGrowthUnitInfo growth_unit_info;
 }
 
-public class GachaIndexResponse : ResponseBase
+public partial class GachaIndexResponse : ResponseBase
 {
     public GachaParameter[] gacha_info;
     public int nngtime;
@@ -900,55 +900,55 @@ public class GachaIndexResponse : ResponseBase
     public TicketGachaParameter[] ticket_gacha_info;
 }
 
-public class GachaPrizeHistoryResponse : ResponseBase
+public partial class GachaPrizeHistoryResponse : ResponseBase
 {
     public GachaPrizeHistoryList[] gacha_prize_history_list;
 }
 
-public class GachaPrizeRewardResponse : ResponseBase
+public partial class GachaPrizeRewardResponse : ResponseBase
 {
     public GachaPrizeItemDetail[] gacha_prize_reward_list;
 }
 
-public class GachaSelectPrizeResponse : ResponseBase
+public partial class GachaSelectPrizeResponse : ResponseBase
 {
 }
 
-public class GachaSpecialFesIndexResponse : ResponseBase
+public partial class GachaSpecialFesIndexResponse : ResponseBase
 {
     public GachaParameter[] gacha_info;
     public TicketGachaParameter[] ticket_gacha_info;
 }
 
-public class GetFriendSupportUnitListResponse : ResponseBase
+public partial class GetFriendSupportUnitListResponse : ResponseBase
 {
     public SupportUnitStatus[] friend_support_unit_list;
     public SupportUnitStatus[] general_support_unit_list;
 }
 
-public class GetTipsListResponse : ResponseBase
+public partial class GetTipsListResponse : ResponseBase
 {
     public int[] tips_id_list;
 }
 
-public class GrandArenaApplyResponse : ResponseBase
+public partial class GrandArenaApplyResponse : ResponseBase
 {
     public long battle_viewer_id;
     public int true_rank;
 }
 
-public class GrandArenaCancelIntervalResponse : ResponseBase
+public partial class GrandArenaCancelIntervalResponse : ResponseBase
 {
     public GrandArenaInfo grand_arena_info;
     public UserJewel user_jewel;
 }
 
-public class GrandArenaCancelResponse : ResponseBase
+public partial class GrandArenaCancelResponse : ResponseBase
 {
     public GrandArenaSearchOpponent[] search_opponent;
 }
 
-public class GrandArenaFinishResponse : ResponseBase
+public partial class GrandArenaFinishResponse : ResponseBase
 {
     public int old_record;
     public int new_record;
@@ -956,22 +956,22 @@ public class GrandArenaFinishResponse : ResponseBase
     public InventoryInfo highest_rank_reward;
 }
 
-public class GrandArenaGetDestinationGroupResponse : ResponseBase
+public partial class GrandArenaGetDestinationGroupResponse : ResponseBase
 {
     public RankingGroupInfo[] group_list;
 }
 
-public class GrandArenaHistoryDetailResponse : ResponseBase
+public partial class GrandArenaHistoryDetailResponse : ResponseBase
 {
     public GrandArenaHistoryDetailInfo grand_arena_history_detail;
 }
 
-public class GrandArenaHistoryResponse : ResponseBase
+public partial class GrandArenaHistoryResponse : ResponseBase
 {
     public GrandArenaHistoryInfo[] grand_arena_history_list;
 }
 
-public class GrandArenaInfoResponse : ResponseBase
+public partial class GrandArenaInfoResponse : ResponseBase
 {
     public GrandArenaInfo grand_arena_info;
     public DeckData[] attack_deck_list;
@@ -982,17 +982,17 @@ public class GrandArenaInfoResponse : ResponseBase
     public bool is_time_reward_max;
 }
 
-public class GrandArenaMoveGroupResponse : ResponseBase
+public partial class GrandArenaMoveGroupResponse : ResponseBase
 {
     public GrandArenaInfo grand_arena_info;
 }
 
-public class GrandArenaRankingResponse : ResponseBase
+public partial class GrandArenaRankingResponse : ResponseBase
 {
     public GrandArenaSearchOpponent[] ranking;
 }
 
-public class GrandArenaReplayResponse : ResponseBase
+public partial class GrandArenaReplayResponse : ResponseBase
 {
     public int seed;
     public int is_challenge;
@@ -1000,18 +1000,18 @@ public class GrandArenaReplayResponse : ResponseBase
     public UnitData[] vs_user_unit_list;
 }
 
-public class GrandArenaResetBattleNumberResponse : ResponseBase
+public partial class GrandArenaResetBattleNumberResponse : ResponseBase
 {
     public GrandArenaInfo grand_arena_info;
     public UserJewel user_jewel;
 }
 
-public class GrandArenaSearchResponse : ResponseBase
+public partial class GrandArenaSearchResponse : ResponseBase
 {
     public GrandArenaSearchOpponent[] search_opponent;
 }
 
-public class GrandArenaStartResponse : ResponseBase
+public partial class GrandArenaStartResponse : ResponseBase
 {
     public int battle_id;
     public long my_viewer_id;
@@ -1020,13 +1020,13 @@ public class GrandArenaStartResponse : ResponseBase
     public ArenaWaveInfo[] wave_info_list;
 }
 
-public class GrandArenaTimeRewardAcceptResponse : ResponseBase
+public partial class GrandArenaTimeRewardAcceptResponse : ResponseBase
 {
     public InventoryInfo reward_info;
     public int add_present_count;
 }
 
-public class HatsuneBossBattleFinishResponse : ResponseBase
+public partial class HatsuneBossBattleFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public int result_type;
@@ -1054,7 +1054,7 @@ public class HatsuneBossBattleFinishResponse : ResponseBase
     public int[] unlock_boss_id_list;
 }
 
-public class HatsuneBossBattleSkipResponse : ResponseBase
+public partial class HatsuneBossBattleSkipResponse : ResponseBase
 {
     public QuestResult[] quest_result_list;
     public QuestResult[] crush_reward_list;
@@ -1067,7 +1067,7 @@ public class HatsuneBossBattleSkipResponse : ResponseBase
     public int[] release_nyx_story_ids;
 }
 
-public class HatsuneBossBattleStartResponse : ResponseBase
+public partial class HatsuneBossBattleStartResponse : ResponseBase
 {
     public int limit_time;
     public int battle_log_id;
@@ -1077,24 +1077,24 @@ public class HatsuneBossBattleStartResponse : ResponseBase
     public EventHitTreasureInfo[] hit_treasure_list;
 }
 
-public class HatsuneChangeNyxItemColorResponse : ResponseBase
+public partial class HatsuneChangeNyxItemColorResponse : ResponseBase
 {
 }
 
-public class HatsuneDearFinishResponse : ResponseBase
+public partial class HatsuneDearFinishResponse : ResponseBase
 {
     public DearPointInfo before_dear_point_info;
     public DearPointInfo after_dear_point_info;
     public int add_present_count;
 }
 
-public class HatsuneDearTopResponse : ResponseBase
+public partial class HatsuneDearTopResponse : ResponseBase
 {
     public DearStoryInfo[] unlock_dear_story_info_list;
     public DearPointInfo[] dear_point_info_list;
 }
 
-public class HatsuneMissionAcceptResponse : ResponseBase
+public partial class HatsuneMissionAcceptResponse : ResponseBase
 {
     public int team_level;
     public int team_exp;
@@ -1105,7 +1105,7 @@ public class HatsuneMissionAcceptResponse : ResponseBase
     public ReleaseContentData[] release_contents;
 }
 
-public class HatsuneMissionIndexResponse : ResponseBase
+public partial class HatsuneMissionIndexResponse : ResponseBase
 {
     public UserMissionInfo[] missions;
     public UserSeasonPackInfo[] season_pack;
@@ -1113,7 +1113,7 @@ public class HatsuneMissionIndexResponse : ResponseBase
     public HatsuneSeriesInfo[] series_info_list;
 }
 
-public class HatsuneQuestFinishResponse : ResponseBase
+public partial class HatsuneQuestFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public UserStaminaInfo user_info;
@@ -1146,11 +1146,11 @@ public class HatsuneQuestFinishResponse : ResponseBase
     public int[] unlock_boss_id_list;
 }
 
-public class HatsuneQuestRetireResponse : ResponseBase
+public partial class HatsuneQuestRetireResponse : ResponseBase
 {
 }
 
-public class HatsuneQuestSkipResponse : ResponseBase
+public partial class HatsuneQuestSkipResponse : ResponseBase
 {
     public LevelInfo level_info;
     public UserStaminaInfo user_info;
@@ -1171,7 +1171,7 @@ public class HatsuneQuestSkipResponse : ResponseBase
     public int[] release_nyx_story_ids;
 }
 
-public class HatsuneQuestStartResponse : ResponseBase
+public partial class HatsuneQuestStartResponse : ResponseBase
 {
     public WaveEnemyInfoList[] quest_wave_info;
     public UserStaminaInfo user_info;
@@ -1183,7 +1183,7 @@ public class HatsuneQuestStartResponse : ResponseBase
     public int support_position;
 }
 
-public class HatsuneQuestTopResponse : ResponseBase
+public partial class HatsuneQuestTopResponse : ResponseBase
 {
     public HatsuneUserEventQuest[] quest_list;
     public EventQuizInfo[] quiz;
@@ -1193,7 +1193,7 @@ public class HatsuneQuestTopResponse : ResponseBase
     public HatsuneEventBossEnemyInfo[] boss_enemy_info;
 }
 
-public class HatsuneQuizAnswerResponse : ResponseBase
+public partial class HatsuneQuizAnswerResponse : ResponseBase
 {
     public int is_correct;
     public int[] unlock_quest_list;
@@ -1201,60 +1201,60 @@ public class HatsuneQuizAnswerResponse : ResponseBase
     public int add_present_count;
 }
 
-public class HatsuneReadDiaryResponse : ResponseBase
+public partial class HatsuneReadDiaryResponse : ResponseBase
 {
 }
 
-public class HatsuneReadNyxStoryResponse : ResponseBase
+public partial class HatsuneReadNyxStoryResponse : ResponseBase
 {
 }
 
-public class HatsuneReadOmpStoryResponse : ResponseBase
+public partial class HatsuneReadOmpStoryResponse : ResponseBase
 {
     public int add_present_count;
 }
 
-public class HatsuneReadRelayStoryResponse : ResponseBase
+public partial class HatsuneReadRelayStoryResponse : ResponseBase
 {
 }
 
-public class HatsuneRecoverChallengeResponse : ResponseBase
+public partial class HatsuneRecoverChallengeResponse : ResponseBase
 {
     public UserJewel user_jewel;
     public QuestRecoverInfo user_quest;
 }
 
-public class HatsuneSpecialBattleExFinishResponse : ResponseBase
+public partial class HatsuneSpecialBattleExFinishResponse : ResponseBase
 {
     public int result_type;
     public int chat_battle_log_flag;
     public int damage_result;
 }
 
-public class HatsuneSpecialBattleExHistoryResponse : ResponseBase
+public partial class HatsuneSpecialBattleExHistoryResponse : ResponseBase
 {
     public int total_attack_count;
     public long clear_time;
     public EventSpecialBattleExHistory[] history;
 }
 
-public class HatsuneSpecialBattleExResetResponse : ResponseBase
+public partial class HatsuneSpecialBattleExResetResponse : ResponseBase
 {
     public SpecialBattleInfo special_battle_info;
 }
 
-public class HatsuneSpecialBattleExRetireResponse : ResponseBase
+public partial class HatsuneSpecialBattleExRetireResponse : ResponseBase
 {
 }
 
-public class HatsuneSpecialBattleExStartResponse : ResponseBase
+public partial class HatsuneSpecialBattleExStartResponse : ResponseBase
 {
     public int limit_time;
     public int battle_log_id;
     public EventEnemyInfo[] enemy_info;
 }
 
-public class HatsuneSpecialBattleFinishResponse : ResponseBase
+public partial class HatsuneSpecialBattleFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public int result_type;
@@ -1273,11 +1273,11 @@ public class HatsuneSpecialBattleFinishResponse : ResponseBase
     public int damage_result;
 }
 
-public class HatsuneSpecialBattleRetireResponse : ResponseBase
+public partial class HatsuneSpecialBattleRetireResponse : ResponseBase
 {
 }
 
-public class HatsuneSpecialBattleStartResponse : ResponseBase
+public partial class HatsuneSpecialBattleStartResponse : ResponseBase
 {
     public int limit_time;
     public int battle_log_id;
@@ -1286,7 +1286,7 @@ public class HatsuneSpecialBattleStartResponse : ResponseBase
     public EventHitTreasureInfo[] hit_treasure_list;
 }
 
-public class HatsuneTopResponse : ResponseBase
+public partial class HatsuneTopResponse : ResponseBase
 {
     public HatsuneEventStatus[] event_status;
     public HatsuneEventStoryState[] additional_stories;
@@ -1310,7 +1310,7 @@ public class HatsuneTopResponse : ResponseBase
     public HatsuneEventBossEnemyInfo[] boss_enemy_info;
 }
 
-public class HomeIndexResponse : ResponseBase
+public partial class HomeIndexResponse : ResponseBase
 {
     public UnreadMessageList unread_message_list;
     public UserMissionInfo[] missions;
@@ -1349,7 +1349,7 @@ public class HomeIndexResponse : ResponseBase
     public long[] custom_season_pack_end_time;
 }
 
-public class ItemETicketExchangeResponse : ResponseBase
+public partial class ItemETicketExchangeResponse : ResponseBase
 {
     public InventoryInfo[] reward_list;
     public InventoryInfo[] item_data;
@@ -1357,13 +1357,13 @@ public class ItemETicketExchangeResponse : ResponseBase
     public bool upper_limit_flag;
 }
 
-public class KaiserBattleGetMainBossInfoResponse : ResponseBase
+public partial class KaiserBattleGetMainBossInfoResponse : ResponseBase
 {
     public KaiserBossInfo main_boss_info;
     public DeckData[] deck_list;
 }
 
-public class KaiserBattleMainFinishResponse : ResponseBase
+public partial class KaiserBattleMainFinishResponse : ResponseBase
 {
     public int damage_result;
     public int acquired_gold;
@@ -1374,11 +1374,11 @@ public class KaiserBattleMainFinishResponse : ResponseBase
     public int attack_count;
 }
 
-public class KaiserBattleMainRetireResponse : ResponseBase
+public partial class KaiserBattleMainRetireResponse : ResponseBase
 {
 }
 
-public class KaiserBattleMainStartResponse : ResponseBase
+public partial class KaiserBattleMainStartResponse : ResponseBase
 {
     public int battle_log_id;
     public EventEnemyInfo[] enemy_info;
@@ -1386,19 +1386,19 @@ public class KaiserBattleMainStartResponse : ResponseBase
     public SkinDataForRequest[] skin_data_for_request;
 }
 
-public class KaiserBattleMySupportListResponse : ResponseBase
+public partial class KaiserBattleMySupportListResponse : ResponseBase
 {
     public SupportUnitSetting[] my_support_list;
 }
 
-public class KaiserBattleSetSupportUnitResponse : ResponseBase
+public partial class KaiserBattleSetSupportUnitResponse : ResponseBase
 {
     public InventoryInfo[] rewards;
     public int add_present_count;
     public SupportUnitSetting my_support_info;
 }
 
-public class KaiserBattleSubFinishResponse : ResponseBase
+public partial class KaiserBattleSubFinishResponse : ResponseBase
 {
     public int damage_result;
     public int acquired_gold;
@@ -1407,7 +1407,7 @@ public class KaiserBattleSubFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class KaiserBattleSubStartResponse : ResponseBase
+public partial class KaiserBattleSubStartResponse : ResponseBase
 {
     public int battle_log_id;
     public int seed;
@@ -1415,13 +1415,13 @@ public class KaiserBattleSubStartResponse : ResponseBase
     public SkinDataForRequest[] skin_data_for_request;
 }
 
-public class KaiserBattleSupportListResponse : ResponseBase
+public partial class KaiserBattleSupportListResponse : ResponseBase
 {
     public SupportUnitStatus[] friend_support_unit_list;
     public SupportUnitStatus[] general_support_unit_list;
 }
 
-public class KaiserBattleTopResponse : ResponseBase
+public partial class KaiserBattleTopResponse : ResponseBase
 {
     public int remaining_count;
     public KaiserBossInfo[] sub_boss_list;
@@ -1433,11 +1433,11 @@ public class KaiserBattleTopResponse : ResponseBase
     public SupportUnitSetting[] my_support_list;
 }
 
-public class KaiserBattleUpdateDeckResponse : ResponseBase
+public partial class KaiserBattleUpdateDeckResponse : ResponseBase
 {
 }
 
-public class KmkFinishResponse : ResponseBase
+public partial class KmkFinishResponse : ResponseBase
 {
     public int current_score;
     public int total_score_all;
@@ -1450,13 +1450,13 @@ public class KmkFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class KmkStartResponse : ResponseBase
+public partial class KmkStartResponse : ResponseBase
 {
     public int play_id;
     public int seed;
 }
 
-public class KmkTopResponse : ResponseBase
+public partial class KmkTopResponse : ResponseBase
 {
     public int total_score_all;
     public int normal_high_score;
@@ -1464,7 +1464,7 @@ public class KmkTopResponse : ResponseBase
     public int extra_high_score;
 }
 
-public class LoadIndexResponse : ResponseBase
+public partial class LoadIndexResponse : ResponseBase
 {
     public UserInfo user_info;
     public UserJewel user_jewel;
@@ -1555,7 +1555,7 @@ public class LoadIndexResponse : ResponseBase
     public long lbme;
 }
 
-public class LoadNextDayIndexResponse : ResponseBase
+public partial class LoadNextDayIndexResponse : ResponseBase
 {
     public long daily_reset_time;
     public LoginBonusList login_bonus_list;
@@ -1576,7 +1576,7 @@ public class LoadNextDayIndexResponse : ResponseBase
     public int[] unlock_story_ids;
 }
 
-public class MissionAcceptResponse : ResponseBase
+public partial class MissionAcceptResponse : ResponseBase
 {
     public int team_level;
     public int team_exp;
@@ -1588,49 +1588,49 @@ public class MissionAcceptResponse : ResponseBase
     public int[] room_item_level_mission;
 }
 
-public class MissionIndexResponse : ResponseBase
+public partial class MissionIndexResponse : ResponseBase
 {
     public UserMissionInfo[] missions;
     public UserSeasonPackInfo[] season_pack;
     public long daily_reset_time;
 }
 
-public class MultiUnlockRaritySixSlotResponse : ResponseBase
+public partial class MultiUnlockRaritySixSlotResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class MusicBuyResponse : ResponseBase
+public partial class MusicBuyResponse : ResponseBase
 {
     public int music_id;
     public long purchased_time;
     public InventoryInfo[] item_data;
 }
 
-public class MusicSetResponse : ResponseBase
+public partial class MusicSetResponse : ResponseBase
 {
 }
 
-public class MusicTopResponse : ResponseBase
+public partial class MusicTopResponse : ResponseBase
 {
     public int[] bgm_keys;
     public MusicPurchasedData[] music_list_purchased;
 }
 
-public class MyPageSetMyPageResponse : ResponseBase
+public partial class MyPageSetMyPageResponse : ResponseBase
 {
 }
 
-public class OtherClanInfoResponse : ResponseBase
+public partial class OtherClanInfoResponse : ResponseBase
 {
     public OtherClanData clan;
     public int current_clan_battle_mode;
     public int current_battle_joined;
 }
 
-public class PctFinishResponse : ResponseBase
+public partial class PctFinishResponse : ResponseBase
 {
     public PctBonusInfo[] bonus_list;
     public int final_pct_point;
@@ -1639,26 +1639,26 @@ public class PctFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class PctStartResponse : ResponseBase
+public partial class PctStartResponse : ResponseBase
 {
     public int seed;
     public int pct_play_id;
 }
 
-public class PctTopResponse : ResponseBase
+public partial class PctTopResponse : ResponseBase
 {
     public int pct_point;
     public PctUnitPointInfo[] unit_pct_point_list;
     public PctCacaoInfo[] cacao_list;
 }
 
-public class PictureBookResponse : ResponseBase
+public partial class PictureBookResponse : ResponseBase
 {
     public InventoryInfoShort[] item_list;
     public InventoryInfoShort[] user_equip;
 }
 
-public class PkbFinishSoloResponse : ResponseBase
+public partial class PkbFinishSoloResponse : ResponseBase
 {
     public int current_score;
     public int total_score;
@@ -1666,7 +1666,7 @@ public class PkbFinishSoloResponse : ResponseBase
     public int add_present_count;
 }
 
-public class PkbFinishVsResponse : ResponseBase
+public partial class PkbFinishVsResponse : ResponseBase
 {
     public int current_score;
     public int total_score;
@@ -1674,27 +1674,27 @@ public class PkbFinishVsResponse : ResponseBase
     public int add_present_count;
 }
 
-public class PkbReadCatalogResponse : ResponseBase
+public partial class PkbReadCatalogResponse : ResponseBase
 {
 }
 
-public class PkbReadRankingResponse : ResponseBase
+public partial class PkbReadRankingResponse : ResponseBase
 {
 }
 
-public class PkbStartSoloResponse : ResponseBase
-{
-    public int play_id;
-    public int seed;
-}
-
-public class PkbStartVsResponse : ResponseBase
+public partial class PkbStartSoloResponse : ResponseBase
 {
     public int play_id;
     public int seed;
 }
 
-public class PkbTopResponse : ResponseBase
+public partial class PkbStartVsResponse : ResponseBase
+{
+    public int play_id;
+    public int seed;
+}
+
+public partial class PkbTopResponse : ResponseBase
 {
     public int total_score;
     public int total_score_solo;
@@ -1708,18 +1708,18 @@ public class PkbTopResponse : ResponseBase
     public PkbRankingInfo simple_ranking_info;
 }
 
-public class PresentHistoryResponse : ResponseBase
+public partial class PresentHistoryResponse : ResponseBase
 {
     public PresentHistoryInfo[] present_history;
 }
 
-public class PresentIndexResponse : ResponseBase
+public partial class PresentIndexResponse : ResponseBase
 {
     public PresentParameter[] present_info_list;
     public int present_count;
 }
 
-public class PresentReceiveAllResponse : ResponseBase
+public partial class PresentReceiveAllResponse : ResponseBase
 {
     public InventoryInfo[] rewards;
     public UserStaminaInfo stamina_info;
@@ -1730,7 +1730,7 @@ public class PresentReceiveAllResponse : ResponseBase
     public GrandArenaCountInfo grand_arena_count_info;
 }
 
-public class PresentReceiveSingleResponse : ResponseBase
+public partial class PresentReceiveSingleResponse : ResponseBase
 {
     public InventoryInfo[] rewards;
     public UserStaminaInfo stamina_info;
@@ -1740,11 +1740,11 @@ public class PresentReceiveSingleResponse : ResponseBase
     public GrandArenaCountInfo grand_arena_count_info;
 }
 
-public class ProfileFavoriteUnitResponse : ResponseBase
+public partial class ProfileFavoriteUnitResponse : ResponseBase
 {
 }
 
-public class ProfileGetResponse : ResponseBase
+public partial class ProfileGetResponse : ResponseBase
 {
     public ProfileUserInfo user_info;
     public ProfileQuestInfo quest_info;
@@ -1758,41 +1758,41 @@ public class ProfileGetResponse : ResponseBase
     public CampaignTarget[] campaign_target_list;
 }
 
-public class ProfileMakerGetClanProfileResponse : ResponseBase
+public partial class ProfileMakerGetClanProfileResponse : ResponseBase
 {
     public ClanProfileCardSetting profile;
     public ClanProfileCardClanInfo clan;
 }
 
-public class ProfileMakerGetMyProfileResponse : ResponseBase
+public partial class ProfileMakerGetMyProfileResponse : ResponseBase
 {
     public MyProfileCardSetting profile;
     public MyProfileCardScore score;
 }
 
-public class ProfileMakerSetClanProfileResponse : ResponseBase
+public partial class ProfileMakerSetClanProfileResponse : ResponseBase
 {
 }
 
-public class ProfileMakerSetMyProfileResponse : ResponseBase
+public partial class ProfileMakerSetMyProfileResponse : ResponseBase
 {
 }
 
-public class ProfileRenameResponse : ResponseBase
+public partial class ProfileRenameResponse : ResponseBase
 {
 }
 
-public class ProfileSetBirthDayResponse : ResponseBase
+public partial class ProfileSetBirthDayResponse : ResponseBase
 {
     public int birthday;
     public int birthday_period;
 }
 
-public class ProfileUpdateCommentResponse : ResponseBase
+public partial class ProfileUpdateCommentResponse : ResponseBase
 {
 }
 
-public class QuestFinishResponse : ResponseBase
+public partial class QuestFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public UserStaminaInfo user_info;
@@ -1814,39 +1814,39 @@ public class QuestFinishResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class QuestRecoverChallengeMultipleResponse : ResponseBase
+public partial class QuestRecoverChallengeMultipleResponse : ResponseBase
 {
     public UserJewel user_jewel;
     public QuestRecoverInfo[] user_quest;
 }
 
-public class QuestRecoverChallengeResponse : ResponseBase
+public partial class QuestRecoverChallengeResponse : ResponseBase
 {
     public UserJewel user_jewel;
     public QuestRecoverInfo user_quest;
 }
 
-public class QuestReplayListResponse : ResponseBase
+public partial class QuestReplayListResponse : ResponseBase
 {
     public QuestReplayData[] replay_list;
 }
 
-public class QuestReplayResponse : ResponseBase
+public partial class QuestReplayResponse : ResponseBase
 {
     public UnitData[] user_unit_list;
     public WaveEnemyInfoList[] quest_wave_info;
     public UnitData[] enemy_list;
 }
 
-public class QuestReplayReportResponse : ResponseBase
+public partial class QuestReplayReportResponse : ResponseBase
 {
 }
 
-public class QuestRetireResponse : ResponseBase
+public partial class QuestRetireResponse : ResponseBase
 {
 }
 
-public class QuestSkipMultipleResponse : ResponseBase
+public partial class QuestSkipMultipleResponse : ResponseBase
 {
     public QuestResultList[] quest_result_list;
     public InventoryInfo[] bonus_reward_list;
@@ -1865,7 +1865,7 @@ public class QuestSkipMultipleResponse : ResponseBase
     public eExchangeStaminaState state_exchange_stamina;
 }
 
-public class QuestSkipResponse : ResponseBase
+public partial class QuestSkipResponse : ResponseBase
 {
     public QuestResult[] quest_result_list;
     public InventoryInfo[] bonus_reward_list;
@@ -1884,7 +1884,7 @@ public class QuestSkipResponse : ResponseBase
     public eExchangeStaminaState state_exchange_stamina;
 }
 
-public class QuestStartResponse : ResponseBase
+public partial class QuestStartResponse : ResponseBase
 {
     public WaveEnemyInfoList[] quest_wave_info;
     public int limit_time;
@@ -1899,13 +1899,13 @@ public class QuestStartResponse : ResponseBase
     public InventoryInfo[] sub_drop;
 }
 
-public class RaceLoginBonusCharaSelectDataResponse : ResponseBase
+public partial class RaceLoginBonusCharaSelectDataResponse : ResponseBase
 {
     public InventoryInfo[] reward_list;
     public int add_present_count;
 }
 
-public class RaritySixQuestFinishResponse : ResponseBase
+public partial class RaritySixQuestFinishResponse : ResponseBase
 {
     public int quest_id;
     public int clear_flag;
@@ -1913,7 +1913,7 @@ public class RaritySixQuestFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class RaritySixQuestStartResponse : ResponseBase
+public partial class RaritySixQuestStartResponse : ResponseBase
 {
     public int limit_time;
     public int quest_id;
@@ -1923,36 +1923,36 @@ public class RaritySixQuestStartResponse : ResponseBase
     public SkinDataForRequest[] skin_data_for_request;
 }
 
-public class RoomClanMemberResponse : ResponseBase
+public partial class RoomClanMemberResponse : ResponseBase
 {
     public RoomUserInfo[] clan_members;
 }
 
-public class RoomExtendStorageResponse : ResponseBase
+public partial class RoomExtendStorageResponse : ResponseBase
 {
     public int max_storage_num;
     public UserJewel user_jewel;
 }
 
-public class RoomFreeGiftResponse : ResponseBase
+public partial class RoomFreeGiftResponse : ResponseBase
 {
     public LevelInfo level_info;
 }
 
-public class RoomGiveGiftResponse : ResponseBase
+public partial class RoomGiveGiftResponse : ResponseBase
 {
     public LevelInfo level_info;
     public InventoryInfo[] user_gift_item_list;
 }
 
-public class RoomItemBuyResponse : ResponseBase
+public partial class RoomItemBuyResponse : ResponseBase
 {
     public RoomUserItem[] user_room_item_list;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class RoomItemSellResponse : ResponseBase
+public partial class RoomItemSellResponse : ResponseBase
 {
     public RoomUserItem[] user_room_item_list;
     public UserGold user_gold;
@@ -1960,27 +1960,27 @@ public class RoomItemSellResponse : ResponseBase
     public int add_present_count;
 }
 
-public class RoomLevelUpEndResponse : ResponseBase
+public partial class RoomLevelUpEndResponse : ResponseBase
 {
     public RoomUserItem user_room_item;
     public MaxExecNumList max_exec_num_list;
 }
 
-public class RoomLevelUpShorteningResponse : ResponseBase
+public partial class RoomLevelUpShorteningResponse : ResponseBase
 {
     public RoomUserItem user_room_item;
     public UserJewel user_jewel;
     public MaxExecNumList max_exec_num_list;
 }
 
-public class RoomLevelUpStartResponse : ResponseBase
+public partial class RoomLevelUpStartResponse : ResponseBase
 {
     public RoomUserItem user_room_item;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class RoomLevelUpStopResponse : ResponseBase
+public partial class RoomLevelUpStopResponse : ResponseBase
 {
     public RoomUserItem user_room_item;
     public UserGold user_gold;
@@ -1988,7 +1988,7 @@ public class RoomLevelUpStopResponse : ResponseBase
     public int add_present_count;
 }
 
-public class RoomLikeHistoryResponse : ResponseBase
+public partial class RoomLikeHistoryResponse : ResponseBase
 {
     public int total_like;
     public int total_be_liked;
@@ -2000,7 +2000,7 @@ public class RoomLikeHistoryResponse : ResponseBase
     public InventoryInfo[] reward_list;
 }
 
-public class RoomLikeResponse : ResponseBase
+public partial class RoomLikeResponse : ResponseBase
 {
     public int total_like;
     public int daily_like;
@@ -2009,36 +2009,36 @@ public class RoomLikeResponse : ResponseBase
     public RoomUserInfo room_user_info;
 }
 
-public class RoomMultiGiveGiftResponse : ResponseBase
+public partial class RoomMultiGiveGiftResponse : ResponseBase
 {
     public LevelInfo level_info;
     public InventoryInfo[] user_gift_item_list;
 }
 
-public class RoomMultiLevelUpEndResponse : ResponseBase
+public partial class RoomMultiLevelUpEndResponse : ResponseBase
 {
     public RoomUserItem[] user_room_item_list;
 }
 
-public class RoomMysetDeleteResponse : ResponseBase
+public partial class RoomMysetDeleteResponse : ResponseBase
 {
 }
 
-public class RoomMysetListResponse : ResponseBase
+public partial class RoomMysetListResponse : ResponseBase
 {
     public RoomMysetElement[] myset_list;
 }
 
-public class RoomMysetRenameResponse : ResponseBase
+public partial class RoomMysetRenameResponse : ResponseBase
 {
 }
 
-public class RoomMysetSaveResponse : ResponseBase
+public partial class RoomMysetSaveResponse : ResponseBase
 {
     public string myset_update_time;
 }
 
-public class RoomReceiveItemAllResponse : ResponseBase
+public partial class RoomReceiveItemAllResponse : ResponseBase
 {
     public RoomUserItem[] user_room_item_list;
     public InventoryInfo[] reward_list;
@@ -2046,7 +2046,7 @@ public class RoomReceiveItemAllResponse : ResponseBase
     public int add_present_count;
 }
 
-public class RoomReceiveItemResponse : ResponseBase
+public partial class RoomReceiveItemResponse : ResponseBase
 {
     public RoomUserItem user_room_item;
     public InventoryInfo[] reward_list;
@@ -2054,7 +2054,7 @@ public class RoomReceiveItemResponse : ResponseBase
     public int add_present_count;
 }
 
-public class RoomStartResponse : ResponseBase
+public partial class RoomStartResponse : ResponseBase
 {
     public RoomWholeLayout room_layout;
     public int max_storage_num;
@@ -2063,12 +2063,12 @@ public class RoomStartResponse : ResponseBase
     public RoomItemGetTime[] event_room_item_get_time_list;
 }
 
-public class RoomUpdateResponse : ResponseBase
+public partial class RoomUpdateResponse : ResponseBase
 {
     public RoomUserItem[] user_room_item_list;
 }
 
-public class RoomVisitResponse : ResponseBase
+public partial class RoomVisitResponse : ResponseBase
 {
     public RoomWholeLayout room_layout;
     public RoomUserItem[] user_room_item_list;
@@ -2078,7 +2078,7 @@ public class RoomVisitResponse : ResponseBase
     public RoomExtensionItem extension_key;
 }
 
-public class SeasonPassBuyLevelResponse : ResponseBase
+public partial class SeasonPassBuyLevelResponse : ResponseBase
 {
     public UserJewel user_jewel;
     public int seasonpass_level;
@@ -2087,7 +2087,7 @@ public class SeasonPassBuyLevelResponse : ResponseBase
     public ExchangeRewards[] exchange_rewards;
 }
 
-public class SeasonPassIndexResponse : ResponseBase
+public partial class SeasonPassIndexResponse : ResponseBase
 {
     public int is_buy;
     public int seasonpass_level;
@@ -2099,7 +2099,7 @@ public class SeasonPassIndexResponse : ResponseBase
     public long weekly_reset_time;
 }
 
-public class SeasonPassMissionAcceptResponse : ResponseBase
+public partial class SeasonPassMissionAcceptResponse : ResponseBase
 {
     public int seasonpass_level;
     public int user_point;
@@ -2112,7 +2112,7 @@ public class SeasonPassMissionAcceptResponse : ResponseBase
     public int[] room_item_level_mission;
 }
 
-public class SeasonPassRewardAcceptResponse : ResponseBase
+public partial class SeasonPassRewardAcceptResponse : ResponseBase
 {
     public UserStaminaInfo stamina_info;
     public InventoryInfo[] rewards;
@@ -2120,22 +2120,22 @@ public class SeasonPassRewardAcceptResponse : ResponseBase
     public int[] received_rewards;
 }
 
-public class SekaiBossInfoResponse : ResponseBase
+public partial class SekaiBossInfoResponse : ResponseBase
 {
     public DamageHistory damage_history;
     public long current_hp;
 }
 
-public class SekaiFinishResponse : ResponseBase
+public partial class SekaiFinishResponse : ResponseBase
 {
 }
 
-public class SekaiHistoryReportResponse : ResponseBase
+public partial class SekaiHistoryReportResponse : ResponseBase
 {
     public HistoryReport[] history_report;
 }
 
-public class SekaiRankingInClanResponse : ResponseBase
+public partial class SekaiRankingInClanResponse : ResponseBase
 {
     public int sekai_id;
     public int my_rank;
@@ -2143,7 +2143,7 @@ public class SekaiRankingInClanResponse : ResponseBase
     public SekaiRanking[] ranking;
 }
 
-public class SekaiRankingResponse : ResponseBase
+public partial class SekaiRankingResponse : ResponseBase
 {
     public int sekai_id;
     public int my_rank;
@@ -2151,7 +2151,7 @@ public class SekaiRankingResponse : ResponseBase
     public SekaiRanking[] ranking;
 }
 
-public class SekaiRetireResponse : ResponseBase
+public partial class SekaiRetireResponse : ResponseBase
 {
     public int sekai_id;
     public int my_rank;
@@ -2159,7 +2159,7 @@ public class SekaiRetireResponse : ResponseBase
     public SekaiRanking[] ranking;
 }
 
-public class SekaiStartResponse : ResponseBase
+public partial class SekaiStartResponse : ResponseBase
 {
     public UnitData enemy_data;
     public int battle_log_id;
@@ -2168,12 +2168,12 @@ public class SekaiStartResponse : ResponseBase
     public int seed;
 }
 
-public class SekaiSupportUnitList2Response : ResponseBase
+public partial class SekaiSupportUnitList2Response : ResponseBase
 {
     public ClanBattleSupportUnitLight[] support_unit_list;
 }
 
-public class SekaiTopResponse : ResponseBase
+public partial class SekaiTopResponse : ResponseBase
 {
     public int sekai_id;
     public long current_hp;
@@ -2182,7 +2182,7 @@ public class SekaiTopResponse : ResponseBase
     public int remaining_count;
 }
 
-public class SellItemResponse : ResponseBase
+public partial class SellItemResponse : ResponseBase
 {
     public InventoryInfo[] item_list;
     public InventoryInfo[] material_list;
@@ -2192,11 +2192,11 @@ public class SellItemResponse : ResponseBase
     public int add_present_count;
 }
 
-public class SendBattleLogCsvResponse : ResponseBase
+public partial class SendBattleLogCsvResponse : ResponseBase
 {
 }
 
-public class SerialCodeRegisterResponse : ResponseBase
+public partial class SerialCodeRegisterResponse : ResponseBase
 {
     public InventoryInfo[] reward_list;
     public int serial_campaign_id;
@@ -2205,15 +2205,15 @@ public class SerialCodeRegisterResponse : ResponseBase
     public int add_present_count;
 }
 
-public class SetMyPartyResponse : ResponseBase
+public partial class SetMyPartyResponse : ResponseBase
 {
 }
 
-public class SetMyPartyTabResponse : ResponseBase
+public partial class SetMyPartyTabResponse : ResponseBase
 {
 }
 
-public class ShioriBossBattleFinishResponse : ResponseBase
+public partial class ShioriBossBattleFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public int result_type;
@@ -2238,11 +2238,11 @@ public class ShioriBossBattleFinishResponse : ResponseBase
     public int[] new_omp_story_ids;
 }
 
-public class ShioriBossBattleRetireResponse : ResponseBase
+public partial class ShioriBossBattleRetireResponse : ResponseBase
 {
 }
 
-public class ShioriBossBattleStartResponse : ResponseBase
+public partial class ShioriBossBattleStartResponse : ResponseBase
 {
     public UnitData boss_unit_data;
     public int limit_time;
@@ -2251,20 +2251,20 @@ public class ShioriBossBattleStartResponse : ResponseBase
     public int seed;
 }
 
-public class ShioriDearFinishResponse : ResponseBase
+public partial class ShioriDearFinishResponse : ResponseBase
 {
     public DearPointInfo before_dear_point_info;
     public DearPointInfo after_dear_point_info;
     public int add_present_count;
 }
 
-public class ShioriDearTopResponse : ResponseBase
+public partial class ShioriDearTopResponse : ResponseBase
 {
     public DearStoryInfo[] unlock_dear_story_info_list;
     public DearPointInfo[] dear_point_info_list;
 }
 
-public class ShioriEventTopResponse : ResponseBase
+public partial class ShioriEventTopResponse : ResponseBase
 {
     public HatsuneEventBossStatus[] bosses;
     public DeckData[] event_decks;
@@ -2277,11 +2277,11 @@ public class ShioriEventTopResponse : ResponseBase
     public HatsuneSeriesInfo[] series_info_list;
 }
 
-public class ShioriFavoriteResponse : ResponseBase
+public partial class ShioriFavoriteResponse : ResponseBase
 {
 }
 
-public class ShioriMissionAcceptResponse : ResponseBase
+public partial class ShioriMissionAcceptResponse : ResponseBase
 {
     public int team_level;
     public int team_exp;
@@ -2292,14 +2292,14 @@ public class ShioriMissionAcceptResponse : ResponseBase
     public ReleaseContentData[] release_contents;
 }
 
-public class ShioriMissionIndexResponse : ResponseBase
+public partial class ShioriMissionIndexResponse : ResponseBase
 {
     public UserMissionInfo[] missions;
     public UserSeasonPackInfo[] season_pack;
     public long daily_reset_time;
 }
 
-public class ShioriQuestFinishResponse : ResponseBase
+public partial class ShioriQuestFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public UserStaminaInfo user_info;
@@ -2328,11 +2328,11 @@ public class ShioriQuestFinishResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class ShioriQuestRetireResponse : ResponseBase
+public partial class ShioriQuestRetireResponse : ResponseBase
 {
 }
 
-public class ShioriQuestSkipResponse : ResponseBase
+public partial class ShioriQuestSkipResponse : ResponseBase
 {
     public LevelInfo level_info;
     public UserStaminaInfo user_info;
@@ -2351,7 +2351,7 @@ public class ShioriQuestSkipResponse : ResponseBase
     public int[] release_diary_ids;
 }
 
-public class ShioriQuestStartResponse : ResponseBase
+public partial class ShioriQuestStartResponse : ResponseBase
 {
     public WaveEnemyInfoList[] quest_wave_info;
     public UserStaminaInfo user_info;
@@ -2362,7 +2362,7 @@ public class ShioriQuestStartResponse : ResponseBase
     public int support_position;
 }
 
-public class ShioriQuizAnswerResponse : ResponseBase
+public partial class ShioriQuizAnswerResponse : ResponseBase
 {
     public int is_correct;
     public int[] unlock_quest_list;
@@ -2370,14 +2370,14 @@ public class ShioriQuizAnswerResponse : ResponseBase
     public int add_present_count;
 }
 
-public class ShioriTopResponse : ResponseBase
+public partial class ShioriTopResponse : ResponseBase
 {
     public int[] new_event_list;
     public int[] clear_event_list;
     public int[] my_select_list;
 }
 
-public class ShopAlchemyResponse : ResponseBase
+public partial class ShopAlchemyResponse : ResponseBase
 {
     public int team_level;
     public int[] gold;
@@ -2392,14 +2392,14 @@ public class ShopAlchemyResponse : ResponseBase
     public long alchemy_reward_time;
 }
 
-public class ShopBuyMultipleResponse : ResponseBase
+public partial class ShopBuyMultipleResponse : ResponseBase
 {
     public InventoryInfo[] purchase_list;
     public InventoryInfo[] item_data;
     public UserGold user_gold;
 }
 
-public class ShopBuyResponse : ResponseBase
+public partial class ShopBuyResponse : ResponseBase
 {
     public InventoryInfo[] purchase_list;
     public InventoryInfo[] item_data;
@@ -2407,33 +2407,33 @@ public class ShopBuyResponse : ResponseBase
     public UserJewel user_jewel;
 }
 
-public class ShopCloseDailyShopResponse : ResponseBase
+public partial class ShopCloseDailyShopResponse : ResponseBase
 {
 }
 
-public class ShopCloseLimitedShopResponse : ResponseBase
+public partial class ShopCloseLimitedShopResponse : ResponseBase
 {
 }
 
-public class ShopComebackTutorialDailyShopResponse : ResponseBase
+public partial class ShopComebackTutorialDailyShopResponse : ResponseBase
 {
     public DailyShop daily_shop;
 }
 
-public class ShopItemListResponse : ResponseBase
+public partial class ShopItemListResponse : ResponseBase
 {
     public ShopInfo[] shop_list;
     public int is_got_csc;
 }
 
-public class ShopRecoverStaminaResponse : ResponseBase
+public partial class ShopRecoverStaminaResponse : ResponseBase
 {
     public RecoverStamina recover_stamina;
     public UserJewel user_jewel;
     public UserStaminaInfo user_info;
 }
 
-public class ShopResetResponse : ResponseBase
+public partial class ShopResetResponse : ResponseBase
 {
     public ShopInfo shop;
     public InventoryInfo[] item_data;
@@ -2441,24 +2441,24 @@ public class ShopResetResponse : ResponseBase
     public UserJewel user_jewel;
 }
 
-public class SkillLevelUpResponse : ResponseBase
+public partial class SkillLevelUpResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class SkillRemoveFreeResponse : ResponseBase
+public partial class SkillRemoveFreeResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class SkillSetFreeResponse : ResponseBase
+public partial class SkillSetFreeResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class SpaceFinishResponse : ResponseBase
+public partial class SpaceFinishResponse : ResponseBase
 {
     public int damage_result;
     public InventoryInfo[] rewards;
@@ -2466,11 +2466,11 @@ public class SpaceFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class SpaceRetireResponse : ResponseBase
+public partial class SpaceRetireResponse : ResponseBase
 {
 }
 
-public class SpaceStartResponse : ResponseBase
+public partial class SpaceStartResponse : ResponseBase
 {
     public UnitData boss_unit_data;
     public long limit_time;
@@ -2478,20 +2478,20 @@ public class SpaceStartResponse : ResponseBase
     public int seed;
 }
 
-public class SpaceStoryCheckResponse : ResponseBase
+public partial class SpaceStoryCheckResponse : ResponseBase
 {
 }
 
-public class SpaceStoryStartResponse : ResponseBase
+public partial class SpaceStoryStartResponse : ResponseBase
 {
 }
 
-public class SpaceSupportUnitList2Response : ResponseBase
+public partial class SpaceSupportUnitList2Response : ResponseBase
 {
     public ClanBattleSupportUnitLight[] support_unit_list;
 }
 
-public class SpaceTopResponse : ResponseBase
+public partial class SpaceTopResponse : ResponseBase
 {
     public int space_id;
     public int progress;
@@ -2499,7 +2499,7 @@ public class SpaceTopResponse : ResponseBase
     public int boss_hp;
 }
 
-public class SrtFinishResponse : ResponseBase
+public partial class SrtFinishResponse : ResponseBase
 {
     public int turn_num_bonus;
     public int answer_time_bonus;
@@ -2510,33 +2510,33 @@ public class SrtFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class SrtReadCatalogResponse : ResponseBase
+public partial class SrtReadCatalogResponse : ResponseBase
 {
 }
 
-public class SrtStartResponse : ResponseBase
+public partial class SrtStartResponse : ResponseBase
 {
     public int play_id;
     public int seed;
     public int answer_limit_time;
 }
 
-public class SrtTopResponse : ResponseBase
+public partial class SrtTopResponse : ResponseBase
 {
     public int total_score_all;
     public SrtHighScoreInfo high_score_info;
     public SrtCatalogInfo[] catalog_info;
 }
 
-public class StoryForceReleaseResponse : ResponseBase
+public partial class StoryForceReleaseResponse : ResponseBase
 {
 }
 
-public class StoryMaintenanceCheckResponse : ResponseBase
+public partial class StoryMaintenanceCheckResponse : ResponseBase
 {
 }
 
-public class StoryQuestStartResponse : ResponseBase
+public partial class StoryQuestStartResponse : ResponseBase
 {
     public WaveEnemyInfoList[] quest_wave_info;
     public int limit_time;
@@ -2546,7 +2546,7 @@ public class StoryQuestStartResponse : ResponseBase
     public UnitData[] guest_data;
 }
 
-public class StoryViewingResponse : ResponseBase
+public partial class StoryViewingResponse : ResponseBase
 {
     public InventoryInfo[] reward_info;
     public ReleaseContentData[] release_contents;
@@ -2556,25 +2556,25 @@ public class StoryViewingResponse : ResponseBase
     public int[] unlocked_sub_story_list;
 }
 
-public class SubStoryLtoReadStoryResponse : ResponseBase
+public partial class SubStoryLtoReadStoryResponse : ResponseBase
 {
     public InventoryInfo[] reward_info;
 }
 
-public class SubStorySkeConfirmResponse : ResponseBase
+public partial class SubStorySkeConfirmResponse : ResponseBase
 {
 }
 
-public class SubStorySkeReadStoryResponse : ResponseBase
+public partial class SubStorySkeReadStoryResponse : ResponseBase
 {
     public EventSubStoryInfo new_sub_story_info;
 }
 
-public class SubStorySspReadSspStoryResponse : ResponseBase
+public partial class SubStorySspReadSspStoryResponse : ResponseBase
 {
 }
 
-public class SupportUnitChangeSettingResponse : ResponseBase
+public partial class SupportUnitChangeSettingResponse : ResponseBase
 {
     public SupportUnitSetting support_units;
     public InventoryInfo[] support_time_bonus;
@@ -2582,19 +2582,19 @@ public class SupportUnitChangeSettingResponse : ResponseBase
     public int add_present_count;
 }
 
-public class SupportUnitGetSettingResponse : ResponseBase
+public partial class SupportUnitGetSettingResponse : ResponseBase
 {
     public SupportUnitSetting[] friend_support_units;
     public SupportUnitSetting[] clan_support_units;
     public int clan_support_available_status;
 }
 
-public class TestBuyTicketResponse : ResponseBase
+public partial class TestBuyTicketResponse : ResponseBase
 {
     public int ticket_status;
 }
 
-public class TowerBattleFinishResponse : ResponseBase
+public partial class TowerBattleFinishResponse : ResponseBase
 {
     public int quest_id;
     public LevelInfo level_info;
@@ -2608,19 +2608,19 @@ public class TowerBattleFinishResponse : ResponseBase
     public int is_joined_clan;
 }
 
-public class TowerBattleRetireResponse : ResponseBase
+public partial class TowerBattleRetireResponse : ResponseBase
 {
     public TowerClanMemberInfo[] clan_member_info;
     public int is_joined_clan;
 }
 
-public class TowerBattleSkipResponse : ResponseBase
+public partial class TowerBattleSkipResponse : ResponseBase
 {
     public UserGold user_gold;
     public int add_present_count;
 }
 
-public class TowerBattleStartResponse : ResponseBase
+public partial class TowerBattleStartResponse : ResponseBase
 {
     public UnitData[] user_unit;
     public UnitData[] versus_user_unit;
@@ -2631,7 +2631,7 @@ public class TowerBattleStartResponse : ResponseBase
     public int support_unit_hp;
 }
 
-public class TowerCloisterBattleFinishResponse : ResponseBase
+public partial class TowerCloisterBattleFinishResponse : ResponseBase
 {
     public int quest_id;
     public UserGold user_gold;
@@ -2641,13 +2641,13 @@ public class TowerCloisterBattleFinishResponse : ResponseBase
     public int is_joined_clan;
 }
 
-public class TowerCloisterBattleRetireResponse : ResponseBase
+public partial class TowerCloisterBattleRetireResponse : ResponseBase
 {
     public TowerClanMemberInfo[] clan_member_info;
     public int is_joined_clan;
 }
 
-public class TowerCloisterBattleStartResponse : ResponseBase
+public partial class TowerCloisterBattleStartResponse : ResponseBase
 {
     public UnitData[] user_unit;
     public UnitData[] versus_user_unit1;
@@ -2660,7 +2660,7 @@ public class TowerCloisterBattleStartResponse : ResponseBase
     public int support_unit_hp;
 }
 
-public class TowerExBattleFinishResponse : ResponseBase
+public partial class TowerExBattleFinishResponse : ResponseBase
 {
     public int quest_id;
     public LevelInfo level_info;
@@ -2673,11 +2673,11 @@ public class TowerExBattleFinishResponse : ResponseBase
     public int is_joined_clan;
 }
 
-public class TowerExBattleRetireResponse : ResponseBase
+public partial class TowerExBattleRetireResponse : ResponseBase
 {
 }
 
-public class TowerExBattleStartResponse : ResponseBase
+public partial class TowerExBattleStartResponse : ResponseBase
 {
     public int[] battle_log_ids;
     public int[] seed_list;
@@ -2687,29 +2687,29 @@ public class TowerExBattleStartResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class TowerExSupportUnitList2Response : ResponseBase
+public partial class TowerExSupportUnitList2Response : ResponseBase
 {
     public TowerExDispatchUnitLight[] support_unit_list;
 }
 
-public class TowerExSupportUnitListResponse : ResponseBase
+public partial class TowerExSupportUnitListResponse : ResponseBase
 {
     public TowerExDispatchUnit[] support_unit_list;
 }
 
-public class TowerRehearsalFinishResponse : ResponseBase
+public partial class TowerRehearsalFinishResponse : ResponseBase
 {
     public TowerClanMemberInfo[] clan_member_info;
     public int is_joined_clan;
 }
 
-public class TowerRehearsalRetireResponse : ResponseBase
+public partial class TowerRehearsalRetireResponse : ResponseBase
 {
     public TowerClanMemberInfo[] clan_member_info;
     public int is_joined_clan;
 }
 
-public class TowerRehearsalStartResponse : ResponseBase
+public partial class TowerRehearsalStartResponse : ResponseBase
 {
     public UnitData[] user_unit;
     public UnitData[] versus_user_unit;
@@ -2718,12 +2718,12 @@ public class TowerRehearsalStartResponse : ResponseBase
     public int support_unit_hp;
 }
 
-public class TowerReplayListResponse : ResponseBase
+public partial class TowerReplayListResponse : ResponseBase
 {
     public TowerReplaySummary[] replay_list;
 }
 
-public class TowerReplayResponse : ResponseBase
+public partial class TowerReplayResponse : ResponseBase
 {
     public int[] seed_list;
     public TowerReplayPartyStatusList party_status_list;
@@ -2731,26 +2731,26 @@ public class TowerReplayResponse : ResponseBase
     public UnitData[] versus_user_unit;
 }
 
-public class TowerReplayReportResponse : ResponseBase
+public partial class TowerReplayReportResponse : ResponseBase
 {
 }
 
-public class TowerResetResponse : ResponseBase
+public partial class TowerResetResponse : ResponseBase
 {
     public int remain_reset_count;
 }
 
-public class TowerSupportUnitList2Response : ResponseBase
+public partial class TowerSupportUnitList2Response : ResponseBase
 {
     public ClanDispatchUnitLight[] support_unit_list;
 }
 
-public class TowerSupportUnitListResponse : ResponseBase
+public partial class TowerSupportUnitListResponse : ResponseBase
 {
     public ClanDispatchUnit[] support_unit_list;
 }
 
-public class TowerTopResponse : ResponseBase
+public partial class TowerTopResponse : ResponseBase
 {
     public int next_quest_id;
     public TowerUnit[] user_unit;
@@ -2765,7 +2765,7 @@ public class TowerTopResponse : ResponseBase
     public int cloister_first_cleared_flag;
 }
 
-public class TrainingQuestFinishResponse : ResponseBase
+public partial class TrainingQuestFinishResponse : ResponseBase
 {
     public LevelInfo level_info;
     public int quest_id;
@@ -2778,11 +2778,11 @@ public class TrainingQuestFinishResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class TrainingQuestRetireResponse : ResponseBase
+public partial class TrainingQuestRetireResponse : ResponseBase
 {
 }
 
-public class TrainingQuestSkipResponse : ResponseBase
+public partial class TrainingQuestSkipResponse : ResponseBase
 {
     public QuestResult[] quest_result_list;
     public InventoryInfo[] bonus_reward_list;
@@ -2796,7 +2796,7 @@ public class TrainingQuestSkipResponse : ResponseBase
     public int add_present_count;
 }
 
-public class TrainingQuestStartResponse : ResponseBase
+public partial class TrainingQuestStartResponse : ResponseBase
 {
     public WaveEnemyInfoList[] quest_wave_info;
     public int limit_time;
@@ -2810,11 +2810,11 @@ public class TrainingQuestStartResponse : ResponseBase
     public int support_position;
 }
 
-public class TtkChooseWeaponResponse : ResponseBase
+public partial class TtkChooseWeaponResponse : ResponseBase
 {
 }
 
-public class TtkFinishResponse : ResponseBase
+public partial class TtkFinishResponse : ResponseBase
 {
     public int life_num_bonus;
     public int coin_num_bonus;
@@ -2824,21 +2824,21 @@ public class TtkFinishResponse : ResponseBase
     public int add_present_count;
 }
 
-public class TtkReadCatalogResponse : ResponseBase
+public partial class TtkReadCatalogResponse : ResponseBase
 {
 }
 
-public class TtkReadStoryResponse : ResponseBase
+public partial class TtkReadStoryResponse : ResponseBase
 {
 }
 
-public class TtkStartResponse : ResponseBase
+public partial class TtkStartResponse : ResponseBase
 {
     public int play_id;
     public int seed;
 }
 
-public class TtkTopResponse : ResponseBase
+public partial class TtkTopResponse : ResponseBase
 {
     public int total_score_all;
     public TtkHighScoreInfo high_score_info;
@@ -2850,7 +2850,7 @@ public class TtkTopResponse : ResponseBase
     public int condition_emblem_coin;
 }
 
-public class TutorialUpdateResponse : ResponseBase
+public partial class TutorialUpdateResponse : ResponseBase
 {
     public int step;
     public InventoryInfo[] reward_info_list;
@@ -2865,24 +2865,24 @@ public class TutorialUpdateResponse : ResponseBase
     public MissionStep mission;
 }
 
-public class UekBossBattleFinishResponse : ResponseBase
+public partial class UekBossBattleFinishResponse : ResponseBase
 {
     public int result_type;
     public int damage_result;
     public InventoryInfo[] treasure_rewards;
 }
 
-public class UekBossBattleRetireResponse : ResponseBase
+public partial class UekBossBattleRetireResponse : ResponseBase
 {
 }
 
-public class UekBossBattleStartResponse : ResponseBase
+public partial class UekBossBattleStartResponse : ResponseBase
 {
     public int battle_log_id;
     public int seed;
 }
 
-public class UekTopResponse : ResponseBase
+public partial class UekTopResponse : ResponseBase
 {
     public int current_area;
     public UserMissionInfo[] missions;
@@ -2893,29 +2893,21 @@ public class UekTopResponse : ResponseBase
     public int[] unlocked_uek_story_ids;
 }
 
-public class UniqueEquipCraftResponse : ResponseBase
+public partial class UniqueEquipCraftResponse : ResponseBase
 {
     public InventoryInfo[] equip_list;
     public InventoryInfo[] item_list;
     public UserGold user_gold;
 }
 
-public class UniqueEquipEnhanceResponse : ResponseBase
+public partial class UniqueEquipEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserGold user_gold;
     public InventoryInfo[] item_list;
 }
 
-public class UniqueEquipMultiEnhanceResponse : ResponseBase
-{
-    public UnitData unit_data;
-    public UserGold user_gold;
-    public InventoryInfo[] equip_list;
-    public InventoryInfo[] item_list;
-}
-
-public class UniqueEquipRankupResponse : ResponseBase
+public partial class UniqueEquipMultiEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserGold user_gold;
@@ -2923,7 +2915,15 @@ public class UniqueEquipRankupResponse : ResponseBase
     public InventoryInfo[] item_list;
 }
 
-public class UnitCraftEquipResponse : ResponseBase
+public partial class UniqueEquipRankupResponse : ResponseBase
+{
+    public UnitData unit_data;
+    public UserGold user_gold;
+    public InventoryInfo[] equip_list;
+    public InventoryInfo[] item_list;
+}
+
+public partial class UnitCraftEquipResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] equip_list;
@@ -2931,7 +2931,7 @@ public class UnitCraftEquipResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class UnitCraftEquipUniqueResponse : ResponseBase
+public partial class UnitCraftEquipUniqueResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] equip_list;
@@ -2939,56 +2939,56 @@ public class UnitCraftEquipUniqueResponse : ResponseBase
     public UserGold user_gold;
 }
 
-public class UnitEquipResponse : ResponseBase
+public partial class UnitEquipResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo equip_data;
 }
 
-public class UnitEvolutionRaritySixResponse : ResponseBase
+public partial class UnitEvolutionRaritySixResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class UnitEvolutionResponse : ResponseBase
+public partial class UnitEvolutionResponse : ResponseBase
 {
     public UnitData[] unit_data_list;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class UnitFavoriteResponse : ResponseBase
+public partial class UnitFavoriteResponse : ResponseBase
 {
 }
 
-public class UnitFreeAutomaticEnhanceResponse : ResponseBase
-{
-    public UnitData unit_data;
-    public InventoryInfo[] equip_list;
-}
-
-public class UnitFreeEquipResponse : ResponseBase
+public partial class UnitFreeAutomaticEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] equip_list;
 }
 
-public class UnitFreeEvolutionResponse : ResponseBase
+public partial class UnitFreeEquipResponse : ResponseBase
+{
+    public UnitData unit_data;
+    public InventoryInfo[] equip_list;
+}
+
+public partial class UnitFreeEvolutionResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class UnitFreeLevelUpResponse : ResponseBase
+public partial class UnitFreeLevelUpResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class UnitFreeMultiEvolutionResponse : ResponseBase
+public partial class UnitFreeMultiEvolutionResponse : ResponseBase
 {
     public UnitData unit_data;
 }
 
-public class UnitFreePromotionResponse : ResponseBase
+public partial class UnitFreePromotionResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] refund_items;
@@ -2996,7 +2996,7 @@ public class UnitFreePromotionResponse : ResponseBase
     public InventoryInfo[] equip_list;
 }
 
-public class UnitGrowthEnhanceResponse : ResponseBase
+public partial class UnitGrowthEnhanceResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] refund_items;
@@ -3004,7 +3004,7 @@ public class UnitGrowthEnhanceResponse : ResponseBase
     public InventoryInfo[] equip_list;
 }
 
-public class UnitMultiEquipResponse : ResponseBase
+public partial class UnitMultiEquipResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] equip_list;
@@ -3012,14 +3012,14 @@ public class UnitMultiEquipResponse : ResponseBase
     public InventoryInfo[] item_data;
 }
 
-public class UnitMultiEvolutionResponse : ResponseBase
+public partial class UnitMultiEvolutionResponse : ResponseBase
 {
     public UnitData[] unit_data_list;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class UnitMultiPromotionResponse : ResponseBase
+public partial class UnitMultiPromotionResponse : ResponseBase
 {
     public InventoryInfo[] equip_list;
     public InventoryInfo[] item_data;
@@ -3029,62 +3029,62 @@ public class UnitMultiPromotionResponse : ResponseBase
     public int add_present_count;
 }
 
-public class UnitPromotionResponse : ResponseBase
+public partial class UnitPromotionResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] refund_items;
     public int add_present_count;
 }
 
-public class UnitSetGrowthItemResponse : ResponseBase
+public partial class UnitSetGrowthItemResponse : ResponseBase
 {
     public InventoryInfo[] item_data;
     public GrowthInfo growth_unit_info;
 }
 
-public class UnitUniqueEquipResponse : ResponseBase
+public partial class UnitUniqueEquipResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo equip_data;
 }
 
-public class UnlockRaritySixSlotResponse : ResponseBase
+public partial class UnlockRaritySixSlotResponse : ResponseBase
 {
     public UnitData unit_data;
     public UserGold user_gold;
     public InventoryInfo[] item_data;
 }
 
-public class UnlockUnitResponse : ResponseBase
+public partial class UnlockUnitResponse : ResponseBase
 {
     public UnitData unit_data;
     public InventoryInfo[] item_data;
 }
 
-public class UpdateSkipQuestListResponse : ResponseBase
+public partial class UpdateSkipQuestListResponse : ResponseBase
 {
 }
 
-public class UpdateTabResponse : ResponseBase
+public partial class UpdateTabResponse : ResponseBase
 {
 }
 
-public class UseExpItemResponse : ResponseBase
+public partial class UseExpItemResponse : ResponseBase
 {
     public InventoryInfo[] item_data;
     public UnitData unit_data;
 }
 
-public class UserInviteClanListResponse : ResponseBase
+public partial class UserInviteClanListResponse : ResponseBase
 {
     public InviteClanDetail[] list;
 }
 
-public class VoteExecResponse : ResponseBase
+public partial class VoteExecResponse : ResponseBase
 {
 }
 
-public class VoteTopResponse : ResponseBase
+public partial class VoteTopResponse : ResponseBase
 {
     public VotedUnit voted_unit;
     public VoteRanking ranking;

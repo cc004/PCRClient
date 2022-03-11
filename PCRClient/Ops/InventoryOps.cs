@@ -1,0 +1,27 @@
+﻿namespace PCRClient.Models;
+
+public partial class QuestSkipResponse : IUpdateInventory
+{
+    public InventoryInfo[]?[] Inventory => new[]
+    {
+        item_list, bonus_reward_list, item_data
+    };
+}
+
+public partial class LoadIndexResponse : IUpdateInventory
+{
+    public InventoryInfo[]?[] Inventory => new[]
+    {
+        item_list, material_list, user_equip
+    };
+
+    public bool ClearPrevious => true;
+}
+
+public partial class EquipDonateResponse : IUpdateInventory
+{
+    public InventoryInfo[]?[] Inventory => new[]
+    {
+        rewards, new[] {donate_equip}
+    };
+}

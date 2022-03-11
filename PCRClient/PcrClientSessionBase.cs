@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PCRClient.Models;
 using PCRClient.Models.Db;
 
@@ -18,18 +19,22 @@ public class PcrClientSessionBase : PcrClientApiBase
     public MasterContext? Database { get; private set; }
     public AccountInfo? Account { get; set; }
     public Func<CaptchaRequest, Task<CaptchaResult>>? Validator { get; set; }
-
-    /// <summary>
-    /// cache for database, null means disable database and asset manager
-    /// </summary>
-    public string? DatabaseCacheDir { get; set; } = Path.Combine(Environment.CurrentDirectory, "temp");
+    
+    public string DatabaseCacheDir { get; set; } = Path.Combine(Environment.CurrentDirectory, "temp");
 
     private BsGameSdk.BSdkLoginResult? _sdkAccount;
     private bool _logged, _logging;
+    private string TokenPath => Path.Combine(DatabaseCacheDir,
+        $"{Account?.username}.json");
 
     private async Task BiliLogin()
     {
-        _sdkAccount = await BsGameSdk.Login(Account ?? throw new InvalidOperationException(), Validator);
+        if (_sdkAccount == null)
+        {
+            Log(LogLevel.Info, "bsdk login");
+            _sdkAccount = await BsGameSdk.Login(Account ?? throw new InvalidOperationException(), Validator);
+            await File.WriteAllTextAsync(TokenPath, JsonConvert.SerializeObject(_sdkAccount));
+        }
     }
 
     private static readonly int[] tutorialSteps =
@@ -40,7 +45,7 @@ public class PcrClientSessionBase : PcrClientApiBase
     protected async Task SkipTutorial(string name = "\u4f51\u6811")
     {
         foreach (var step in tutorialSteps)
-            await Request(new TutorialUpdateRequest()
+            await Request(new TutorialUpdateRequest
             {
                 step = step,
                 skip = 0,
@@ -52,6 +57,11 @@ public class PcrClientSessionBase : PcrClientApiBase
     private async Task Login()
     {
         _logging = true;
+
+        if (File.Exists(TokenPath))
+            _sdkAccount =
+                JsonConvert.DeserializeObject<BsGameSdk.BSdkLoginResult>(await File.ReadAllTextAsync(TokenPath));
+
         for (;;)
         {
             try
@@ -77,17 +87,17 @@ public class PcrClientSessionBase : PcrClientApiBase
                         Log(LogLevel.Error, "bsdk login");
                         continue;
                     }
-                    Log(LogLevel.Info, "bsdk login");
-                    if (!(await Request(new ToolSdkLoginRequest()
+                    if (!(await Request(new ToolSdkLoginRequest
                         {
                             uid = _sdkAccount.uid,
                             access_key = _sdkAccount.access_key,
                             platform = Account.platform.ToString(),
                             channel_id = Account.channel.ToString()
                         })).is_risk) break;
+                    _sdkAccount = null;
                 }
 
-                if (!(await Request(new CheckGameStartRequest()
+                if (!(await Request(new CheckGameStartRequest
                     {
                         apptype = 0,
                         campaign_data = string.Empty,
@@ -98,21 +108,18 @@ public class PcrClientSessionBase : PcrClientApiBase
                 }
 
                 await Request(new CheckAgreementRequest());
-                await Request(new LoadIndexRequest()
+                await Request(new LoadIndexRequest
                 {
                     carrier = "OPPO"
                 });
 
-                if (!string.IsNullOrEmpty(DatabaseCacheDir))
-                {
-                    Directory.CreateDirectory(DatabaseCacheDir);
-                    AssetManager = await CreateAssetManager(DatabaseCacheDir);
-                    Log(LogLevel.Info, "asset manager");
-                    Database = await AssetManager.CreateMasterContext();
-                    Log(LogLevel.Info, "database");
-                }
+                Directory.CreateDirectory(DatabaseCacheDir);
+                AssetManager = await CreateAssetManager(DatabaseCacheDir);
+                Log(LogLevel.Info, "asset manager");
+                Database = await AssetManager.CreateMasterContext();
+                Log(LogLevel.Info, "database");
 
-                await Request(new HomeIndexRequest()
+                await Request(new HomeIndexRequest
                 {
                     message_id = 1,
                     gold_history = 0,
@@ -137,7 +144,7 @@ public class PcrClientSessionBase : PcrClientApiBase
 
     protected override async Task<T> Request<T>(Request<T> request)
     {
-        if (!_logged && !_logging) await Login();
+        await ForceLogin();
         return await base.Request(request);
     }
     private async Task<AssetManager> CreateAssetManager(string cacheDir)
@@ -145,6 +152,11 @@ public class PcrClientSessionBase : PcrClientApiBase
         var manifest = await Request(new SourceIniGetMaintenanceStatusRequest());
         return await AssetManager.Create(manifest.manifest_ver, manifest.movie_ver, manifest.sound_ver,
             manifest.resource[0], cacheDir);
+    }
+
+    public async Task ForceLogin()
+    {
+        if (!_logged && !_logging) await Login();
     }
 
 }

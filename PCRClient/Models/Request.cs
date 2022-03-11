@@ -10,6 +10,10 @@ namespace PCRClient.Models
         [JsonIgnore] internal virtual bool Crypt => true;
 
         internal void ApplyViewerId(string id) => this.viewer_id = id;
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
     }
 
 }

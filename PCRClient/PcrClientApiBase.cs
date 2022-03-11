@@ -6,13 +6,11 @@ using PCRClient.Models;
 
 namespace PCRClient;
 
-// api-level client
-
 public class PcrClientApiBase
 {
     private readonly HttpClient _client;
     private string UrlRoot { get; set; } = "http://l3-prod-all-gs-gzlj.bilibiligame.net/";
-    private long _viewerId;
+    public long ViewerId { get; private set; }
     private string? _requestId;
     private string? _sessionId;
     
@@ -20,7 +18,7 @@ public class PcrClientApiBase
     {
         info ??= EnvironmentInfo.Default;
 
-        _client = new HttpClient(new HttpClientHandler()
+        _client = new HttpClient(new HttpClientHandler
         {
             //UseProxy = false,
             //Proxy = null
@@ -37,13 +35,13 @@ public class PcrClientApiBase
         }
 
         _client.DefaultRequestHeaders.TryAddWithoutValidation("Connection", "Keep-Alive");
-        _viewerId = info.viewer_id;
+        ViewerId = info.viewer_id;
     }
 
     protected virtual async Task<T> Request<T>(Request<T> request) where T : ResponseBase
     {
         var key = PackHelper.CreateKey();
-        request.ApplyViewerId(request.Crypt ? PackHelper.Encrypt(_viewerId.ToString(), key) : _viewerId.ToString());
+        request.ApplyViewerId(request.Crypt ? PackHelper.Encrypt(ViewerId.ToString(), key) : ViewerId.ToString());
         
         if (!string.IsNullOrEmpty(_requestId)) _client.DefaultRequestHeaders.TryAddWithoutValidation("REQUEST-ID", _requestId);
         if (!string.IsNullOrEmpty(_sessionId)) _client.DefaultRequestHeaders.TryAddWithoutValidation("SID", _sessionId);
@@ -67,11 +65,6 @@ public class PcrClientApiBase
             {
                 response = response
             };
-        if (response.data == null)
-            throw new ApiException<T>("data is null")
-            {
-                response = response
-            };
 
         if (!string.IsNullOrEmpty(response.data_headers.sid))
         {
@@ -82,9 +75,9 @@ public class PcrClientApiBase
         }
 
         if (!string.IsNullOrEmpty(response.data_headers.request_id)) _requestId = response.data_headers.request_id;
-        if (!string.IsNullOrEmpty(response.data_headers.viewer_id)) _viewerId = long.Parse(response.data_headers.viewer_id);
+        if (!string.IsNullOrEmpty(response.data_headers.viewer_id)) ViewerId = long.Parse(response.data_headers.viewer_id);
 
-        if (response.data.server_error != null)
+        if (response.data?.server_error != null)
         {
             Log(LogLevel.Error, typeof(T).Name);
             throw new ApiException<T>(
@@ -130,4 +123,6 @@ public class PcrClientApiBase
     {
         if (LogPrefix != null) Console.WriteLine($"{LogPrefix}[{level.ToString().ToLower()}] {message}");
     }
+
+    //public static implicit operator long(PcrClientApiBase self) => self.ViewerId;
 }

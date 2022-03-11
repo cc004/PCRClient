@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Engines;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 
@@ -29,7 +22,7 @@ namespace PCRClient
     {
         public string? challenge, gt, gt_user_id;
         
-        public void CreateResult(string validate) => new CaptchaResult(validate, gt_user_id!, challenge!);
+        public CaptchaResult CreateResult(string validate) => new CaptchaResult(validate, gt_user_id!, challenge!);
     }
 
     public static class BsGameSdk
@@ -54,13 +47,19 @@ namespace PCRClient
             _client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 BSGameSDK");
         }
 
-        private static async Task<JObject> Post(string url, Dictionary<string, string> data)
+        private static async Task<JObject> Post(string url, IEnumerable<KeyValuePair<string, string>> data)
         {
             return JObject.Parse(await (await _client.PostAsync(Url + url, new FormUrlEncodedContent(data))).Content.ReadAsStringAsync());
         }
 
-        private static void SignData(Dictionary<string, string> data)
+        private static void SignData(IDictionary<string, string> data)
         {
+            var rnd = new Random();
+            data["imei"] = (rnd.NextInt64() & 0xffffffffffff).ToString();
+            var buffer = new byte[25];
+            rnd.NextBytes(buffer);
+            data["udid"] = Convert.ToBase64String(buffer);
+            data["ver"] = "4.9.12";
             data["timestamp"] = DateTime.Now.ToTimestamp().ToString();
             data["client_timestamp"] = DateTime.Now.ToTimestamp().ToString();
             data["sign"] = Utils.CalcMd5(data.OrderBy(p => p.Key)
@@ -89,15 +88,15 @@ namespace PCRClient
             SignData(data);
             var rsa = await Post("api/client/rsa", data);
             var key = rsa.Value<string>("rsa_key")!;
-            data = JObject.Parse(captcha == null ? modelLogin : modelRsa).ToObject<Dictionary<string, string>>()!;
+            data = JObject.Parse(modelLogin).ToObject<Dictionary<string, string>>()!;
             data["access_key"] = string.Empty;
             data["uid"] = string.Empty;
             data["user_id"] = account;
             if (captcha != null)
             {
-                data["gt_user_id"] = captcha.gt_user_id!;
-                data["challenge"] = captcha.challenge!;
-                data["validate"] = captcha.validate!;
+                data["gt_user_id"] = captcha.gt_user_id;
+                data["challenge"] = captcha.challenge;
+                data["validate"] = captcha.validate;
                 data["seccode"] = captcha.validate + "|jordan";
             }
             else
@@ -108,14 +107,15 @@ namespace PCRClient
             }
             data["pwd"] = EncryptRSA(rsa.Value<string>("hash") + password, key);
             SignData(data);
-            return await Post("api/client/login", data);
+            var result = await Post("api/client/login", data);
+            return result;
         }
 
         internal static async Task<BSdkLoginResult> Login(AccountInfo info, Func<CaptchaRequest, Task<CaptchaResult>>? validator)
         {
             var result = await Login(info.username!, info.password!);
             if (result.ContainsKey("access_key")) return result.ToObject<BSdkLoginResult>()!;
-            if (validator == null) throw new InvalidOperationException();
+            if (validator == null) throw new InvalidOperationException("validator is needed for this account");
             return (await Login(info.username!, info.password!, await validator(await GetCaptcha())))
                 .ToObject<BSdkLoginResult>()!;
         }
