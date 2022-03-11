@@ -5,7 +5,7 @@ public partial class QuestSkipResponse : IUpdateInventory
     public InventoryInfo[]?[] Inventory => new[]
     {
         item_list, bonus_reward_list, item_data
-    };
+    }.Concat(quest_result_list.Select(q => q.reward_list)).ToArray();
 }
 
 public partial class LoadIndexResponse : IUpdateInventory

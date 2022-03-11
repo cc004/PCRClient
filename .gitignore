@@ -4,3 +4,4 @@ obj/
 packages/*
 PCRClient/master.db
 PCRClientTest/accounts.json
+PCRFarm/config.json

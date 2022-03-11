@@ -4,12 +4,16 @@ namespace PCRClient
 {
     public class PcrClientDataBase : PcrClientSessionBase
     {
-        public int ClanId { get; private set; }
-        public int TeamLevel { get; private set; }
-        public bool ClanUnlocked { get; private set; }
 
-        protected readonly InventoryList inventory = new();
-        public IReadOnlyDictionary<InventoryType, int> Inventory => inventory;
+        public int Jewel { get; private set; }
+        public int ClanId { get; private set; }
+        public int DonationNum { get; private set; }
+        public int TeamLevel { get; private set; }
+        public int Stamina { get; private set; }
+        public bool ClanUnlocked { get; private set; }
+        public string? Name { get; private set; }
+
+        public InventoryList Inventory { get; } = new();
 
         protected PcrClientDataBase(EnvironmentInfo? info = null) : base(info)
         {
@@ -26,18 +30,39 @@ namespace PCRClient
             {
                 TeamLevel = lvl.Level;
             }
+            if (result is IJewel jwl)
+            {
+                Jewel = jwl.Jewel;
+            }
             if (result is IUpdateInventory inv)
             {
-                if (inv.ClearPrevious) inventory.Clear();
+                if (inv.ClearPrevious) Inventory.Clear();
                 foreach (var item in inv.Inventory.Where(a => a != null).SelectMany(a => a!))
-                    inventory.Update(item);
+                    Inventory.Update(item);
+            }
+            if (result is IDonationNum dn)
+            {
+                DonationNum = dn.Num;
+            }
+            if (result is IName name)
+            {
+                Name = name.Name;
             }
             if (result is IBasicData data)
             {
                 ClanUnlocked = data.ClanUnlocked;
             }
+            if (result is IStamina sta)
+            {
+                Stamina = sta.Stamina;
+            }
 
             return result;
+        }
+
+        protected override void Log(LogLevel level, string message)
+        {
+            Console.WriteLine($"[{level.ToString().ToLower()}] {Name ?? Account?.username}: {message}");
         }
     }
 }

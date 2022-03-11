@@ -79,7 +79,8 @@ public class PcrClientApiBase
 
         if (response.data?.server_error != null)
         {
-            Log(LogLevel.Error, typeof(T).Name);
+            Log(LogLevel.Error,
+                $"[{typeof(T).Name}] {response.data.server_error.title}: {response.data.server_error.message} (code = {response.data.server_error.status})");
             throw new ApiException<T>(
                 $"{response.data.server_error.title}: {response.data.server_error.message} (code = {response.data.server_error.status})")
             {
@@ -88,7 +89,7 @@ public class PcrClientApiBase
         }
 
         Log(LogLevel.Info, typeof(T).Name);
-        return response.data;
+        return response.data!;
     }
 
     protected async Task<SourceIniGetMaintenanceStatusResponse> Prepare(AccountInfo info)
@@ -117,11 +118,10 @@ public class PcrClientApiBase
     /// <summary>
     /// null value disables logging
     /// </summary>
-    public string? LogPrefix { get; set; } = string.Empty;
 
-    protected void Log(LogLevel level, string message)
+    protected virtual void Log(LogLevel level, string message)
     {
-        if (LogPrefix != null) Console.WriteLine($"{LogPrefix}[{level.ToString().ToLower()}] {message}");
+        Console.WriteLine($"[{level.ToString().ToLower()}] {message}");
     }
 
     //public static implicit operator long(PcrClientApiBase self) => self.ViewerId;

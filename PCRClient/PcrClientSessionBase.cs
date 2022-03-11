@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using PCRClient.Models;
 using PCRClient.Models.Db;
@@ -15,17 +10,24 @@ namespace PCRClient;
 
 public class PcrClientSessionBase : PcrClientApiBase
 {
-    public AssetManager? AssetManager { get; private set; }
-    public MasterContext? Database { get; private set; }
+    public static AssetManager? AssetManager { get; private set; }
+    public static MasterContext? Database { get; private set; }
     public AccountInfo? Account { get; set; }
     public Func<CaptchaRequest, Task<CaptchaResult>>? Validator { get; set; }
     
-    public string DatabaseCacheDir { get; set; } = Path.Combine(Environment.CurrentDirectory, "temp");
+    public static string DatabaseCacheDir { get; set; } = Path.Combine(Environment.CurrentDirectory, "temp");
 
     private BsGameSdk.BSdkLoginResult? _sdkAccount;
     private bool _logged, _logging;
-    private string TokenPath => Path.Combine(DatabaseCacheDir,
-        $"{Account?.username}.json");
+    private string TokenPath
+    {
+        get
+        {
+            Directory.CreateDirectory(DatabaseCacheDir);
+            return Path.Combine(DatabaseCacheDir,
+                $"{Account?.username}.json");
+        }
+    }
 
     private async Task BiliLogin()
     {
@@ -85,6 +87,7 @@ public class PcrClientSessionBase : PcrClientApiBase
                     if (string.IsNullOrEmpty(_sdkAccount?.access_key))
                     {
                         Log(LogLevel.Error, "bsdk login");
+                        _sdkAccount = null;
                         continue;
                     }
                     if (!(await Request(new ToolSdkLoginRequest
@@ -113,11 +116,14 @@ public class PcrClientSessionBase : PcrClientApiBase
                     carrier = "OPPO"
                 });
 
-                Directory.CreateDirectory(DatabaseCacheDir);
-                AssetManager = await CreateAssetManager(DatabaseCacheDir);
-                Log(LogLevel.Info, "asset manager");
-                Database = await AssetManager.CreateMasterContext();
-                Log(LogLevel.Info, "database");
+                if (Database == null)
+                {
+                    Directory.CreateDirectory(DatabaseCacheDir);
+                    AssetManager = await CreateAssetManager(DatabaseCacheDir);
+                    Log(LogLevel.Info, "asset manager");
+                    Database = await AssetManager.CreateMasterContext();
+                    Log(LogLevel.Info, "database");
+                }
 
                 await Request(new HomeIndexRequest
                 {
@@ -159,4 +165,8 @@ public class PcrClientSessionBase : PcrClientApiBase
         if (!_logged && !_logging) await Login();
     }
 
+    public void ReLogin()
+    {
+        _logged = false;
+    }
 }

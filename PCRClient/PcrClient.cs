@@ -1,5 +1,6 @@
+using Org.BouncyCastle.Ocsp;
 using PCRClient.Models;
-using PCRClient.Models.Db;
+
 // ReSharper disable InconsistentNaming
 
 namespace PCRClient;
@@ -40,7 +41,7 @@ public class PcrClient : PcrClientDataBase
                 clan_id = clan_id,
                 from_invite = (await Request(new UserInviteClanListRequest
                 {
-                    page = 0
+                    page = page
                 })).list.First(inv => inv.clan_id == clan_id).invite_id
             });
             await Request(new ClanInfoRequest()); // refresh clan id
@@ -103,7 +104,7 @@ public class PcrClient : PcrClientDataBase
         return await Request(new EquipDonateRequest
         {
             clan_id = ClanId,
-            current_equip_num = inventory.Get(new (){id = request.equip_id, type = eInventoryType.Equip}),
+            current_equip_num = Inventory.Get(new (){id = request.equip_id, type = eInventoryType.Equip}),
             donation_num = times,
             message_id = request.message_id
         });
@@ -114,13 +115,13 @@ public class PcrClient : PcrClientDataBase
     {
         return await Request(new QuestSkipRequest
         {
-            current_ticket_num = inventory.Get(ticket),
+            current_ticket_num = Inventory.Get(ticket),
             quest_id = quest_id,
             random_count = times
         });
     }
 
-    public async Task<EquipRequests[]> GetEquipmentRequests()
+    public async Task<EquipRequests[]?> GetEquipmentRequests()
     {
         return (await Request(new ClanChatInfoListRequest()
         {
@@ -134,6 +135,19 @@ public class PcrClient : PcrClientDataBase
         })).equip_requests;
     }
 
+    public async Task<ShopRecoverStaminaResponse> RecoverStamina()
+    {
+        return await Request(new ShopRecoverStaminaRequest
+        {
+            current_currency_num = Jewel
+        });
+    }
+
+    public async Task<RoomReceiveItemAllResponse> ReceiveRoomItem()
+    {
+        return await Request(new RoomReceiveItemAllRequest());
+    }
+
     public PcrClient(EnvironmentInfo info) : base(info)
     {
     }
@@ -142,5 +156,5 @@ public class PcrClient : PcrClientDataBase
 public class AccountInfo
 {
     public string? username, password;
-    public int platform, channel;
+    public int platform = 2, channel = 1;
 }

@@ -16,6 +16,24 @@ namespace PCRClient.Models
         int Level { get; }
     }
 
+    internal interface IName
+    {
+        string Name { get; }
+    }
+    internal interface IStamina
+    {
+        int Stamina { get; }
+    }
+    internal interface IJewel
+    {
+        int Jewel { get; }
+    }
+
+    internal interface IDonationNum
+    {
+        int Num { get; }
+    }
+
     internal interface IBasicData
     {
         bool ClanUnlocked { get; }

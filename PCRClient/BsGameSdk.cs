@@ -22,7 +22,7 @@ namespace PCRClient
     {
         public string? challenge, gt, gt_user_id;
         
-        public CaptchaResult CreateResult(string validate) => new CaptchaResult(validate, gt_user_id!, challenge!);
+        public CaptchaResult CreateResult(string validate) => new (validate, gt_user_id!, challenge!);
     }
 
     public static class BsGameSdk
@@ -59,7 +59,7 @@ namespace PCRClient
             var buffer = new byte[25];
             rnd.NextBytes(buffer);
             data["udid"] = Convert.ToBase64String(buffer);
-            data["ver"] = "4.9.12";
+            data["ver"] = "4.9.2";
             data["timestamp"] = DateTime.Now.ToTimestamp().ToString();
             data["client_timestamp"] = DateTime.Now.ToTimestamp().ToString();
             data["sign"] = Utils.CalcMd5(data.OrderBy(p => p.Key)

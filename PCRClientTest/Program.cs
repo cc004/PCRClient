@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 using PCRClient;
+using PCRClient.Models;
 
 var accounts = JsonConvert.DeserializeObject<AccountInfo[]>(File.ReadAllText("accounts.json"))!;
 var clients = new List<PcrClient>();
 
-foreach (var account in accounts.Skip(1).Take(2))
+foreach (var account in accounts)
 {
     var client = new PcrClient(EnvironmentInfo.Default)
     {
@@ -19,8 +20,5 @@ foreach (var account in accounts.Skip(1).Take(2))
     clients.Add(client);
 }
 
-var requests = await clients[0].GetEquipmentRequests();
-await clients[1].DonateEquip(requests[0], 1);
-await clients[1].DonateEquip(requests[0], 1);
-Console.ReadLine();
-await clients[1].DonateEquip(requests[0], 1);
+await clients[0].ForceLogin();
+//Console.WriteLine((await clients[0].GetCurrentClanInfo()).members.Single(m => m.role == eClanRole.LEADER).viewer_id);
