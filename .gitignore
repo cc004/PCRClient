@@ -3,3 +3,4 @@ obj/
 .vs/
 packages/*
 PCRClient/master.db
+PCRClientTest/account.json

@@ -11,4 +11,10 @@
     <ProjectReference Include="..\PCRClient\PCRClient.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="account.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

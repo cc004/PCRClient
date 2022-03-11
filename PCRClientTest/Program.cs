@@ -1,9 +1,9 @@
-﻿using PCRClient;
+﻿using Newtonsoft.Json;
+using PCRClient;
 
-var client = new PcrClient(EnvironmentInfo.Default);
-await client.Login(new AccountInfo()
+var client = new PcrClient(EnvironmentInfo.Default)
 {
-    channel = 2,
-    platform = 2,
-});
+    Account = JsonConvert.DeserializeObject<AccountInfo>(File.ReadAllText("account.json"))
+};
+
 var profile = await client.GetProfile(1);

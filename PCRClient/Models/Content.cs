@@ -6,13 +6,13 @@ namespace PCRClient.Models;
 [JsonObject]
 public class Content
 {
-    public string url;
+    public string url = string.Empty;
     public string? md5;
-    public string type;
+    public string type = string.Empty;
     public string? @class;
     public int size;
-    private Content[] children;
-    [JsonProperty] private string[] children_json;
+    private Content[] children = Array.Empty<Content>();
+    [JsonProperty] private string[] children_json = Array.Empty<string>();
 
     public void UpdateChildren(IReadOnlyDictionary<string, Content> registries)
     {
@@ -29,6 +29,10 @@ public class Content
         this.type = type;
         this.children = children;
         children_json = children.Select(c => c.url).ToArray();
+    }
+
+    public Content()
+    {
     }
 
     public static Content FromLine(string line, string? @class)

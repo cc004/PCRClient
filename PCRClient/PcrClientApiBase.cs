@@ -8,20 +8,22 @@ namespace PCRClient;
 
 // api-level client
 
-public class PcrClientBase
+public class PcrClientApiBase
 {
     private readonly HttpClient _client;
     private string UrlRoot { get; set; } = "http://l3-prod-all-gs-gzlj.bilibiligame.net/";
     private long _viewerId;
     private string? _requestId;
     private string? _sessionId;
-
-    protected PcrClientBase(EnvironmentInfo info)
+    
+    protected PcrClientApiBase(EnvironmentInfo? info = null)
     {
+        info ??= EnvironmentInfo.Default;
+
         _client = new HttpClient(new HttpClientHandler()
         {
-            UseProxy = false,
-            Proxy = null
+            //UseProxy = false,
+            //Proxy = null
         });
         _client.DefaultRequestHeaders.Clear();
         foreach (var field in typeof(EnvironmentInfo).GetFields())
@@ -38,14 +40,13 @@ public class PcrClientBase
         _viewerId = info.viewer_id;
     }
 
-    protected async Task<T> Request<T>(Request<T> request) where T : ResponseBase
+    protected virtual async Task<T> Request<T>(Request<T> request) where T : ResponseBase
     {
         var key = PackHelper.CreateKey();
         request.ApplyViewerId(request.Crypt ? PackHelper.Encrypt(_viewerId.ToString(), key) : _viewerId.ToString());
-
-        bool flag = _requestId != null, flag2 = _sessionId != null;
-        if (flag) _client.DefaultRequestHeaders.TryAddWithoutValidation("REQUEST-ID", _requestId);
-        if (flag2) _client.DefaultRequestHeaders.TryAddWithoutValidation("SID", _sessionId);
+        
+        if (!string.IsNullOrEmpty(_requestId)) _client.DefaultRequestHeaders.TryAddWithoutValidation("REQUEST-ID", _requestId);
+        if (!string.IsNullOrEmpty(_sessionId)) _client.DefaultRequestHeaders.TryAddWithoutValidation("SID", _sessionId);
 
         var str = Encoding.UTF8.GetString(await (await _client.PostAsync(UrlRoot + request.Url,
                 request.Crypt
@@ -53,8 +54,8 @@ public class PcrClientBase
                     : new StringContent(JsonConvert.SerializeObject(request))))
             .Content.ReadAsByteArrayAsync());
 
-        if (flag) _client.DefaultRequestHeaders.Remove("REQUEST-ID");
-        if (flag2) _client.DefaultRequestHeaders.Remove("SID");
+        _client.DefaultRequestHeaders.Remove("REQUEST-ID");
+        _client.DefaultRequestHeaders.Remove("SID");
 
         var response =
             (request.Crypt ? PackHelper.Unpack(Convert.FromBase64String(str), out _) : JObject.Parse(str))
@@ -84,21 +85,49 @@ public class PcrClientBase
         if (!string.IsNullOrEmpty(response.data_headers.viewer_id)) _viewerId = long.Parse(response.data_headers.viewer_id);
 
         if (response.data.server_error != null)
+        {
+            Log(LogLevel.Error, typeof(T).Name);
             throw new ApiException<T>(
                 $"{response.data.server_error.title}: {response.data.server_error.message} (code = {response.data.server_error.status})")
             {
                 response = response
             };
+        }
 
+        Log(LogLevel.Info, typeof(T).Name);
         return response.data;
     }
-    protected async Task Prepare(AccountInfo info)
+
+    protected async Task<SourceIniGetMaintenanceStatusResponse> Prepare(AccountInfo info)
     {
+        _client.DefaultRequestHeaders.Remove("PLATFORM");
+        _client.DefaultRequestHeaders.Remove("PLATFORM-ID");
+        _client.DefaultRequestHeaders.Remove("CHANNEL-ID");
+
         _client.DefaultRequestHeaders.TryAddWithoutValidation("PLATFORM", info.platform.ToString());
         _client.DefaultRequestHeaders.TryAddWithoutValidation("PLATFORM-ID", info.platform.ToString());
         _client.DefaultRequestHeaders.TryAddWithoutValidation("CHANNEL-ID", info.channel.ToString());
         UrlRoot = $"http://{(await Request(new SourceIniIndexRequest())).server[0]}".Replace("\t", "");
+
         var manifest = await Request(new SourceIniGetMaintenanceStatusRequest());
+        _client.DefaultRequestHeaders.Remove("MANIFEST-VER");
         _client.DefaultRequestHeaders.TryAddWithoutValidation("MANIFEST-VER", manifest.required_manifest_ver);
+        return manifest;
+    }
+
+    protected enum LogLevel
+    {
+        Info = 0,
+        Error = 1
+    }
+
+    /// <summary>
+    /// null value disables logging
+    /// </summary>
+    public string? LogPrefix { get; set; } = string.Empty;
+
+    protected void Log(LogLevel level, string message)
+    {
+        if (LogPrefix != null) Console.WriteLine($"{LogPrefix}[{level.ToString().ToLower()}] {message}");
     }
 }

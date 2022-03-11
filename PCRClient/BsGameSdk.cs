@@ -111,10 +111,11 @@ namespace PCRClient
             return await Post("api/client/login", data);
         }
 
-        internal static async Task<BSdkLoginResult> Login(AccountInfo info, Func<CaptchaRequest, Task<CaptchaResult>> validator)
+        internal static async Task<BSdkLoginResult> Login(AccountInfo info, Func<CaptchaRequest, Task<CaptchaResult>>? validator)
         {
             var result = await Login(info.username!, info.password!);
             if (result.ContainsKey("access_key")) return result.ToObject<BSdkLoginResult>()!;
+            if (validator == null) throw new InvalidOperationException();
             return (await Login(info.username!, info.password!, await validator(await GetCaptcha())))
                 .ToObject<BSdkLoginResult>()!;
         }

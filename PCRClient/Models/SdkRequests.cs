@@ -23,6 +23,7 @@ namespace PCRClient.Models
 
     public class ToolSdkLoginResponse : ResponseBase
     {
+        public bool is_risk;
     }
 
     public class CheckGameStartRequest : Request<CheckGameStartResponse>
@@ -36,6 +37,7 @@ namespace PCRClient.Models
 
     public class CheckGameStartResponse : ResponseBase
     {
+        public bool now_tutorial;
     }
 
     public class SourceIniIndexRequest : Request<SourceIniIndexResponse>
@@ -71,5 +73,6 @@ namespace PCRClient.Models
         public string sound_ver;
         public string patch_ver;
         public string[] resource;
+        public string maintenance_message;
     }
 }
