@@ -22,7 +22,7 @@ public class FarmCommand : ICommand
                 break;
             case "kick":
                 Configuration.GetConfig<FarmConfig>().farm.Kick(long.Parse(arg[1]));
-                await args.Callback("已准备邀请");
+                await args.Callback("已准备踢出");
                 break;
         }
     }

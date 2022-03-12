@@ -4,13 +4,13 @@ namespace PCRClient
 {
     public class PcrClientDataBase : PcrClientSessionBase
     {
-
+        public HashSet<int> FinishedQuest { get; } = new();
         public int Jewel { get; private set; }
         public int ClanId { get; private set; }
         public int DonationNum { get; private set; }
         public int TeamLevel { get; private set; }
         public int Stamina { get; private set; }
-        public bool ClanUnlocked { get; private set; }
+        public bool ClanUnlocked => FinishedQuest.Any(q => q == 11003001);
         public string? Name { get; private set; }
 
         public InventoryList Inventory { get; } = new();
@@ -48,13 +48,13 @@ namespace PCRClient
             {
                 Name = name.Name;
             }
-            if (result is IBasicData data)
-            {
-                ClanUnlocked = data.ClanUnlocked;
-            }
             if (result is IStamina sta)
             {
                 Stamina = sta.Stamina;
+            }
+            if (result is IClearedQuest q)
+            {
+                FinishedQuest.UnionWith(q.QuestIds);
             }
 
             return result;

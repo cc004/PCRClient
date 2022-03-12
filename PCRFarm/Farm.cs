@@ -84,7 +84,6 @@ public class Farm
                 for (var i = request.donation_num; i < request.request_num;)
                 {
                     var worker = await GetWorker();
-                    await master.InviteToClan(worker);
 
                     try
                     {
@@ -93,22 +92,35 @@ public class Farm
                         {
                             if (questId == 0)
                             {
-                                questId = (int)PcrClientSessionBase.Database!.QuestData.First(q =>
-                                    q.RewardImage1 == request.equip_id || q.RewardImage2 == request.equip_id).QuestId;
+                                questId = (int) (PcrClientSessionBase.Database!.QuestData.Where(q =>
+                                                         q.RewardImage1 == request.equip_id ||
+                                                         q.RewardImage2 == request.equip_id)
+                                                     .AsEnumerable()
+                                                     .FirstOrDefault(
+                                                         q => worker.FinishedQuest.Contains((int) q.QuestId)) ??
+                                                 throw new ApiException<QuestSkipResponse>()).QuestId;
                             }
 
                             if (worker.Stamina < 30) await worker.RecoverStamina(); // TODO: deal with the situation that jewel is not enough
                             await worker.QuestSkip(questId, 3);
                         }
-                        await worker.DonateEquip(request, 2);
-                        i += 2;
+                        await master.InviteToClan(worker);
+                        try
+                        {
+                            await worker.DonateEquip(request, 2);
+                            i += 2;
+                        }
+                        catch (ApiException)
+                        {
+
+                        }
+                        await master.RemoveMember(worker.ViewerId);
                     }
                     catch (ApiException)
                     {
                         //捐过了，没开图，没钻石，直接bypass
                     }
 
-                    await master.RemoveMember(worker.ViewerId);
 
                     if (worker.DonationNum < 10) _workers.Add(worker);
                     else lock (_usedWorkers) _usedWorkers.Add(worker);

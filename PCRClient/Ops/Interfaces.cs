@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace PCRClient.Models
 {
+    internal interface IClearedQuest
+    {
+        HashSet<int> QuestIds { get; }
+    }
+
     internal interface IClanId
     {
         int ClanId { get; }
@@ -32,11 +37,6 @@ namespace PCRClient.Models
     internal interface IDonationNum
     {
         int Num { get; }
-    }
-
-    internal interface IBasicData
-    {
-        bool ClanUnlocked { get; }
     }
 
     internal interface IUpdateInventory

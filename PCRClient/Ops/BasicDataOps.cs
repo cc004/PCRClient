@@ -12,9 +12,9 @@ public partial class LoadIndexResponse : ILevel, IName
     public int Level => user_info.team_level;
 }
 
-public partial class HomeIndexResponse : IBasicData
+public partial class HomeIndexResponse : IClearedQuest
 {
-    public bool ClanUnlocked => quest_list.Any(q => q.quest_id == 11003001 && q.result_type > 0);
+    public HashSet<int> QuestIds => quest_list.Where(q => q.result_type > 0).Select(q => q.quest_id).ToHashSet();
 }
 public partial class LoadIndexResponse : IJewel
 {
