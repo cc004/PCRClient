@@ -7,6 +7,5 @@ public class Config
 {
     public AccountInfo[] masters, workers;
     public int requestDelay = 60000;
-    public string cqAddress;
-    public string localHost;
+    public string host;
 }

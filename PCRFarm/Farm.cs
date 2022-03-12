@@ -1,6 +1,10 @@
 ﻿using System.Collections.Concurrent;
+using BandoriBot;
 using PCRClient;
 using PCRClient.Models;
+using PCRFarm.Apis.Controllers;
+using ApiException = PCRClient.ApiException;
+using Utils = PCRClient.Utils;
 
 namespace PCRFarm;
 
@@ -12,14 +16,23 @@ public class Farm
     private readonly List<PcrClient> _usedWorkers = new();
     private readonly List<PcrClient> _allWorkers = new();
 
-    private static async Task<CaptchaResult> Validator(CaptchaRequest captcha)
+    private async Task<CaptchaResult> Validator(CaptchaRequest captcha)
     {
         await Task.Yield();
-        Console.WriteLine($"https://help.tencentbot.top/geetest/?captcha_type=1&challenge={captcha.challenge}&gt={captcha.gt}&userid={captcha.gt_user_id}&gs=1");
-        return captcha.CreateResult(Console.ReadLine() ?? string.Empty);
+        var sema = new Semaphore(0, 1);
+        string validate = null!;
+        ApiController.RegisterCallback(captcha.challenge!, v =>
+        {
+            validate = v;
+            sema.Release();
+        });
+        await MessageHandler.session.SendGroupMessage(1,
+            $"http://{_config.host}/geetest?captcha_type=1&challenge={captcha.challenge}&gt={captcha.gt}&userid={captcha.gt_user_id}&gs=1");
+        sema.WaitOne();
+        return captcha.CreateResult(validate);
     }
-
-    private static PcrClient CreateClient(AccountInfo info)
+    
+    private PcrClient CreateClient(AccountInfo info)
     {
         return new PcrClient(EnvironmentInfo.Default)
         {
@@ -37,6 +50,10 @@ public class Farm
             _workers.Add(worker);
             _allWorkers.Add(worker);
         }
+        new Thread(() =>
+        {
+            Apis.Program.Main2(ushort.Parse(config.host.Split(':')[1]));
+        }).Start();
     }
 
     private async Task<PcrClient> GetWorker()
@@ -112,6 +129,7 @@ public class Farm
     }
 
     private static readonly TimeSpan offset = TimeSpan.FromHours(6);
+
     private async Task DailyReLoginScheduler()
     {
         var last = DateTime.Now - offset;
@@ -177,5 +195,10 @@ public class Farm
                 invites.Add(user);
             }
         }
+    }
+
+    public string GetStatus()
+    {
+        return $"农场状态:\n{string.Join("\n", _allWorkers.Select(c => $"{c.Name}: {c.DonationNum}/10"))}";
     }
 }

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "PCRFarm": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:10842;http://localhost:10843"
+    }
+  }
+}
