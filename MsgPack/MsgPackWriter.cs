@@ -1,8 +1,9 @@
 using System;
 using System.IO;
+
 // ReSharper disable IntVariableOverflowInUncheckedContext
 
-namespace MsgPack
+namespace MsgPack2
 {
     internal class MsgPackWriter
 	{

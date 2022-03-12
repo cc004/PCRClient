@@ -38,7 +38,27 @@ public class PcrClientApiBase
         ViewerId = info.viewer_id;
     }
 
+    // filtered out http errors
     protected virtual async Task<T> Request<T>(Request<T> request) where T : ResponseBase
+    {
+        for (;;)
+        {
+            try
+            {
+                return await RequestInternal(request);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                Log(LogLevel.Error, $"request error: {e}");
+            }
+        }
+    }
+
+    private async Task<T> RequestInternal<T>(Request<T> request) where T : ResponseBase
     {
         var key = PackHelper.CreateKey();
         request.ApplyViewerId(request.Crypt ? PackHelper.Encrypt(ViewerId.ToString(), key) : ViewerId.ToString());

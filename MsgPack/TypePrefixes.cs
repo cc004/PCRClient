@@ -1,4 +1,4 @@
-namespace MsgPack
+namespace MsgPack2
 {
 	public enum TypePrefixes : byte
 	{

@@ -65,15 +65,15 @@ public class Farm
         }
     }
 
-    private static readonly List<List<long>> _pendingInvites = new ();
+    private static readonly List<List<Func<PcrClient, Task>>> _invokeList = new ();
 
     private async Task MasterListener(PcrClient master)
     {
-        var invites = new List<long>();
-        var copy = new List<long>();
+        var invokes = new List<Func<PcrClient, Task>>();
+        var copy = new List<Func<PcrClient, Task>>();
 
-        lock (_pendingInvites)
-            _pendingInvites.Add(invites);
+        lock (_invokeList)
+            _invokeList.Add(invokes);
         var donated = new HashSet<int>();
         for (;;)
         {
@@ -117,13 +117,14 @@ public class Farm
                 donated.Add(request.message_id);
             }
 
-            lock (invites)
+            copy.Clear();
+            lock (invokes)
             {
-                copy.AddRange(invites);
-                invites.Clear();
+                copy.AddRange(invokes);
+                invokes.Clear();
             }
 
-            foreach (var id in copy) await master.InviteToClan(id);
+            foreach (var act in copy) await act(master);
             await Task.Delay(_config.requestDelay);
         }
     }
@@ -183,18 +184,39 @@ public class Farm
         _ = Task.Run(DailyReLoginScheduler);
     }
 
+    private void InvokeEach(Func<PcrClient, Task> act)
+    {
+        lock (_invokeList)
+        {
+            foreach (var lst in _invokeList)
+            {
+                lock (lst) lst.Add(act);
+            }
+        }
+    }
+
     public void Invite(long user)
     {
         Console.WriteLine($"inviting {user}");
-        var rnd = new Random();
-        lock (_pendingInvites)
+        InvokeEach(async client =>
         {
-            var invites = _pendingInvites[rnd.Next(0, _pendingInvites.Count)];
-            lock (invites)
+            await client.InviteToClan(user);
+        });
+    }
+    public void Kick(long user)
+    {
+        Console.WriteLine($"inviting {user}");
+        InvokeEach(async client =>
+        {
+            try
             {
-                invites.Add(user);
+                await client.RemoveMember(user);
             }
-        }
+            catch (ApiException)
+            {
+
+            }
+        });
     }
 
     public string GetStatus()

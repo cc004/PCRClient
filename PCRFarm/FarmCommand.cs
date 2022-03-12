@@ -20,6 +20,10 @@ public class FarmCommand : ICommand
                 Configuration.GetConfig<FarmConfig>().farm.Invite(long.Parse(arg[1]));
                 await args.Callback("已准备邀请");
                 break;
+            case "kick":
+                Configuration.GetConfig<FarmConfig>().farm.Kick(long.Parse(arg[1]));
+                await args.Callback("已准备邀请");
+                break;
         }
     }
 }

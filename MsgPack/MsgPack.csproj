@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
     <LangVersion>8.0</LangVersion>
-    <AssemblyName>MsgPack</AssemblyName>
+    <AssemblyName>MsgPack2</AssemblyName>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -32,7 +32,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>MsgPack</RootNamespace>
+    <RootNamespace>MsgPack2</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LitJSON, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">

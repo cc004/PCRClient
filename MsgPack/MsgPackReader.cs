@@ -3,7 +3,7 @@ using System.IO;
 
 // ReSharper disable MustUseReturnValue
 
-namespace MsgPack
+namespace MsgPack2
 {
 	internal class MsgPackReader
 	{
